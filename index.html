@@ -1,0 +1,2214 @@
+<!DOCTYPE html>
+<html lang="bn" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,viewport-fit=cover"/>
+<title>বাংলা পঞ্জিকা — Manik Roy</title>
+
+<!-- PWA Manifest -->
+<link rel="manifest" href="manifest.json"/>
+
+<!-- Theme & Status Bar -->
+<meta name="theme-color" content="#c084fc" media="(prefers-color-scheme: dark)"/>
+<meta name="theme-color" content="#7c3aed" media="(prefers-color-scheme: light)"/>
+
+<!-- iOS PWA -->
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="পঞ্জিকা"/>
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png"/>
+<link rel="apple-touch-icon" sizes="152x152" href="icons/icon-152x152.png"/>
+<link rel="apple-touch-icon" sizes="192x192" href="icons/icon-192x192.png"/>
+
+<!-- Favicons -->
+<link rel="icon" type="image/x-icon" href="icons/favicon.ico"/>
+<link rel="icon" type="image/png" sizes="32x32" href="icons/icon-96x96.png"/>
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192x192.png"/>
+
+<!-- SEO & Social -->
+<meta name="description" content="সম্পূর্ণ বাংলা পঞ্জিকা — তিথি, নক্ষত্র, যোগ, করণ, মুহূর্ত, উৎসব। Full Bengali Hindu almanac with panchang, festivals, muhurta. Works offline."/>
+<meta name="keywords" content="বাংলা পঞ্জিকা, panjika, panchang, bengali calendar, tithi, nakshatra, Hindu almanac"/>
+<meta name="author" content="Manik Roy"/>
+<meta name="application-name" content="বাংলা পঞ্জিকা"/>
+
+<!-- Open Graph -->
+<meta property="og:title" content="বাংলা পঞ্জিকা — Bangla Panjika"/>
+<meta property="og:description" content="Complete Bengali Hindu almanac — panchang, tithi, nakshatra, festivals, muhurta. Works offline as a PWA."/>
+<meta property="og:type" content="website"/>
+<meta property="og:image" content="icons/icon-512x512.png"/>
+
+<!-- MS Tile -->
+<meta name="msapplication-TileColor" content="#0f0e17"/>
+<meta name="msapplication-TileImage" content="icons/icon-144x144.png"/>
+
+<!-- Preconnect fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;600;700&family=Noto+Sans+Bengali:wght@300;400;600&family=Cinzel:wght@400;600;700&family=Tiro+Devanagari+Sanskrit&display=swap" rel="stylesheet"/>
+<style>
+:root{--fs:'Noto Serif Bengali','Noto Serif',serif;--fn:'Noto Sans Bengali','Noto Sans',sans-serif;--fd:'Cinzel',serif;--r:16px;--rs:10px;--tr:0.3s cubic-bezier(.4,0,.2,1);}
+[data-theme="dark"]{--bg:#0f0e17;--bg2:#1a1828;--card:#1e1c2e;--acc:#252338;--bdr:rgba(180,150,255,0.13);--t1:#e8e3ff;--t2:#a89ec8;--tm:#665f8a;--hi:#c084fc;--hs:rgba(192,132,252,0.15);--h2:#f472b6;--h2s:rgba(244,114,182,0.12);--gd:#fbbf24;--gs:rgba(251,191,36,0.14);--rd:#f87171;--gn:#34d399;--sh:0 8px 32px rgba(0,0,0,0.55);--ss:0 2px 12px rgba(0,0,0,0.38);--gw:0 0 24px rgba(192,132,252,0.18);--hbg:linear-gradient(135deg,#1a1828 0%,#13112a 100%);--mc:rgba(192,132,252,0.07);--tr2:#c084fc;--sb:#2d2a45;}
+[data-theme="light"]{--bg:#faf8ff;--bg2:#f0ecff;--card:#fff;--acc:#f5f2ff;--bdr:rgba(130,90,200,0.13);--t1:#1e1a36;--t2:#5a4f82;--tm:#9b8fc0;--hi:#7c3aed;--hs:rgba(124,58,237,0.09);--h2:#db2777;--h2s:rgba(219,39,119,0.09);--gd:#d97706;--gs:rgba(217,119,6,0.1);--rd:#dc2626;--gn:#059669;--sh:0 8px 32px rgba(100,80,180,0.13);--ss:0 2px 12px rgba(100,80,180,0.09);--gw:0 0 24px rgba(124,58,237,0.09);--hbg:linear-gradient(135deg,#ede8ff 0%,#f5f2ff 100%);--mc:rgba(124,58,237,0.06);--tr2:#7c3aed;--sb:#d1c9f0;}
+[data-theme="oled"]{--bg:#000;--bg2:#080808;--card:#0d0d0d;--acc:#111;--bdr:rgba(200,160,255,0.1);--t1:#fff;--t2:#b0a0d0;--tm:#554d70;--hi:#d09fff;--hs:rgba(208,159,255,0.12);--h2:#ff85c0;--h2s:rgba(255,133,192,0.1);--gd:#ffd060;--gs:rgba(255,208,96,0.12);--rd:#ff6b6b;--gn:#4ade80;--sh:0 8px 32px rgba(0,0,0,0.9);--ss:0 2px 12px rgba(0,0,0,0.7);--gw:0 0 30px rgba(208,159,255,0.14);--hbg:linear-gradient(135deg,#080808 0%,#0a0a0a 100%);--mc:rgba(208,159,255,0.05);--tr2:#d09fff;--sb:#1a1a1a;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--fn);background:var(--bg);color:var(--t1);min-height:100vh;display:flex;flex-direction:column;align-items:center;transition:background var(--tr),color var(--tr);overflow-x:hidden;}
+::-webkit-scrollbar{width:5px;}::-webkit-scrollbar-track{background:var(--bg);}::-webkit-scrollbar-thumb{background:var(--sb);border-radius:99px;}
+.mandala{position:fixed;top:-100px;right:-100px;width:500px;height:500px;border-radius:50%;border:1.5px solid var(--mc);pointer-events:none;z-index:0;animation:spin 90s linear infinite;box-shadow:0 0 0 35px var(--mc),0 0 0 70px var(--mc),0 0 0 105px var(--mc);}
+.mandala::before,.mandala::after{content:'';position:absolute;border-radius:50%;border:1.5px solid var(--mc);}
+.mandala::before{inset:28px;}.mandala::after{inset:60px;}
+@keyframes spin{to{transform:rotate(360deg);}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.5;}}
+@keyframes shimmer{0%{background-position:-200% 0;}100%{background-position:200% 0;}}
+.au{animation:fadeUp .4s ease both;}
+.wrap{width:100%;max-width:480px;padding:0 0 40px;position:relative;z-index:1;display:flex;flex-direction:column;align-items:stretch;min-height:100vh;}
+
+/* HEADER */
+header{background:var(--hbg);border-bottom:1.5px solid var(--bdr);padding:16px 16px 12px;box-shadow:var(--ss);}
+.htop{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
+.logo-en{font-family:var(--fd);font-size:11.5px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--tm);}
+.logo-bn{font-family:var(--fs);font-size:25.0px;font-weight:700;color:var(--hi);line-height:1.1;text-shadow:var(--gw);}
+.theme-grp{display:flex;flex-direction:column;align-items:flex-end;gap:4px;}
+.theme-lbl{font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--tm);font-family:var(--fd);}
+.theme-btns{display:flex;gap:4px;}
+.tbtn{width:30px;height:30px;border-radius:50%;border:1.5px solid var(--bdr);background:var(--card);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15.0px;transition:all .2s;color:var(--t2);}
+.tbtn:hover{border-color:var(--hi);transform:scale(1.1);}
+.tbtn.active{border-color:var(--hi);background:var(--hs);box-shadow:0 0 8px rgba(192,132,252,.3);}
+.today-band{background:var(--hs);border:1px solid var(--bdr);border-radius:var(--rs);padding:9px 12px;display:grid;grid-template-columns:1fr 1fr;gap:5px 10px;}
+.tb-row{display:flex;flex-direction:column;gap:1px;}
+.tb-key{font-size:11.0px;letter-spacing:1.2px;text-transform:uppercase;color:var(--tm);font-family:var(--fd);}
+.tb-val{font-family:var(--fs);font-size:14.5px;font-weight:600;color:var(--t1);}
+.tb-val.hi{color:var(--hi);}.tb-val.gd{color:var(--gd);}
+
+.lang-btns{display:flex;gap:3px;margin-top:3px;}
+.lbtn{height:22px;padding:0 7px;border-radius:99px;border:1.5px solid var(--bdr);background:var(--card);cursor:pointer;font-size:10.5px;font-weight:700;color:var(--t2);transition:all .2s;line-height:1;}
+.lbtn:hover{border-color:var(--hi);color:var(--hi);}
+.lbtn.active{border-color:var(--hi);background:var(--hs);color:var(--hi);}
+
+/* LOCATION BAR */
+.loc-bar{margin:10px 14px 0;background:var(--card);border:1.5px solid var(--bdr);border-radius:var(--r);padding:11px 14px;box-shadow:var(--ss);}
+.loc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
+.loc-label{font-family:var(--fd);font-size:11.5px;letter-spacing:2px;text-transform:uppercase;color:var(--tm);}
+.loc-status{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--t2);}
+.loc-dot{width:7px;height:7px;border-radius:50%;background:var(--gn);animation:pulse 2s infinite;}
+.loc-dot.pending{background:var(--gd);}.loc-dot.err{background:var(--rd);animation:none;}
+.loc-name{font-family:var(--fs);font-size:15.0px;font-weight:600;color:var(--hi);margin-bottom:6px;}
+.loc-coords{font-size:12.5px;color:var(--tm);margin-bottom:8px;}
+.loc-row{display:flex;gap:6px;align-items:center;flex-wrap:wrap;}
+.loc-input{flex:1;min-width:0;background:var(--acc);border:1.5px solid var(--bdr);border-radius:var(--rs);padding:8px 10px;font-family:var(--fn);font-size:14.5px;color:var(--t1);outline:none;transition:border-color .2s;}
+.loc-input:focus{border-color:var(--hi);}
+.loc-btn{background:var(--hi);color:#fff;border:none;border-radius:var(--rs);padding:8px 10px;font-family:var(--fd);font-size:10.5px;letter-spacing:.5px;text-transform:uppercase;cursor:pointer;transition:all .2s;white-space:nowrap;flex-shrink:0;}
+.loc-btn:hover{opacity:.85;}
+.loc-btn.gps{background:var(--gn);color:#000;}
+.loc-suggestions{background:var(--acc);border:1.5px solid var(--bdr);border-radius:var(--rs);margin-top:4px;overflow:hidden;display:none;max-height:160px;overflow-y:auto;}
+.loc-sugg-item{padding:9px 12px;font-size:14.5px;cursor:pointer;border-bottom:1px solid var(--bdr);transition:background .15s;}
+.loc-sugg-item:hover{background:var(--hs);}
+.loc-sugg-item:last-child{border-bottom:none;}
+
+/* WEATHER WIDGET */
+
+/* CLOCK */
+.clock-wrap{padding:10px 14px 0;}
+.clock-card{background:var(--card);border:1.5px solid var(--bdr);border-radius:var(--r);padding:16px;display:flex;align-items:center;justify-content:space-between;}
+.clock-time{font-family:var(--fd);font-size:40.0px;font-weight:700;color:var(--hi);letter-spacing:2px;text-shadow:var(--gw);line-height:1;}
+.clock-r{text-align:right;display:flex;flex-direction:column;gap:3px;}
+.clock-ampm{font-family:var(--fd);font-size:15.0px;font-weight:600;color:var(--tm);letter-spacing:2px;}
+.clock-en{font-size:12.5px;color:var(--tm);}
+.clock-bn{font-family:var(--fs);font-size:13.5px;color:var(--t2);}
+
+/* SIDDHANTA */
+.sid-panel{margin:10px 14px 0;background:var(--card);border:1.5px solid var(--bdr);border-radius:var(--r);padding:11px 14px;}
+.sid-lbl{font-family:var(--fd);font-size:11.5px;letter-spacing:2px;text-transform:uppercase;color:var(--tm);margin-bottom:8px;}
+.sid-lbl span{color:var(--gd);}
+.sid-btns{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;}
+.sid-btn{border:1.5px solid var(--bdr);background:var(--acc);border-radius:var(--rs);padding:8px 4px;cursor:pointer;text-align:center;display:flex;flex-direction:column;gap:2px;align-items:center;transition:all .2s;}
+.sid-btn:hover{border-color:var(--gd);transform:translateY(-1px);}
+.sid-btn.active{border-color:var(--gd);background:var(--gs);box-shadow:0 0 10px rgba(251,191,36,.15);}
+.sid-icon{font-size:17.0px;}.sid-name{font-family:var(--fs);font-size:13.0px;font-weight:700;color:var(--t1);}
+.sid-btn.active .sid-name{color:var(--gd);}
+.sid-sub{font-size:10.0px;color:var(--tm);letter-spacing:.4px;text-transform:uppercase;}
+.sid-desc{margin-top:7px;font-size:12.0px;color:var(--tm);font-family:var(--fs);line-height:1.5;}
+
+/* NAV */
+.nav-bar{display:flex;align-items:center;justify-content:space-between;padding:14px 16px 6px;}
+.nav-btn{width:36px;height:36px;border-radius:50%;border:1.5px solid var(--bdr);background:var(--card);color:var(--t2);cursor:pointer;font-size:19.0px;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.nav-btn:hover{border-color:var(--hi);color:var(--hi);transform:scale(1.08);}
+.nav-btn.yr{width:30px;height:30px;font-size:15.0px;}
+.month-disp{text-align:center;}
+.mbn{font-family:var(--fs);font-size:22.0px;font-weight:700;color:var(--t1);line-height:1;}
+.men{font-size:12.5px;color:var(--tm);margin-top:2px;}
+
+/* CALENDAR */
+.cal-sec{padding:0 14px;}
+.wd-row{display:grid;grid-template-columns:repeat(7,1fr);margin-bottom:3px;}
+.wd-cell{text-align:center;font-size:12.0px;font-weight:600;letter-spacing:.5px;padding:4px 0;color:var(--tm);font-family:var(--fd);}
+.wd-cell:first-child{color:var(--rd);}.wd-cell:last-child{color:var(--h2);}
+.days-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;}
+.dc{aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:8px;cursor:pointer;position:relative;transition:all .15s;border:1.5px solid transparent;background:var(--card);padding:2px;min-height:44px;}
+.dc:hover:not(.empty){border-color:var(--hi);background:var(--hs);transform:scale(1.06);}
+.dc.empty{background:transparent;cursor:default;}
+.dc.today{border-color:var(--tr2);background:var(--hs);box-shadow:0 0 12px rgba(192,132,252,.18);}
+.dc.today .gn2{color:var(--hi);font-weight:700;}
+.dc.sun .gn2{color:var(--rd);}.dc.sat .gn2{color:var(--h2);}
+.dc.sel{background:var(--hi);border-color:var(--hi);}
+.dc.sel .gn2,.dc.sel .bn2{color:#fff!important;}
+.dc.hol{background:var(--gs);border-color:var(--gd);}
+.dc.amavasya{background:rgba(100,80,150,.15);border-color:rgba(150,100,255,.3);}
+.dc.purnima{background:rgba(255,220,100,.08);border-color:rgba(255,200,50,.25);}
+.gn2{font-size:22px;font-weight:700;line-height:1;color:var(--t1);}
+.bn2{font-size:13px;font-family:var(--fs);color:var(--tm);line-height:1.3;}
+.td-dot{width:3.5px;height:3.5px;border-radius:50%;background:var(--h2);position:absolute;bottom:3px;right:3px;}
+.dc.hol .td-dot{background:var(--gd);}
+
+/* TITHI PROGRESS */
+.tithi-progress{margin:8px 14px 0;background:var(--card);border:1.5px solid var(--bdr);border-radius:var(--r);padding:11px 14px;}
+.tp-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;}
+.tp-name{font-family:var(--fs);font-size:15.0px;font-weight:700;color:var(--hi);}
+.tp-pct{font-family:var(--fd);font-size:13.5px;color:var(--gd);}
+.tp-bar{height:6px;background:var(--acc);border-radius:99px;overflow:hidden;}
+.tp-fill{height:100%;background:linear-gradient(90deg,var(--hi),var(--h2));border-radius:99px;transition:width .6s ease;}
+.tp-row{display:flex;justify-content:space-between;margin-top:5px;}
+.tp-stat{font-size:11.5px;color:var(--tm);}
+
+/* DETAIL */
+.det-panel{margin:10px 14px 0;background:var(--card);border:1.5px solid var(--bdr);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);}
+.det-hdr{background:var(--hs);border-bottom:1px solid var(--bdr);padding:12px 14px;display:flex;align-items:flex-start;justify-content:space-between;}
+.det-main{font-family:var(--fs);font-size:19.0px;font-weight:700;color:var(--hi);}
+.det-sub{font-size:12.5px;color:var(--tm);margin-top:2px;}
+.det-badges{display:flex;flex-direction:column;align-items:flex-end;gap:4px;}
+.sid-badge{font-size:10.0px;font-family:var(--fd);letter-spacing:1px;text-transform:uppercase;color:var(--gd);border:1px solid var(--gs);border-radius:99px;padding:2px 7px;background:var(--gs);}
+.det-em{font-size:23.0px;}
+.det-body{padding:12px 14px;display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.di{display:flex;flex-direction:column;gap:2px;}
+.dk{font-size:11.0px;letter-spacing:1.3px;text-transform:uppercase;color:var(--tm);font-family:var(--fd);}
+.dv{font-family:var(--fs);font-size:15.0px;font-weight:600;color:var(--t1);}
+.dv.hi{color:var(--hi);}.dv.gd{color:var(--gd);}.dv.rd{color:var(--rd);}.dv.gn{color:var(--gn);}
+
+/* TARABALA / CHANDRABALA */
+.tbala-panel{margin:10px 14px 0;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.bala-card{background:var(--card);border:1.5px solid var(--bdr);border-radius:var(--rs);padding:11px 12px;}
+.bala-title{font-family:var(--fd);font-size:11.0px;letter-spacing:1.5px;text-transform:uppercase;color:var(--tm);margin-bottom:6px;}
+.bala-val{font-family:var(--fs);font-size:17.0px;font-weight:700;margin-bottom:3px;}
+.bala-desc{font-size:11.5px;color:var(--tm);}
+.bala-bar{height:5px;background:var(--acc);border-radius:99px;margin-top:6px;overflow:hidden;}
+.bala-fill{height:100%;border-radius:99px;transition:width .5s;}
+
+/* MOON PHASE */
+.moon-panel{margin:10px 14px 0;background:var(--card);border:1.5px solid var(--bdr);border-radius:var(--r);padding:12px 14px;display:flex;align-items:center;gap:14px;}
+.moon-svg-wrap{flex-shrink:0;}
+.moon-svg{width:64px;height:64px;}
+.moon-info{flex:1;}
+.moon-phase-name{font-family:var(--fs);font-size:16.0px;font-weight:700;color:var(--t1);margin-bottom:4px;}
+.moon-sub{font-size:12.5px;color:var(--tm);line-height:1.6;}
+.moon-pct{font-family:var(--fd);font-size:23.0px;font-weight:700;color:var(--gd);}
+
+/* MANTRA OF DAY */
+.mantra-panel{margin:10px 14px 0;background:linear-gradient(135deg,var(--card) 0%,var(--acc) 100%);border:1.5px solid var(--bdr);border-radius:var(--r);padding:13px 14px;position:relative;overflow:hidden;}
+.mantra-panel::before{content:'ॐ';position:absolute;right:12px;top:-2px;font-size:52.0px;color:var(--mc);font-family:var(--fs);pointer-events:none;}
+.mantra-lbl{font-family:var(--fd);font-size:11.0px;letter-spacing:2px;text-transform:uppercase;color:var(--gd);margin-bottom:6px;}
+.mantra-text{font-family:var(--fs);font-size:16.0px;font-weight:600;color:var(--hi);line-height:1.6;margin-bottom:4px;}
+.mantra-sub{font-size:12.0px;color:var(--tm);}
+
+/* AUSPICIOUS ACTIVITIES */
+.activ-panel{margin:10px 14px 0;background:var(--card);border:1.5px solid var(--bdr);border-radius:var(--r);padding:12px 14px;}
+.activ-lbl{font-family:var(--fd);font-size:11.5px;letter-spacing:2px;text-transform:uppercase;color:var(--tm);margin-bottom:8px;}
+.activ-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.activ-item{display:flex;align-items:center;gap:7px;background:var(--acc);border-radius:var(--rs);padding:7px 9px;}
+.activ-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+.activ-dot.yes{background:var(--gn);}.activ-dot.no{background:var(--rd);}
+.activ-name{font-family:var(--fs);font-size:13.0px;color:var(--t2);}
+
+/* PLANETARY HORA */
+.hora-panel{margin:10px 14px 0;background:var(--card);border:1.5px solid var(--bdr);border-radius:var(--r);padding:12px 14px;}
+.hora-lbl{font-family:var(--fd);font-size:11.5px;letter-spacing:2px;text-transform:uppercase;color:var(--tm);margin-bottom:8px;}
+.hora-scroll{display:flex;gap:6px;overflow-x:auto;padding-bottom:3px;scrollbar-width:none;}
+.hora-scroll::-webkit-scrollbar{display:none;}
+.hora-card{flex:0 0 58px;background:var(--acc);border:1.5px solid var(--bdr);border-radius:var(--rs);padding:8px 4px;text-align:center;transition:all .2s;}
+.hora-card.active{border-color:var(--gd);background:var(--gs);}
+.hora-planet{font-size:19.0px;margin-bottom:3px;}
+.hora-name{font-family:var(--fs);font-size:11.5px;color:var(--t2);}
+.hora-time{font-size:11.0px;color:var(--tm);margin-top:2px;}
+
+/* GRAHA TABLE */
+.graha-panel{margin:10px 14px 0;background:var(--card);border:1.5px solid var(--bdr);border-radius:var(--r);padding:12px 14px;}
+.graha-lbl{font-family:var(--fd);font-size:11.5px;letter-spacing:2px;text-transform:uppercase;color:var(--tm);margin-bottom:8px;}
+.graha-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;}
+.graha-item{background:var(--acc);border-radius:var(--rs);padding:8px;text-align:center;}
+.graha-sym{font-size:20.0px;margin-bottom:2px;}
+.graha-nm{font-family:var(--fs);font-size:12.0px;color:var(--t2);}
+.graha-rashi{font-size:11.5px;color:var(--hi);margin-top:1px;}
+
+/* SUN MOON */
+.sm-bar{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 14px;}
+.sm-card{background:var(--card);border:1.5px solid var(--bdr);border-radius:var(--rs);padding:12px;}
+.sm-hdr{display:flex;align-items:center;gap:7px;margin-bottom:7px;}
+.sm-icon{font-size:23.0px;}
+.sm-title{font-family:var(--fs);font-size:14.5px;font-weight:700;color:var(--t1);}
+.sm-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;}
+.sm-k{font-size:11.0px;text-transform:uppercase;letter-spacing:.8px;color:var(--tm);}
+.sm-v{font-size:14.0px;font-weight:600;color:var(--t2);}
+.sm-v.gd{color:var(--gd);}
+
+/* PANCHANG TIMELINE */
+.timeline-panel{margin:10px 14px 0;background:var(--card);border:1.5px solid var(--bdr);border-radius:var(--r);padding:12px 14px;}
+.tl-lbl{font-family:var(--fd);font-size:11.5px;letter-spacing:2px;text-transform:uppercase;color:var(--tm);margin-bottom:10px;}
+.tl-track{position:relative;height:32px;background:var(--acc);border-radius:99px;overflow:visible;margin:0 4px;}
+.tl-day{position:absolute;left:0;top:0;height:100%;border-radius:99px;background:linear-gradient(90deg,rgba(251,191,36,.35),rgba(251,191,36,.1));transition:width .5s;}
+.tl-now{position:absolute;top:-4px;width:2px;height:40px;background:var(--rd);border-radius:99px;transform:translateX(-50%);transition:left .5s;}
+.tl-now::after{content:'';position:absolute;top:-3px;left:50%;transform:translateX(-50%);width:8px;height:8px;border-radius:50%;background:var(--rd);}
+.tl-labels{display:flex;justify-content:space-between;margin-top:4px;font-size:11.0px;color:var(--tm);}
+.tl-events{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;}
+.tl-ev{font-size:11.5px;background:var(--hs);color:var(--hi);border-radius:99px;padding:2px 8px;}
+
+/* MUHURTA */
+.muh-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 14px;}
+.muh-card{background:var(--card);border:1.5px solid var(--bdr);border-radius:var(--rs);padding:11px;transition:all .2s;}
+.muh-card:hover{border-color:var(--hi);box-shadow:var(--gw);}
+.muh-icon{font-size:20.0px;margin-bottom:5px;}
+.muh-name{font-family:var(--fs);font-size:13.5px;font-weight:700;margin-bottom:2px;}
+.muh-time{font-size:12.0px;color:var(--t2);}
+.muh-card.aus{border-color:rgba(52,211,153,.25);}.muh-card.aus .muh-name{color:var(--gn);}
+.muh-card.ina{border-color:rgba(248,113,113,.25);}.muh-card.ina .muh-name{color:var(--rd);}
+
+/* FESTIVAL COUNTDOWN */
+
+/* RASHIFAL */
+.rashi-scroll{display:flex;overflow-x:auto;gap:8px;padding:0 14px 3px;scrollbar-width:none;}
+.rashi-scroll::-webkit-scrollbar{display:none;}
+.rashi-card{flex:0 0 76px;background:var(--card);border:1.5px solid var(--bdr);border-radius:var(--rs);padding:10px 5px 8px;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;transition:all .2s;}
+.rashi-card:hover{border-color:var(--hi);transform:translateY(-2px);}
+.ri{font-size:23.0px;}.rn{font-family:var(--fs);font-size:13.0px;text-align:center;color:var(--t2);line-height:1.2;}
+.re{font-size:10.5px;color:var(--tm);text-transform:uppercase;letter-spacing:.5px;}
+.rl{font-size:11.0px;color:var(--gd);font-weight:600;}
+
+/* FESTIVAL LIST */
+.fest-list{padding:0 14px;display:flex;flex-direction:column;gap:7px;}
+.fest-item{background:var(--card);border:1.5px solid var(--bdr);border-radius:var(--rs);padding:10px 12px;display:flex;align-items:center;gap:10px;transition:all .2s;}
+.fest-item:hover{border-color:var(--gd);transform:translateX(2px);}
+.fe{font-size:23.0px;}.fi{flex:1;}
+.fn{font-family:var(--fs);font-size:15.0px;font-weight:600;color:var(--t1);}
+.fd2{font-size:12.5px;color:var(--tm);margin-top:1px;}
+.fb{font-size:11.0px;letter-spacing:.8px;text-transform:uppercase;background:var(--gs);color:var(--gd);border:1px solid rgba(251,191,36,.3);border-radius:99px;padding:2px 7px;}
+
+/* REMINDER */
+.reminder-panel{margin:10px 14px 0;background:var(--card);border:1.5px solid var(--bdr);border-radius:var(--r);padding:12px 14px;}
+.rem-lbl{font-family:var(--fd);font-size:11.5px;letter-spacing:2px;text-transform:uppercase;color:var(--tm);margin-bottom:8px;}
+.rem-row{display:flex;gap:6px;align-items:center;flex-wrap:wrap;}
+.rem-input{flex:1;min-width:80px;background:var(--acc);border:1.5px solid var(--bdr);border-radius:var(--rs);padding:8px 10px;font-family:var(--fn);font-size:14.5px;color:var(--t1);outline:none;transition:border-color .2s;}
+.rem-input:focus{border-color:var(--hi);}
+.rem-btn{background:var(--h2);color:#fff;border:none;border-radius:var(--rs);padding:8px 12px;font-family:var(--fd);font-size:11.5px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all .2s;}
+.rem-btn:hover{opacity:.85;}
+.rem-list{margin-top:8px;display:flex;flex-direction:column;gap:5px;max-height:100px;overflow-y:auto;}
+.rem-item{display:flex;align-items:center;justify-content:space-between;background:var(--acc);border-radius:var(--rs);padding:6px 10px;font-size:13.5px;color:var(--t2);}
+.rem-del{background:none;border:none;color:var(--rd);cursor:pointer;font-size:16.0px;padding:0 2px;}
+
+/* SHARE */
+.share-panel{margin:10px 14px 0;background:var(--card);border:1.5px solid var(--bdr);border-radius:var(--r);padding:12px 14px;}
+.share-lbl{font-family:var(--fd);font-size:11.5px;letter-spacing:2px;text-transform:uppercase;color:var(--tm);margin-bottom:8px;}
+.share-btns{display:flex;gap:7px;flex-wrap:wrap;}
+.share-btn{flex:1;min-width:80px;background:var(--acc);border:1.5px solid var(--bdr);border-radius:var(--rs);padding:9px 8px;cursor:pointer;text-align:center;transition:all .2s;display:flex;flex-direction:column;align-items:center;gap:3px;}
+.share-btn:hover{border-color:var(--hi);background:var(--hs);}
+.share-btn-icon{font-size:18.0px;}
+.share-btn-txt{font-size:11.0px;color:var(--t2);font-family:var(--fd);letter-spacing:.5px;text-transform:uppercase;}
+
+/* SECTION TITLE */
+.sec-title{font-family:var(--fd);font-size:12.5px;letter-spacing:2px;text-transform:uppercase;color:var(--tm);padding:14px 16px 6px;}
+.sec-title span{color:var(--h2);}
+
+/* FOOTER */
+footer{margin-top:auto;border-top:1px solid var(--bdr);padding:16px 20px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:5px;}
+.foot-om{font-family:var(--fs);font-size:20.0px;color:var(--gd);text-shadow:0 0 12px rgba(251,191,36,.4);}
+.foot-brand{font-family:var(--fd);font-size:11.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--hi);}
+.foot-copy{font-size:12.5px;color:var(--tm);}
+.foot-copy b{color:var(--hi);}
+.foot-rights{font-size:12.0px;color:var(--tm);}
+.divider{height:1px;background:var(--bdr);margin:6px 14px;}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--card);border:1.5px solid var(--hi);border-radius:var(--r);padding:10px 18px;font-size:14.5px;font-family:var(--fs);color:var(--t1);box-shadow:var(--sh);z-index:1000;opacity:0;transition:all .3s;pointer-events:none;white-space:nowrap;}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+</style>
+</head>
+<body>
+<div class="mandala"></div>
+<div class="wrap">
+
+<!-- HEADER -->
+<header>
+  <div class="htop">
+    <div>
+      <div class="logo-en">Bangla Panjika · India 🇮🇳</div>
+      <div class="logo-bn">বাংলা পঞ্জিকা</div>
+    </div>
+    <div class="theme-grp">
+      <span class="theme-lbl" id="lbl-theme">থিম</span>
+      <div class="theme-btns">
+        <button class="tbtn" id="btn-light" title="Light" onclick="setTheme('light')">☀️</button>
+        <button class="tbtn active" id="btn-dark" title="Dark" onclick="setTheme('dark')">🌙</button>
+        <button class="tbtn" id="btn-oled" title="OLED True Black" onclick="setTheme('oled')">⚫</button>
+      </div>
+      <div class="lang-btns">
+        <button class="lbtn active" id="lbtn-bn" onclick="setLang('bn')">বাং</button>
+        <button class="lbtn" id="lbtn-en" onclick="setLang('en')">EN</button>
+        <button class="lbtn" id="lbtn-hi" onclick="setLang('hi')">हि</button>
+      </div>
+    </div>
+  </div>
+  <div class="today-band">
+    <div class="tb-row"><span class="tb-key" id="lbl-bdate">বাংলা তারিখ</span><span class="tb-val hi" id="hdr-bd">—</span></div>
+    <div class="tb-row"><span class="tb-key" id="lbl-tithi">তিথি</span><span class="tb-val" id="hdr-tithi">—</span></div>
+    <div class="tb-row"><span class="tb-key" id="lbl-nak">নক্ষত্র</span><span class="tb-val" id="hdr-nak">—</span></div>
+    <div class="tb-row"><span class="tb-key" id="lbl-yoga">যোগ</span><span class="tb-val gd" id="hdr-yoga">—</span></div>
+  </div>
+</header>
+
+<!-- LOCATION -->
+<div class="loc-bar au">
+  <div class="loc-top">
+    <span class="loc-label" id="lbl-loc">📍 অবস্থান</span>
+    <span class="loc-status"><span class="loc-dot pending" id="loc-dot"></span><span id="loc-status-txt">অনুসন্ধান করছি…</span></span>
+  </div>
+  <div class="loc-name" id="loc-name">—</div>
+  <div class="loc-coords" id="loc-coords">lat: —, lon: —</div>
+  <div class="loc-row">
+    <input class="loc-input" id="city-input" placeholder="শহর খুঁজুন…" oninput="onCityInput()" onkeydown="if(event.key==='Enter')searchCity()"/>
+  </div>
+  <div class="loc-row" style="margin-top:6px;">
+    <button class="loc-btn" id="lbl-search" onclick="searchCity()" style="flex:1;">খুঁজুন</button>
+    <button class="loc-btn gps" onclick="getGPS()" style="flex:1;">📡 GPS</button>
+  </div>
+  <div class="loc-suggestions" id="loc-suggestions"></div>
+</div>
+
+<!-- CLOCK -->
+<div class="clock-wrap">
+  <div class="clock-card au">
+    <div class="clock-time" id="clock-time">00:00:00</div>
+    <div class="clock-r">
+      <span class="clock-ampm" id="clock-ampm">AM</span>
+      <span class="clock-en" id="clock-en"></span>
+      <span class="clock-bn" id="clock-bn"></span>
+      <span style="font-size:11.5px;color:var(--tm);margin-top:2px;" id="clock-tz">IST</span>
+    </div>
+  </div>
+</div>
+
+<!-- SIDDHANTA -->
+<div class="sid-panel au">
+  <div class="sid-lbl" id="lbl-sid">⊙ গণনা পদ্ধতি — <span>সিদ্ধান্ত নির্বাচন</span></div>
+  <div class="sid-btns">
+    <button class="sid-btn active" id="sid-surya" onclick="setSid('surya')"><span class="sid-icon">☀️</span><span class="sid-name">সূর্য</span><span class="sid-sub">Surya Siddhanta</span></button>
+    <button class="sid-btn" id="sid-drik" onclick="setSid('drik')"><span class="sid-icon">🔭</span><span class="sid-name">দৃক্‌</span><span class="sid-sub">Drik Siddhanta</span></button>
+    <button class="sid-btn" id="sid-chandra" onclick="setSid('chandra')"><span class="sid-icon">🌙</span><span class="sid-name">চন্দ্র</span><span class="sid-sub">Chandra Siddhanta</span></button>
+  </div>
+  <div class="sid-desc" id="sid-desc">সূর্য সিদ্ধান্ত — প্রাচীন ভারতীয় জ্যোতির্বিদ্যার মূল গ্রন্থ (~৪০০ খ্রি.)। সৌরচক্র ভিত্তিক তিথি গণনা।</div>
+</div>
+
+<!-- NAV -->
+<div class="nav-bar">
+  <button class="nav-btn yr" onclick="chY(-1)">«</button>
+  <button class="nav-btn" onclick="chM(-1)">‹</button>
+  <div class="month-disp">
+    <div class="mbn" id="nav-mbn">—</div>
+    <div class="men" id="nav-men">—</div>
+  </div>
+  <button class="nav-btn" onclick="chM(1)">›</button>
+  <button class="nav-btn yr" onclick="chY(1)">»</button>
+</div>
+
+<!-- CALENDAR -->
+<div class="cal-sec">
+  <div class="wd-row">
+    <div class="wd-cell">রবি</div><div class="wd-cell">সোম</div><div class="wd-cell">মঙ্গ</div>
+    <div class="wd-cell">বুধ</div><div class="wd-cell">বৃহঃ</div><div class="wd-cell">শুক্র</div><div class="wd-cell">শনি</div>
+  </div>
+  <div class="days-grid" id="days-grid"></div>
+</div>
+
+<!-- TITHI PROGRESS -->
+<div class="tithi-progress au" id="tithi-prog">
+  <div class="tp-head"><span class="tp-name" id="tp-name">—</span><span class="tp-pct" id="tp-pct">০%</span></div>
+  <div class="tp-bar"><div class="tp-fill" id="tp-fill" style="width:0%"></div></div>
+  <div class="tp-row"><span class="tp-stat" id="tp-l">—</span><span class="tp-stat" id="tp-r">করণ: —</span></div>
+</div>
+
+<!-- DETAIL -->
+<div class="det-panel au" id="det-panel">
+  <div class="det-hdr">
+    <div><div class="det-main" id="det-main">—</div><div class="det-sub" id="det-sub">—</div></div>
+    <div class="det-badges" id="det-badges"><span class="sid-badge" id="sid-badge">Surya Siddhanta</span><span class="det-em" id="det-em">📅</span></div>
+  </div>
+  <div class="det-body">
+    <div class="di"><span class="dk" id="dk-tithi">তিথি</span><span class="dv hi" id="dv-tithi">—</span></div>
+    <div class="di"><span class="dk" id="dk-nak">নক্ষত্র</span><span class="dv" id="dv-nak">—</span></div>
+    <div class="di"><span class="dk" id="dk-yoga">যোগ</span><span class="dv gd" id="dv-yoga">—</span></div>
+    <div class="di"><span class="dk" id="dk-karan">করণ</span><span class="dv" id="dv-karan">—</span></div>
+    <div class="di"><span class="dk" id="dk-rashi">রাশি (চন্দ্র)</span><span class="dv" id="dv-rashi">—</span></div>
+    <div class="di"><span class="dk" id="dk-color">শুভ রঙ</span><span class="dv gn" id="dv-color">—</span></div>
+    <div class="di"><span class="dk" id="dk-lucky">শুভ সংখ্যা</span><span class="dv gd" id="dv-lucky">—</span></div>
+    <div class="di"><span class="dk" id="dk-dik">দিক</span><span class="dv" id="dv-dik">—</span></div>
+    <div class="di"><span class="dk" id="dk-vikram">বিক্রম</span><span class="dv" id="dv-vikram">—</span></div>
+  </div>
+</div>
+
+<!-- TARABALA / CHANDRABALA -->
+<div class="tbala-panel au">
+  <div class="bala-card">
+    <div class="bala-title" id="lbl-tara">⭐ তারাবল</div>
+    <div class="bala-val" id="tara-val" style="color:var(--gn)">—</div>
+    <div class="bala-desc" id="tara-desc">—</div>
+    <div class="bala-bar"><div class="bala-fill" id="tara-fill" style="width:50%;background:var(--gn)"></div></div>
+  </div>
+  <div class="bala-card">
+    <div class="bala-title" id="lbl-chand">🌙 চন্দ্রবল</div>
+    <div class="bala-val" id="chand-val" style="color:var(--hi)">—</div>
+    <div class="bala-desc" id="chand-desc">—</div>
+    <div class="bala-bar"><div class="bala-fill" id="chand-fill" style="width:50%;background:var(--hi)"></div></div>
+  </div>
+</div>
+
+<!-- MOON PHASE -->
+<div class="moon-panel au">
+  <div class="moon-svg-wrap">
+    <svg class="moon-svg" viewBox="0 0 64 64" id="moon-svg">
+      <circle cx="32" cy="32" r="28" fill="var(--acc)" stroke="var(--bdr)" stroke-width="1.5"/>
+      <path id="moon-path" d="" fill="var(--gd)" opacity="0.85"/>
+    </svg>
+  </div>
+  <div class="moon-info">
+    <div class="moon-pct" id="moon-pct">০%</div>
+    <div class="moon-phase-name" id="moon-phase-name">—</div>
+    <div class="moon-sub" id="moon-sub">পক্ষ: — &nbsp;|&nbsp; তিথি: —</div>
+  </div>
+</div>
+
+<!-- MANTRA OF DAY -->
+<div class="mantra-panel au">
+  <div class="mantra-lbl" id="lbl-mantra">🪔 আজকের মন্ত্র — নক্ষত্র অনুযায়ী</div>
+  <div class="mantra-text" id="mantra-text">—</div>
+  <div class="mantra-sub" id="mantra-sub">—</div>
+</div>
+
+<!-- AUSPICIOUS ACTIVITIES -->
+<div class="activ-panel au">
+  <div class="activ-lbl" id="lbl-activ">✅ আজকের কার্যক্রম — শুভাশুভ</div>
+  <div class="activ-grid" id="activ-grid"></div>
+</div>
+
+<!-- PLANETARY HORA -->
+<div class="hora-panel au">
+  <div class="hora-lbl" id="lbl-hora">🪐 গ্রহ হোরা — আজকের ঘন্টা</div>
+  <div class="hora-scroll" id="hora-scroll"></div>
+</div>
+
+<!-- GRAHA POSITIONS -->
+<div class="graha-panel au">
+  <div class="graha-lbl" id="lbl-graha">🌌 গ্রহ অবস্থান — নবগ্রহ</div>
+  <div class="graha-grid" id="graha-grid"></div>
+</div>
+
+<!-- PANCHANG TIMELINE -->
+<div class="timeline-panel au">
+  <div class="tl-lbl" id="lbl-tl">⏱️ পঞ্চাঙ্গ টাইমলাইন — আজকের দিন</div>
+  <div class="tl-track">
+    <div class="tl-day" id="tl-day" style="width:70%"></div>
+    <div class="tl-now" id="tl-now" style="left:50%"></div>
+  </div>
+  <div class="tl-labels"><span id="tl-sr">—</span><span id="lbl-noon">দুপুর</span><span id="tl-ss">—</span></div>
+  <div class="tl-events" id="tl-events"></div>
+</div>
+
+<!-- SUN MOON -->
+<div class="sec-title" id="lbl-sunmoon">☀️ সূর্য ও 🌙 চন্দ্র — <span id="loc-badge">IST (UTC+5:30) · কলকাতা</span></div>
+<div class="sm-bar au">
+  <div class="sm-card">
+    <div class="sm-hdr"><span class="sm-icon">☀️</span><span class="sm-title" id="lbl-sun">সূর্য</span></div>
+    <div class="sm-row"><span class="sm-k" id="lbl-sunrise">উদয়</span><span class="sm-v gd" id="sunrise">—</span></div>
+    <div class="sm-row"><span class="sm-k" id="lbl-sunset">অস্ত</span><span class="sm-v gd" id="sunset">—</span></div>
+    <div class="sm-row"><span class="sm-k" id="lbl-daylen">দিনের দৈর্ঘ্য</span><span class="sm-v" id="day-len">—</span></div>
+    <div class="sm-row"><span class="sm-k" id="lbl-sunrashi">রাশি</span><span class="sm-v" id="sun-rashi">—</span></div>
+  </div>
+  <div class="sm-card">
+    <div class="sm-hdr"><span class="sm-icon">🌙</span><span class="sm-title" id="lbl-moon">চন্দ্র</span></div>
+    <div class="sm-row"><span class="sm-k" id="lbl-moonrise">উদয়</span><span class="sm-v gd" id="moonrise">—</span></div>
+    <div class="sm-row"><span class="sm-k" id="lbl-moonset">অস্ত</span><span class="sm-v gd" id="moonset">—</span></div>
+    <div class="sm-row"><span class="sm-k" id="lbl-paksha">পক্ষ</span><span class="sm-v" id="paksha">—</span></div>
+    <div class="sm-row"><span class="sm-k" id="lbl-moonrashi">রাশি</span><span class="sm-v" id="moon-rashi">—</span></div>
+  </div>
+</div>
+
+<!-- MUHURTA -->
+<div class="sec-title" id="lbl-muh">🕐 মুহূর্ত — <span id="muh-loc-lbl">IST · কলকাতা</span></div>
+<div class="muh-grid au">
+  <div class="muh-card aus"><div class="muh-icon">🕛</div><div class="muh-name" id="mn-abhijit">অভিজিৎ</div><div class="muh-time" id="m-abhijit">—</div></div>
+  <div class="muh-card aus"><div class="muh-icon">⭐</div><div class="muh-name" id="mn-amrit">অমৃত সিদ্ধি</div><div class="muh-time" id="m-amrit">—</div></div>
+  <div class="muh-card ina"><div class="muh-icon">⚠️</div><div class="muh-name" id="mn-rahu">রাহুকাল</div><div class="muh-time" id="m-rahu">—</div></div>
+  <div class="muh-card ina"><div class="muh-icon">🚫</div><div class="muh-name" id="mn-yama">যমঘণ্ট</div><div class="muh-time" id="m-yama">—</div></div>
+  <div class="muh-card ina"><div class="muh-icon">🌑</div><div class="muh-name" id="mn-gulika">গুলিক কাল</div><div class="muh-time" id="m-gulika">—</div></div>
+  <div class="muh-card aus"><div class="muh-icon">🌟</div><div class="muh-name" id="mn-brahma">ব্রহ্ম মুহূর্ত</div><div class="muh-time" id="m-brahma">—</div></div>
+</div>
+
+<!-- RASHIFAL -->
+<div class="sec-title" id="lbl-rashi">রাশিফল — <span>১২ রাশি</span></div>
+<div class="rashi-scroll" id="rashi-scroll"></div>
+
+<!-- FESTIVALS -->
+<div class="sec-title" id="lbl-fest">উৎসব ও পার্বণ — <span>ভারত · পশ্চিমবঙ্গ</span></div>
+<div class="fest-list" id="fest-list"></div>
+
+<!-- REMINDER -->
+<div class="reminder-panel au">
+  <div class="rem-lbl" id="lbl-rem">🔔 স্মরণিকা — পঞ্চাঙ্গ রিমাইন্ডার</div>
+  <div class="rem-row">
+    <input class="rem-input" id="rem-text" placeholder="অনুষ্ঠান বা পূজার নাম…" id="rem-ph"/>
+    <input class="rem-input" id="rem-time" type="time" style="max-width:90px;"/>
+    <button class="rem-btn" id="lbl-addrem" onclick="addReminder()">যোগ করুন</button>
+  </div>
+  <div class="rem-list" id="rem-list"></div>
+</div>
+
+<!-- SHARE -->
+<div class="share-panel au">
+  <div class="share-lbl" id="lbl-share">📤 শেয়ার ও এক্সপোর্ট</div>
+  <div class="share-btns">
+    <div class="share-btn" onclick="copyPanchang()"><span class="share-btn-icon">📋</span><span class="share-btn-txt" id="lbl-copy">কপি করুন</span></div>
+    <div class="share-btn" onclick="shareWhatsApp()"><span class="share-btn-icon">💬</span><span class="share-btn-txt">WhatsApp</span></div>
+    <div class="share-btn" onclick="downloadTxt()"><span class="share-btn-icon">⬇️</span><span class="share-btn-txt" id="lbl-dl">ডাউনলোড</span></div>
+    <div class="share-btn" onclick="printDay()"><span class="share-btn-icon">🖨️</span><span class="share-btn-txt" id="lbl-print">প্রিন্ট</span></div>
+  </div>
+</div>
+
+<div class="divider" style="margin-top:16px;"></div>
+<footer>
+  <div class="foot-om">ॐ</div>
+  <div class="foot-brand">বাংলা পঞ্জিকা · Bangla Panjika · India 🇮🇳</div>
+  <div class="foot-copy" id="foot-loc">পশ্চিমবঙ্গ · ভারত · IST (UTC+৫:৩০)</div>
+  <div class="foot-copy">© <b id="foot-yr"></b> Manik Roy · All Rights Reserved</div>
+  <div class="foot-rights" id="lbl-rights" style="font-family:var(--fs);">সর্বস্বত্ব সংরক্ষিত · সমস্ত সিদ্ধান্ত সমর্থিত</div>
+</footer>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- PWA Install Banner -->
+<div id="pwa-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:2000;background:linear-gradient(135deg,#1a1828,#13112a);border-top:1.5px solid rgba(192,132,252,0.3);padding:12px 16px;display:none;align-items:center;justify-content:space-between;gap:10px;box-shadow:0 -4px 20px rgba(0,0,0,0.5);">
+  <div style="display:flex;align-items:center;gap:10px;">
+    <img src="icons/icon-72x72.png" width="40" height="40" style="border-radius:10px;" alt=""/>
+    <div>
+      <div style="font-family:'Cinzel',serif;font-size:11px;color:#c084fc;letter-spacing:1px;">INSTALL APP</div>
+      <div style="font-family:'Noto Serif Bengali',serif;font-size:13px;color:#e8e3ff;" id="pwa-banner-txt">হোম স্ক্রিনে যোগ করুন — অফলাইনেও কাজ করে</div>
+    </div>
+  </div>
+  <div style="display:flex;gap:8px;flex-shrink:0;">
+    <button id="pwa-dismiss" onclick="dismissPWA()" style="background:transparent;border:1.5px solid rgba(192,132,252,0.3);color:#a89ec8;border-radius:8px;padding:7px 12px;font-size:12px;cursor:pointer;">✕</button>
+    <button id="pwa-install" onclick="installPWA()" style="background:#c084fc;color:#fff;border:none;border-radius:8px;padding:7px 14px;font-family:'Cinzel',serif;font-size:11px;letter-spacing:1px;cursor:pointer;" id="pwa-btn-txt">Install</button>
+  </div>
+</div>
+
+<script>
+/* ══════════════════════════════════════════════
+   BENGALI NUMERALS
+══════════════════════════════════════════════ */
+const BD=['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+const bn=n=>String(n).replace(/[0-9]/g,c=>BD[+c]);
+const pad2=n=>String(n).padStart(2,'0');
+const bnT=(h,m)=>`${bn(pad2(h))}:${bn(pad2(m))}`;
+
+/* ══════════════════════════════════════════════
+   STATIC DATA
+══════════════════════════════════════════════ */
+const BNM=['বৈশাখ','জ্যৈষ্ঠ','আষাঢ়','শ্রাবণ','ভাদ্র','আশ্বিন','কার্তিক','অগ্রহায়ণ','পৌষ','মাঘ','ফাল্গুন','চৈত্র'];
+const BMEN=['Baishakh','Jyoishtho','Asharh','Shraban','Bhadra','Ashwin','Kartik','Agrahayan','Poush','Magh','Falgun','Chaitra'];
+const WBN=['রবিবার','সোমবার','মঙ্গলবার','বুধবার','বৃহস্পতিবার','শুক্রবার','শনিবার'];
+const TITHIS=['প্রতিপদ','দ্বিতীয়া','তৃতীয়া','চতুর্থী','পঞ্চমী','ষষ্ঠী','সপ্তমী','অষ্টমী','নবমী','দশমী','একাদশী','দ্বাদশী','ত্রয়োদশী','চতুর্দশী','পূর্ণিমা/অমাবস্যা'];
+const NAKS=['অশ্বিনী','ভরণী','কৃত্তিকা','রোহিণী','মৃগশিরা','আর্দ্রা','পুনর্বসু','পুষ্যা','আশ্লেষা','মঘা','পূর্বফাল্গুনী','উত্তরফাল্গুনী','হস্তা','চিত্রা','স্বাতী','বিশাখা','অনুরাধা','জ্যেষ্ঠা','মূলা','পূর্বাষাঢ়া','উত্তরাষাঢ়া','শ্রবণা','ধনিষ্ঠা','শতভিষা','পূর্বভাদ্রপদ','উত্তরভাদ্রপদ','রেবতী'];
+const YOGAS=['বিষ্কুম্ভ','প্রীতি','আয়ুষ্মান','সৌভাগ্য','শোভন','অতিগণ্ড','সুকর্মা','ধৃতি','শূল','গণ্ড','বৃদ্ধি','ধ্রুব','ব্যাঘাত','হর্ষণ','বজ্র','সিদ্ধি','ব্যতীপাত','বরীয়ান','পরিঘ','শিব','সিদ্ধ','সাধ্য','শুভ','শুক্ল','ব্রহ্মা','ইন্দ্র','বৈধৃতি'];
+const KARANS=['বব','বালব','কৌলব','তৈতিল','গর','বণিজ','বিষ্টি','শকুনি','চতুষ্পাদ','নাগ','কিন্তুঘ্ন'];
+const RASHIS=[{n:'মেষ',e:'Aries',i:'♈',l:'৩,৯'},{n:'বৃষ',e:'Taurus',i:'♉',l:'৬,৮'},{n:'মিথুন',e:'Gemini',i:'♊',l:'৩,৭'},{n:'কর্কট',e:'Cancer',i:'♋',l:'২,৭'},{n:'সিংহ',e:'Leo',i:'♌',l:'১,৫'},{n:'কন্যা',e:'Virgo',i:'♍',l:'৩,৮'},{n:'তুলা',e:'Libra',i:'♎',l:'৬,৭'},{n:'বৃশ্চিক',e:'Scorpio',i:'♏',l:'১,৯'},{n:'ধনু',e:'Sagittarius',i:'♐',l:'৩,৯'},{n:'মকর',e:'Capricorn',i:'♑',l:'৬,৮'},{n:'কুম্ভ',e:'Aquarius',i:'♒',l:'৪,৮'},{n:'মীন',e:'Pisces',i:'♓',l:'৩,৯'}];
+const COLORS=['লাল','সবুজ','হলুদ','সাদা','কমলা','নীল','বেগুনি','গোলাপি','আকাশী','মেজেন্টা','মাটির রঙ','চাঁপা'];
+const DIKS=['পূর্ব','পশ্চিম','উত্তর','দক্ষিণ','ঈশান','নৈঋত','বায়ু','অগ্নি'];
+const RAHU=['বিকেল ৪:৩০–৬:০০','সকাল ৭:৩০–৯:০০','বিকেল ৩:০০–৪:৩০','দুপুর ১২:০০–১:৩০','সকাল ১০:৩০–১২:০০','সকাল ৯:০০–১০:৩০','সকাল ৯:০০–১০:৩০'];
+const YAMA=['দুপুর ১২:০০–১:৩০','বিকেল ৩:০০–৪:৩০','সকাল ৭:৩০–৯:০০','সকাল ১০:৩০–১২:০০','সকাল ৯:০০–১০:৩০','বিকেল ১:৩০–৩:০০','বিকেল ৪:৩০–৬:০০'];
+const GULIKA=['বিকেল ৩:০০–৪:৩০','সকাল ৬:০০–৭:৩০','বিকেল ৪:৩০–৬:০০','বিকেল ৩:০০–৪:৩০','দুপুর ১:৩০–৩:০০','দুপুর ১২:০০–১:৩০','সকাল ৭:৩০–৯:০০'];
+
+const MANTRAS=[
+  {nak:'অশ্বিনী',nak_en:'Ashwini',nak_hi:'अश्विनी',m:'ॐ অশ্বিনীকুমারাভ্যাং নমঃ',
+   d:{bn:'অশ্বিনী কুমার মন্ত্র — আরোগ্য ও শক্তির জন্য',en:'Ashwini Kumar Mantra — for healing and strength',hi:'अश्विनी कुमार मंत्र — आरोग्य और शक्ति के लिए'}},
+  {nak:'ভরণী',nak_en:'Bharani',nak_hi:'भरणी',m:'ॐ যমায় নমঃ',
+   d:{bn:'যম মন্ত্র — ধর্ম ও ন্যায়ের জন্য',en:'Yama Mantra — for dharma and justice',hi:'यम मंत्र — धर्म और न्याय के लिए'}},
+  {nak:'কৃত্তিকা',nak_en:'Krittika',nak_hi:'कृत्तिका',m:'ॐ অগ্নয়ে নমঃ',
+   d:{bn:'অগ্নি মন্ত্র — শুদ্ধি ও তেজের জন্য',en:'Agni Mantra — for purification and brilliance',hi:'अग्नि मंत्र — शुद्धि और तेज के लिए'}},
+  {nak:'রোহিণী',nak_en:'Rohini',nak_hi:'रोहिणी',m:'ॐ ব্রহ্মণে নমঃ',
+   d:{bn:'ব্রহ্মা মন্ত্র — সৃষ্টি ও জ্ঞানের জন্য',en:'Brahma Mantra — for creation and knowledge',hi:'ब्रह्मा मंत्र — सृष्टि और ज्ञान के लिए'}},
+  {nak:'মৃগশিরা',nak_en:'Mrigashira',nak_hi:'मृगशिरा',m:'ॐ চন্দ্রায় নমঃ',
+   d:{bn:'চন্দ্র মন্ত্র — মন ও শান্তির জন্য',en:'Chandra Mantra — for mind and peace',hi:'चंद्र मंत्र — मन और शांति के लिए'}},
+  {nak:'আর্দ্রা',nak_en:'Ardra',nak_hi:'आर्द्रा',m:'ॐ রুদ্রায় নমঃ',
+   d:{bn:'রুদ্র মন্ত্র — পরিবর্তন ও মুক্তির জন্য',en:'Rudra Mantra — for transformation and liberation',hi:'रुद्र मंत्र — परिवर्तन और मुक्ति के लिए'}},
+  {nak:'পুনর্বসু',nak_en:'Punarvasu',nak_hi:'पुनर्वसु',m:'ॐ অদিতয়ে নমঃ',
+   d:{bn:'অদিতি মন্ত্র — অনন্তের জন্য',en:'Aditi Mantra — for infinity and abundance',hi:'अदिति मंत्र — अनंत के लिए'}},
+  {nak:'পুষ্যা',nak_en:'Pushya',nak_hi:'पुष्य',m:'ॐ বৃহস্পতয়ে নমঃ',
+   d:{bn:'বৃহস্পতি মন্ত্র — জ্ঞান ও সমৃদ্ধির জন্য',en:'Brihaspati Mantra — for wisdom and prosperity',hi:'बृहस्पति मंत्र — ज्ञान और समृद्धि के लिए'}},
+  {nak:'আশ্লেষা',nak_en:'Ashlesha',nak_hi:'आश्लेषा',m:'ॐ সর্পেভ্যো নমঃ',
+   d:{bn:'নাগ মন্ত্র — কুণ্ডলিনী শক্তির জন্য',en:'Naga Mantra — for kundalini energy',hi:'नाग मंत्र — कुंडलिनी शक्ति के लिए'}},
+  {nak:'মঘা',nak_en:'Magha',nak_hi:'मघा',m:'ॐ পিতৃভ্যো নমঃ',
+   d:{bn:'পিতৃ মন্ত্র — পূর্বপুরুষদের স্মরণে',en:'Pitru Mantra — in remembrance of ancestors',hi:'पितृ मंत्र — पूर्वजों की स्मृति में'}},
+  {nak:'পূর্বফাল্গুনী',nak_en:'Purva Phalguni',nak_hi:'पूर्व फाल्गुनी',m:'ॐ ভগায় নমঃ',
+   d:{bn:'ভগ মন্ত্র — সৌভাগ্য ও প্রেমের জন্য',en:'Bhaga Mantra — for fortune and love',hi:'भग मंत्र — सौभाग्य और प्रेम के लिए'}},
+  {nak:'উত্তরফাল্গুনী',nak_en:'Uttara Phalguni',nak_hi:'उत्तर फाल्गुनी',m:'ॐ অর্যম্ণে নমঃ',
+   d:{bn:'অর্যমা মন্ত্র — চুক্তি ও সম্পর্কের জন্য',en:'Aryama Mantra — for contracts and relationships',hi:'अर्यमा मंत्र — अनुबंध और संबंधों के लिए'}},
+  {nak:'হস্তা',nak_en:'Hasta',nak_hi:'हस्त',m:'ॐ সূর্যায় নমঃ',
+   d:{bn:'সূর্য মন্ত্র — দক্ষতা ও আলোর জন্য',en:'Surya Mantra — for skill and light',hi:'सूर्य मंत्र — कौशल और प्रकाश के लिए'}},
+  {nak:'চিত্রা',nak_en:'Chitra',nak_hi:'चित्रा',m:'ॐ বিশ্বকর্মণে নমঃ',
+   d:{bn:'বিশ্বকর্মা মন্ত্র — শিল্প ও সৃজনের জন্য',en:'Vishwakarma Mantra — for art and creation',hi:'विश्वकर्मा मंत्र — कला और सृजन के लिए'}},
+  {nak:'স্বাতী',nak_en:'Swati',nak_hi:'स्वाति',m:'ॐ বায়বে নমঃ',
+   d:{bn:'বায়ু মন্ত্র — স্বাধীনতা ও প্রাণশক্তির জন্য',en:'Vayu Mantra — for freedom and life force',hi:'वायु मंत्र — स्वतंत्रता और प्राणशक्ति के लिए'}},
+  {nak:'বিশাখা',nak_en:'Vishakha',nak_hi:'विशाखा',m:'ॐ ইন্দ্রাগ্নিভ্যাং নমঃ',
+   d:{bn:'ইন্দ্রাগ্নি মন্ত্র — লক্ষ্য অর্জনের জন্য',en:'Indragni Mantra — for achieving goals',hi:'इंद्राग्नि मंत्र — लक्ष्य प्राप्ति के लिए'}},
+  {nak:'অনুরাধা',nak_en:'Anuradha',nak_hi:'अनुराधा',m:'ॐ মিত্রায় নমঃ',
+   d:{bn:'মিত্র মন্ত্র — বন্ধুত্ব ও ভক্তির জন্য',en:'Mitra Mantra — for friendship and devotion',hi:'मित्र मंत्र — मित्रता और भक्ति के लिए'}},
+  {nak:'জ্যেষ্ঠা',nak_en:'Jyeshtha',nak_hi:'ज्येष्ठा',m:'ॐ ইন্দ্রায় নমঃ',
+   d:{bn:'ইন্দ্র মন্ত্র — নেতৃত্ব ও সাহসের জন্য',en:'Indra Mantra — for leadership and courage',hi:'इंद्र मंत्र — नेतृत्व और साहस के लिए'}},
+  {nak:'মূলা',nak_en:'Mula',nak_hi:'मूल',m:'ॐ নির্‌ঋতয়ে নমঃ',
+   d:{bn:'নির্‌ঋতি মন্ত্র — মূলে প্রত্যাবর্তনের জন্য',en:'Nirrti Mantra — for returning to roots',hi:'निर्ऋति मंत्र — मूल की ओर वापसी के लिए'}},
+  {nak:'পূর্বাষাঢ়া',nak_en:'Purva Ashadha',nak_hi:'पूर्व आषाढ़',m:'ॐ অপ্যে নমঃ',
+   d:{bn:'জল মন্ত্র — পুষ্টি ও শুদ্ধির জন্য',en:'Apas Mantra — for nourishment and purification',hi:'अप मंत्र — पोषण और शुद्धि के लिए'}},
+  {nak:'উত্তরাষাঢ়া',nak_en:'Uttara Ashadha',nak_hi:'उत्तर आषाढ़',m:'ॐ বিশ্বেভ্যো দেবেভ্যো নমঃ',
+   d:{bn:'বিশ্বদেব মন্ত্র — সার্বজনীন বিজয়ের জন্য',en:'Vishwadeva Mantra — for universal victory',hi:'विश्वदेव मंत्र — सार्वभौमिक विजय के लिए'}},
+  {nak:'শ্রবণা',nak_en:'Shravana',nak_hi:'श्रवण',m:'ॐ বিষ্ণবে নমঃ',
+   d:{bn:'বিষ্ণু মন্ত্র — রক্ষা ও ধর্মের জন্য',en:'Vishnu Mantra — for protection and righteousness',hi:'विष्णु मंत्र — रक्षा और धर्म के लिए'}},
+  {nak:'ধনিষ্ঠা',nak_en:'Dhanishtha',nak_hi:'धनिष्ठा',m:'ॐ অষ্টবসুভ্যো নমঃ',
+   d:{bn:'অষ্টবসু মন্ত্র — সমৃদ্ধি ও ছন্দের জন্য',en:'Ashtavasu Mantra — for prosperity and rhythm',hi:'अष्टवसु मंत्र — समृद्धि और लय के लिए'}},
+  {nak:'শতভিষা',nak_en:'Shatabhisha',nak_hi:'शतभिषा',m:'ॐ বরুণায় নমঃ',
+   d:{bn:'বরুণ মন্ত্র — নিরাময় ও সত্যের জন্য',en:'Varuna Mantra — for healing and truth',hi:'वरुण मंत्र — चिकित्सा और सत्य के लिए'}},
+  {nak:'পূর্বভাদ্রপদ',nak_en:'Purva Bhadrapada',nak_hi:'पूर्व भाद्रपद',m:'ॐ অজৈকপাদায় নমঃ',
+   d:{bn:'অজৈকপাদ মন্ত্র — ভারসাম্যের জন্য',en:'Ajikapada Mantra — for balance',hi:'अजिकापाद मंत्र — संतुलन के लिए'}},
+  {nak:'উত্তরভাদ্রপদ',nak_en:'Uttara Bhadrapada',nak_hi:'उत्तर भाद्रपद',m:'ॐ অহির্বুধ্ন্যায় নমঃ',
+   d:{bn:'অহির্বুধ্ন্য মন্ত্র — গভীরতার জন্য',en:'Ahirbudhnya Mantra — for depth and wisdom',hi:'अहिर्बुध्न्य मंत्र — गहराई के लिए'}},
+  {nak:'রেবতী',nak_en:'Revati',nak_hi:'रेवती',m:'ॐ পূষ্ণে নমঃ',
+   d:{bn:'পূষা মন্ত্র — যাত্রা ও পথপ্রদর্শনের জন্য',en:'Pusha Mantra — for journeys and guidance',hi:'पूषा मंत्र — यात्रा और मार्गदर्शन के लिए'}},
+];
+
+const ACTIVITIES_BASE=[
+  {name:'বিবাহ',yes:[1,2,3,5,7,10,11,12,13,15]},
+  {name:'গৃহ প্রবেশ',yes:[2,3,5,7,10,11,13]},
+  {name:'ব্যবসা শুরু',yes:[1,2,3,7,10,12,15]},
+  {name:'ভ্রমণ',yes:[2,3,5,6,7,10,11,12,13,15]},
+  {name:'পড়াশোনা',yes:[1,2,3,4,5,7,10,11,12,13]},
+  {name:'চিকিৎসা',yes:[1,2,3,5,7,11,12,13,15]},
+  {name:'কৃষি কাজ',yes:[2,3,4,5,6,7,8,10,11,13]},
+  {name:'দান-ধর্ম',yes:[1,2,3,5,7,10,11,12,13,15]},
+];
+
+const PLANETS=[
+  {n:'সূর্য',s:'☉',c:'সিংহ'},{n:'চন্দ্র',s:'☽',c:'—'},{n:'মঙ্গল',s:'♂',c:'মেষ'},
+  {n:'বুধ',s:'☿',c:'কন্যা'},{n:'বৃহস্পতি',s:'♃',c:'বৃষ'},{n:'শুক্র',s:'♀',c:'তুলা'},
+  {n:'শনি',s:'♄',c:'মকর'},{n:'রাহু',s:'☊',c:'মিথুন'},{n:'কেতু',s:'☋',c:'ধনু'},
+];
+
+// Time string helpers for Rahu/Yama/Gulika
+const RAHU_EN=['4:30–6:00 PM','7:30–9:00 AM','3:00–4:30 PM','12:00–1:30 PM','10:30–12:00 PM','9:00–10:30 AM','9:00–10:30 AM'];
+const YAMA_EN=['12:00–1:30 PM','3:00–4:30 PM','7:30–9:00 AM','10:30–12:00 PM','9:00–10:30 AM','1:30–3:00 PM','4:30–6:00 PM'];
+const GULIKA_EN=['3:00–4:30 PM','6:00–7:30 AM','4:30–6:00 PM','3:00–4:30 PM','1:30–3:00 PM','12:00–1:30 PM','7:30–9:00 AM'];
+const RAHU_HI=['शाम ४:३०–६:००','सुबह ७:३०–९:००','शाम ३:००–४:३०','दोपहर १२:००–१:३०','सुबह १०:३०–१२:००','सुबह ९:००–१०:३०','सुबह ९:००–१०:३०'];
+const YAMA_HI=['दोपहर १२:००–१:३०','शाम ३:००–४:३०','सुबह ७:३०–९:००','सुबह १०:३०–१२:००','सुबह ९:००–१०:३०','दोपहर १:३०–३:००','शाम ४:३०–६:००'];
+const GULIKA_HI=['शाम ३:००–४:३०','सुबह ६:००–७:३०','शाम ४:३०–६:००','शाम ३:००–४:३०','दोपहर १:३०–३:००','दोपहर १२:००–१:३०','सुबह ७:३०–९:००'];
+function getRahu(wd){return activeLang==='en'?RAHU_EN[wd]:activeLang==='hi'?RAHU_HI[wd]:RAHU[wd];}
+function getYama(wd){return activeLang==='en'?YAMA_EN[wd]:activeLang==='hi'?YAMA_HI[wd]:YAMA[wd];}
+function getGulika(wd){return activeLang==='en'?GULIKA_EN[wd]:activeLang==='hi'?GULIKA_HI[wd]:GULIKA[wd];}
+const HORA_LORDS=['Sun','Moon','Mars','Mercury','Jupiter','Venus','Saturn'];
+const HORA_BN=['সূর্য','চন্দ্র','মঙ্গল','বুধ','বৃহস্পতি','শুক্র','শনি'];
+const HORA_EMOJI=['☀️','🌙','♂️','☿️','♃','♀️','♄'];
+const DAY_HORA=[0,1,2,3,4,5,6]; // Sun=0, Mon=1...
+
+// Exact verified dates per year — no approximation
+const FEST_EXACT={
+  2026:[
+    {name:{bn:'দোলযাত্রা / হোলি',en:'Dol Yatra / Holi',hi:'दोलयात्रा / होली'},  d:new Date(2026,2,3),  b:{bn:'হিন্দু',en:'Hindu',hi:'हिंदू'}, e:'🌈'},
+    {name:{bn:'পয়লা বৈশাখ',en:'Pohela Boishakh',hi:'पहला वैशाख'},        d:new Date(2026,3,14), b:{bn:'বাংলা',en:'Bengali',hi:'बंगाली'},  e:'🌸'},
+    {name:{bn:'রামনবমী',en:'Ram Navami',hi:'राम नवमी'},            d:new Date(2026,3,26), b:{bn:'হিন্দু',en:'Hindu',hi:'हिंदू'}, e:'🛕'},
+    {name:{bn:'অক্ষয় তৃতীয়া',en:'Akshaya Tritiya',hi:'अक्षय तृतीया'},     d:new Date(2026,3,29), b:{bn:'হিন্দু',en:'Hindu',hi:'हिंदू'}, e:'💛'},
+    {name:{bn:'রথযাত্রা',en:'Rath Yatra',hi:'रथ यात्रा'},           d:new Date(2026,6,1),  b:{bn:'হিন্দু',en:'Hindu',hi:'हिंदू'}, e:'🚩'},
+    {name:{bn:'জন্মাষ্টমী',en:'Janmashtami',hi:'जन्माष्टमी'},         d:new Date(2026,7,23), b:{bn:'হিন্দু',en:'Hindu',hi:'हिंदू'}, e:'🦚'},
+    {name:{bn:'গণেশ চতুর্থী',en:'Ganesh Chaturthi',hi:'गणेश चतुर्थी'},      d:new Date(2026,8,10), b:{bn:'হিন্দু',en:'Hindu',hi:'हिंदू'}, e:'🐘'},
+    {name:{bn:'নবরাত্রি শুরু',en:'Navratri Begins',hi:'नवरात्रि प्रारंभ'},      d:new Date(2026,9,8),  b:{bn:'হিন্দু',en:'Hindu',hi:'हिंदू'}, e:'🪔'},
+    {name:{bn:'দুর্গাপূজা (মহাষ্টমী)',en:'Durga Puja (Mahashtami)',hi:'दुर्गा पूजा (महाष्टमी)'},d:new Date(2026,9,13),b:{bn:'হিন্দু',en:'Hindu',hi:'हिंदू'}, e:'🪔'},
+    {name:{bn:'দশমী / বিজয়া দশমী',en:'Dashami / Vijaya Dashami',hi:'दशमी / विजया दशमी'}, d:new Date(2026,9,15), b:{bn:'হিন্দু',en:'Hindu',hi:'हिंदू'}, e:'🎉'},
+    {name:{bn:'লক্ষ্মীপূজা',en:'Lakshmi Puja',hi:'लक्ष्मी पूजा'},        d:new Date(2026,9,20), b:{bn:'হিন্দু',en:'Hindu',hi:'हिंदू'}, e:'✨'},
+    {name:{bn:'কালীপূজা / দীপাবলি',en:'Kali Puja / Diwali',hi:'काली पूजा / दीपावली'}, d:new Date(2026,10,1), b:{bn:'হিন্দু',en:'Hindu',hi:'हिंदू'}, e:'🌑'},
+    {name:{bn:'ভাইফোঁটা',en:'Bhai Phota',hi:'भाई दूज'},           d:new Date(2026,10,3), b:{bn:'বাংলা',en:'Bengali',hi:'बंगाली'},  e:'🌺'},
+    {name:{bn:'জগদ্ধাত্রী পূজা',en:'Jagaddhatri Puja',hi:'जगद्धात्री पूजा'},    d:new Date(2026,10,9), b:{bn:'বাংলা',en:'Bengali',hi:'बंगाली'},  e:'🎊'},
+    {name:{bn:'নবান্ন',en:'Nabanna',hi:'नवान्न'},              d:new Date(2026,10,15),b:{bn:'বাংলা',en:'Bengali',hi:'बंगाली'},  e:'🌾'},
+  ],
+  2027:[
+    {name:{bn:'মকর সংক্রান্তি',en:'Makar Sankranti',hi:'मकर संक्रांति'},     d:new Date(2027,0,14), b:{bn:'হিন্দু',en:'Hindu',hi:'हिंदू'}, e:'☀️'},
+    {name:{bn:'পৌষ পার্বণ',en:'Poush Parbon',hi:'पौष पर्बण'},         d:new Date(2027,0,14), b:{bn:'বাংলা',en:'Bengali',hi:'बंगाली'},  e:'🍮'},
+    {name:{bn:'সরস্বতী পূজা',en:'Saraswati Puja',hi:'सरस्वती पूजा'},       d:new Date(2027,1,22), b:{bn:'হিন্দু',en:'Hindu',hi:'हिंदू'}, e:'🪷'},
+    {name:{bn:'শিবরাত্রি',en:'Maha Shivaratri',hi:'महाशिवरात्रि'},          d:new Date(2027,1,17), b:{bn:'হিন্দু',en:'Hindu',hi:'हिंदू'}, e:'🔱'},
+    {name:{bn:'দোলযাত্রা / হোলি',en:'Dol Yatra / Holi',hi:'दोलयात्रा / होली'},  d:new Date(2027,2,22), b:{bn:'হিন্দু',en:'Hindu',hi:'हिंदू'}, e:'🌈'},
+  ],
+};
+
+function buildFestivals(){
+  const now=new Date(); now.setHours(0,0,0,0);
+  const cy=now.getFullYear();
+  // Gather this year + next year entries
+  const all=[];
+  [cy, cy+1].forEach(yr=>{
+    const list=FEST_EXACT[yr]||[];
+    list.forEach(f=>{
+      const fd=new Date(f.d); fd.setHours(0,0,0,0);
+      all.push({...f, d:fd});
+    });
+  });
+  // Deduplicate (same name+date), keep only today-or-future, sort
+  const seen=new Set();
+  return all
+    .filter(f=>{
+      const key=(typeof f.name==='object'?f.name.bn:f.name)+'|'+f.d.getTime();
+      if(seen.has(key)) return false;
+      seen.add(key);
+      return f.d.getTime()>=now.getTime();
+    })
+    .sort((a,b)=>a.d-b.d);
+}
+
+/* ══════════════════════════════════════════════
+   THREE SIDDHANTAS
+══════════════════════════════════════════════ */
+const SIDS={
+  surya:{nm:'সূর্য সিদ্ধান্ত',en:'Surya Siddhanta',hi:'सूर्य सिद्धांत',SYNODIC:29.530587946,SID_YEAR:365.258756,NAK_PER:27.321674,NAK_OFF:0,YOGA_OFF:0,KAR_OFF:0,
+    desc:{bn:'সূর্য সিদ্ধান্ত — প্রাচীন ভারতীয় জ্যোতির্বিদ্যার মূল গ্রন্থ (~৪০০ খ্রি.)। সৌরচক্র ভিত্তিক তিথি গণনা।',
+          en:'Surya Siddhanta — the foundational text of ancient Indian astronomy (~400 CE). Tithi calculation based on solar cycles.',
+          hi:'सूर्य सिद्धांत — प्राचीन भारतीय ज्योतिष का मूल ग्रंथ (~400 ई.)। सौर चक्र पर आधारित तिथि गणना।'}},
+  drik:{nm:'দৃক্‌ সিদ্ধান্ত',en:'Drik Siddhanta',hi:'दृक सिद्धांत',SYNODIC:29.530588853,SID_YEAR:365.256363004,NAK_PER:27.321661547,NAK_OFF:.3,YOGA_OFF:.5,KAR_OFF:0,
+    desc:{bn:'দৃক্‌ সিদ্ধান্ত — আধুনিক পর্যবেক্ষণ-ভিত্তিক পদ্ধতি। IAU/JPL গ্রহপঞ্জি অনুযায়ী সংশোধিত। বর্তমান সময়ের জন্য সবচেয়ে নির্ভুল।',
+          en:'Drik Siddhanta — modern observation-based system. Corrected per IAU/JPL ephemeris. Most accurate for present times.',
+          hi:'दृक सिद्धांत — आधुनिक अवलोकन-आधारित पद्धति। IAU/JPL पंचांग के अनुसार संशोधित। वर्तमान समय के लिए सर्वाधिक सटीक।'}},
+  chandra:{nm:'চন্দ্র সিদ্ধান্ত',en:'Chandra Siddhanta',hi:'चंद्र सिद्धांत',SYNODIC:29.530583,SID_YEAR:365.258680,NAK_PER:27.321580,NAK_OFF:-.4,YOGA_OFF:-.8,KAR_OFF:1,
+    desc:{bn:'চন্দ্র সিদ্ধান্ত — চন্দ্রশেখর সামন্তের সিদ্ধান্ত দর্পণ (~১৮৬৯)। সূক্ষ্ম চান্দ্র গতির উপর জোর।',
+          en:'Chandra Siddhanta — Chandrasekhar Samanta\'s Siddhanta Darpana (~1869). Emphasis on precise lunar motion.',
+          hi:'चंद्र सिद्धांत — चंद्रशेखर सामंत का सिद्धांत दर्पण (~1869)। सूक्ष्म चंद्र गति पर जोर।'}},
+};
+let activeSid='surya';
+function getSid(){return SIDS[activeSid];}
+
+function setSid(k){
+  activeSid=k;
+  ['surya','drik','chandra'].forEach(x=>document.getElementById('sid-'+x).classList.toggle('active',x===k));
+  document.getElementById('sid-desc').textContent=getSid().desc[activeLang]||getSid().desc.bn;
+  const b=document.getElementById('sid-badge');if(b)b.textContent=activeLang==='hi'?getSid().hi:getSid().en;
+  renderCal();renderDetail(selDate);
+  localStorage.setItem('pj-sid',k);
+}
+
+/* ══════════════════════════════════════════════
+   JULIAN DAY (BigInt) ENGINE — ±100M years
+══════════════════════════════════════════════ */
+function gToJDN(Y,M,D){
+  Y=BigInt(Y);M=BigInt(M);D=BigInt(D);
+  const a=(14n-M)/12n;const y=Y+4800n-a;const m=M+12n*a-3n;
+  return D+((153n*m+2n)/5n)+365n*y+(y/4n)-(y/100n)+(y/400n)-32045n;
+}
+function jdnToG(j){
+  j=BigInt(j);
+  const a=j+32044n;const b=(4n*a+3n)/146097n;const c=a-((146097n*b)/4n);
+  const d=(4n*c+3n)/1461n;const e=c-((1461n*d)/4n);const m=(5n*e+2n)/153n;
+  return{Y:Number(100n*b+d-(4800n)+(m/10n)),M:Number(m+3n-12n*(m/10n)),D:Number(e-(153n*m+2n)/5n+1n)};
+}
+function jdnWD(j){return Number((BigInt(j)+1n)%7n);}// 0=Sun
+function dimG(Y,M){return new Date(Y,M,0).getDate();}
+
+const KALI_JDN=gToJDN(-3101,2,18);
+const BMS=[[4,14],[5,15],[6,15],[7,16],[8,16],[9,17],[10,17],[11,16],[12,15],[1,14],[2,13],[3,14]];
+
+function jdnToBengali(jdn){
+  jdn=BigInt(jdn);
+  const{Y,M,D}=jdnToG(jdn);
+  const entry=BMS.find(e=>e[0]===M);if(!entry)return{bY:0,bM:0,bD:1};
+  const bMIdx=BMS.indexOf(entry);
+  let bD,bM;
+  if(D>=entry[1]){bD=D-entry[1]+1;bM=bMIdx;}
+  else{bM=(bMIdx-1+12)%12;const pe=BMS[bM];const pgm=pe[0];const pgd=pe[1];const pdim=dimG(M<=pe[0]?Y:Y-1,pgm);bD=pdim-entry[1]+D+1;}
+  const bY=(M>4||(M===4&&D>=14))?Y-593:Y-594;
+  return{bY,bM,bD};
+}
+
+function panjikaData(dateOrJDN){
+  let jdn;
+  if(typeof dateOrJDN==='object'&&dateOrJDN instanceof Date){
+    jdn=gToJDN(dateOrJDN.getFullYear(),dateOrJDN.getMonth()+1,dateOrJDN.getDate());
+  }else{jdn=BigInt(dateOrJDN);}
+  const jN=Number(jdn);
+  const wd=jdnWD(jdn);
+  const kDay=Number(jdn-KALI_JDN);
+  const sid=getSid();
+  const syn=sid.SYNODIC,sy=sid.SID_YEAR,np=sid.NAK_PER,no=sid.NAK_OFF,yo=sid.YOGA_OFF,ko=sid.KAR_OFF;
+  const tithiIdx=Math.floor(((kDay*30/syn)%30+30)%30);
+  const nakIdx=Math.floor(((kDay/np%27)+27+no)%27);
+  const sunLon=((kDay/sy*360)%360+360)%360;
+  const moonLon=((kDay/np*360)%360+360)%360;
+  const yogaIdx=Math.floor((((sunLon+moonLon)%360)+360+yo*(360/27))%360/(360/27));
+  const karanIdx=Math.floor((tithiIdx*2+ko)%11);
+  const sunRashiIdx=Math.floor(sunLon/30);
+  const moonRashiIdx=Math.floor(((moonLon)%360+360)%360/30);
+  const kaliYear=Math.floor(kDay/sy);
+  const tithiPct=Math.round(((kDay*30/syn)%1)*100);
+  const{Y,M}=jdnToG(jdn);
+  const mI=M-1;
+  // GPS-aware sunrise/sunset
+  const lat=locState.lat,lon=locState.lon;
+  const{sr,ss}=calcSunTimes(Y,M,jdnToG(jdn).D,lat,lon);
+  const dayLen=ss-sr;
+  const mrOff=((kDay*0.037)%1+1)%1;
+  const mrMin=Math.round(mrOff*1440);
+  const mrH=Math.floor(mrMin/60)%24,mrM=mrMin%60;
+  const L=activeLang||'bn';
+  const pk=tithiIdx<15?PAKSHA_LANG[L].s:PAKSHA_LANG[L].k;
+  const T=TITHI_LANG[L];const NK=NAK_LANG[L];const YG=YOGA_LANG[L];const KR=KARAN_LANG[L];
+  const RS=RASHI_LANG[L];const CL=COLOR_LANG[L];const DK=DIK_LANG[L];
+  const timeF=(h,m)=>L==='bn'?bnT(h,m):(pad2(h)+':'+pad2(m));
+  const numF=n=>L==='bn'?bn(n):String(n);
+  const dayLenStr=L==='bn'?numF(ss.h-sr.h)+'ঘ '+numF(Math.abs(ss.m-sr.m))+'মি':
+    L==='hi'?numF(ss.h-sr.h)+'घ '+numF(Math.abs(ss.m-sr.m))+'मि':
+    (ss.h-sr.h)+'h '+(Math.abs(ss.m-sr.m))+'m';
+  const amritStr=nakIdx===3||nakIdx===0?
+    (L==='en'?'Auspicious all day':L==='hi'?'सारा दिन शुभ':'সারাদিন শুভ'):
+    (L==='en'?'Not applicable':L==='hi'?'लागू नहीं':'প্রযোজ্য নয়');
+  return{
+    tithi:T[tithiIdx%15]+'<br><small style="font-size:11.5px;color:var(--tm)">'+pk+'</small>',
+    tithiIdx,tithiPct,
+    nak:NK[nakIdx],nakIdx,yoga:YG[yogaIdx],karan:KR[karanIdx],
+    moonRashi:{n:RS[moonRashiIdx],i:RASHIS[moonRashiIdx].i},
+    sunRashi:{n:RS[sunRashiIdx],i:RASHIS[sunRashiIdx].i},
+    color:CL[Math.abs(jN%CL.length)],dik:DK[Math.abs(jN%DK.length)],
+    lucky:numF(Math.abs(jN%9)+1),paksha:pk,
+    sunrise:timeF(sr.h,sr.m),sunset:timeF(ss.h,ss.m),
+    dayLen:dayLenStr,
+    moonrise:timeF(mrH,mrM),moonset:timeF((mrH+13)%24,mrM),
+    rahukal:getRahu(wd),yamghanta:getYama(wd),gulika:getGulika(wd),
+    abhijit:L==='bn'?'১১:৪৮–১২:৩৬':'11:48–12:36',
+    amritSiddhi:amritStr,
+    brahma:timeF(sr.h>0?sr.h-1:4,48)+' – '+timeF(sr.h,36),
+    kaliYear,vikram:kaliYear>0?kaliYear+3044:null,shaka:kaliYear>0?kaliYear+2909:null,
+    wd,
+  };
+}
+
+/* ══════════════════════════════════════════════
+   SUNRISE / SUNSET (Meeus algorithm)
+══════════════════════════════════════════════ */
+function calcSunTimes(yr,mo,da,lat,lon,utcOff){
+  lat=lat||22.5726; lon=lon||88.3639;
+  if(utcOff===undefined||utcOff===null) utcOff=locState.utcOff;
+  const rad=Math.PI/180;
+  const jd=Number(gToJDN(yr,mo,da));
+  const n=jd-2451545.0;
+  const L=(280.46+0.9856474*n)%360;
+  const g=(357.528+0.9856003*n)*rad;
+  const lam=(L+1.915*Math.sin(g)+0.02*Math.sin(2*g))*rad;
+  const ep=23.439*rad;
+  const dec=Math.asin(Math.sin(ep)*Math.sin(lam));
+  const cosH=-Math.tan(lat*rad)*Math.tan(dec);
+  const H=cosH<-1?180:cosH>1?0:Math.acos(cosH)/rad;
+  const transit=(720-(4*lon)-(-0.0009+0.0053*Math.sin(g)-0.0069*Math.sin(2*lam)))/60;
+  const srUTC=transit-H/15; const ssUTC=transit+H/15;
+  const srLoc=srUTC+utcOff; const ssLoc=ssUTC+utcOff;
+  const toHM=t=>{const tt=((t%24)+24)%24;return{h:Math.floor(tt),m:Math.round((tt%1)*60)};};
+  return{sr:toHM(srLoc),ss:toHM(ssLoc)};
+}
+
+/* ══════════════════════════════════════════════
+   BENGALI DATE
+══════════════════════════════════════════════ */
+function gregToBengali(date){
+  const jdn=gToJDN(date.getFullYear(),date.getMonth()+1,date.getDate());
+  return jdnToBengali(jdn);
+}
+
+/* ══════════════════════════════════════════════
+   LOCATION STATE
+══════════════════════════════════════════════ */
+let activeLang = localStorage.getItem('pj-lang') || 'bn';
+
+const LANG = {
+  bn: {
+    // Header band
+    bdate:'বাংলা তারিখ', tithi:'তিথি', nak:'নক্ষত্র', yoga:'যোগ',
+    // Section titles
+    sid:'⊙ গণনা পদ্ধতি — <span>সিদ্ধান্ত নির্বাচন</span>',
+    sunmoon:'☀️ সূর্য ও 🌙 চন্দ্র',
+    muh:'🕐 মুহূর্ত',
+    rashi:'রাশিফল — <span>১২ রাশি</span>',
+    fest:'উৎসব ও পার্বণ — <span>ভারত · পশ্চিমবঙ্গ</span>',
+    // Detail keys
+    'dk-tithi':'তিথি','dk-nak':'নক্ষত্র','dk-yoga':'যোগ','dk-karan':'করণ',
+    'dk-rashi':'রাশি (চন্দ্র)','dk-color':'শুভ রঙ','dk-lucky':'শুভ সংখ্যা',
+    'dk-dik':'দিক','dk-vikram':'বিক্রম সংবৎ',
+    // Sun/Moon
+    sun:'সূর্য', moon:'চন্দ্র',
+    sunrise:'উদয়', sunset:'অস্ত', daylen:'দিনের দৈর্ঘ্য',
+    sunrashi:'রাশি', moonrise:'উদয়', moonset:'অস্ত',
+    paksha:'পক্ষ', moonrashi:'রাশি',
+    // Muhurta
+    abhijit:'অভিজিৎ', amrit:'অমৃত সিদ্ধি', rahu:'রাহুকাল',
+    yama:'যমঘণ্ট', gulika:'গুলিক কাল', brahma:'ব্রহ্ম মুহূর্ত',
+    // Panels
+    tara:'⭐ তারাবল', chand:'🌙 চন্দ্রবল',
+    mantra:'🪔 আজকের মন্ত্র — নক্ষত্র অনুযায়ী',
+    activ:'✅ আজকের কার্যক্রম — শুভাশুভ',
+    hora:'🪐 গ্রহ হোরা — আজকের ঘন্টা',
+    graha:'🌌 গ্রহ অবস্থান — নবগ্রহ',
+    tl:'⏱️ পঞ্চাঙ্গ টাইমলাইন — আজকের দিন',
+    rem:'🔔 স্মরণিকা — পঞ্চাঙ্গ রিমাইন্ডার',
+    share:'📤 শেয়ার ও এক্সপোর্ট',
+    // Location
+    loc:'📍 অবস্থান', search:'খুঁজুন', cityph:'শহর খুঁজুন…',
+    // Share buttons
+    copy:'কপি করুন', dl:'ডাউনলোড', print:'প্রিন্ট',
+    // Reminder
+    remph:'অনুষ্ঠান বা পূজার নাম…', addrem:'যোগ করুন',
+    // Timeline
+    noon:'দুপুর', tlsr:'উদয়', tlss:'অস্ত',
+    // Footer
+    rights:'সর্বস্বত্ব সংরক্ষিত · সমস্ত সিদ্ধান্ত সমর্থিত',
+    theme:'থিম',
+    // Days
+    days:['রবি','সোম','মঙ্গ','বুধ','বৃহঃ','শুক্র','শনি'],
+  },
+  en: {
+    bdate:'Bengali Date', tithi:'Tithi', nak:'Nakshatra', yoga:'Yoga',
+    sid:'⊙ Calculation — <span>Siddhanta</span>',
+    sunmoon:'☀️ Sun & 🌙 Moon',
+    muh:'🕐 Muhurta',
+    rashi:'Rashifal — <span>12 Zodiac Signs</span>',
+    fest:'Festivals — <span>India · West Bengal</span>',
+    'dk-tithi':'Tithi','dk-nak':'Nakshatra','dk-yoga':'Yoga','dk-karan':'Karana',
+    'dk-rashi':'Rashi (Moon)','dk-color':'Lucky Colour','dk-lucky':'Lucky Number',
+    'dk-dik':'Direction','dk-vikram':'Vikram Samvat',
+    sun:'Sun', moon:'Moon',
+    sunrise:'Sunrise', sunset:'Sunset', daylen:'Day Length',
+    sunrashi:'Sign', moonrise:'Moonrise', moonset:'Moonset',
+    paksha:'Paksha', moonrashi:'Sign',
+    abhijit:'Abhijit', amrit:'Amrit Siddhi', rahu:'Rahu Kaal',
+    yama:'Yamaghanta', gulika:'Gulika Kaal', brahma:'Brahma Muhurta',
+    tara:'⭐ Tarabala', chand:'🌙 Chandrabala',
+    mantra:'🪔 Mantra of the Day — by Nakshatra',
+    activ:'✅ Auspicious Activities — Today',
+    hora:'🪐 Planetary Hora — Today',
+    graha:'🌌 Planetary Positions — Navagraha',
+    tl:'⏱️ Panchang Timeline — Today',
+    rem:'🔔 Reminders — Panchang Alerts',
+    share:'📤 Share & Export',
+    loc:'📍 Location', search:'Search', cityph:'Search city…',
+    copy:'Copy', dl:'Download', print:'Print',
+    remph:'Event or puja name…', addrem:'Add',
+    noon:'Noon', tlsr:'Sunrise', tlss:'Sunset',
+    rights:'All rights reserved · All siddhantas supported',
+    theme:'Theme',
+    days:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],
+  },
+  hi: {
+    bdate:'बंगाली तिथि', tithi:'तिथि', nak:'नक्षत्र', yoga:'योग',
+    sid:'⊙ गणना विधि — <span>सिद्धांत चयन</span>',
+    sunmoon:'☀️ सूर्य व 🌙 चंद्र',
+    muh:'🕐 मुहूर्त',
+    rashi:'राशिफल — <span>१२ राशियाँ</span>',
+    fest:'उत्सव व पर्व — <span>भारत · पश्चिम बंगाल</span>',
+    'dk-tithi':'तिथि','dk-nak':'नक्षत्र','dk-yoga':'योग','dk-karan':'करण',
+    'dk-rashi':'राशि (चंद्र)','dk-color':'शुभ रंग','dk-lucky':'शुभ अंक',
+    'dk-dik':'दिशा','dk-vikram':'विक्रम संवत',
+    sun:'सूर्य', moon:'चंद्र',
+    sunrise:'उदय', sunset:'अस्त', daylen:'दिन की लंबाई',
+    sunrashi:'राशि', moonrise:'उदय', moonset:'अस्त',
+    paksha:'पक्ष', moonrashi:'राशि',
+    abhijit:'अभिजित', amrit:'अमृत सिद्धि', rahu:'राहुकाल',
+    yama:'यमघंट', gulika:'गुलिक काल', brahma:'ब्रह्म मुहूर्त',
+    tara:'⭐ ताराबल', chand:'🌙 चंद्रबल',
+    mantra:'🪔 आज का मंत्र — नक्षत्र अनुसार',
+    activ:'✅ आज के कार्यक्रम — शुभाशुभ',
+    hora:'🪐 ग्रह होरा — आज के घंटे',
+    graha:'🌌 ग्रह स्थिति — नवग्रह',
+    tl:'⏱️ पंचांग टाइमलाइन — आज का दिन',
+    rem:'🔔 स्मरणिका — पंचांग रिमाइंडर',
+    share:'📤 शेयर व निर्यात',
+    loc:'📍 स्थान', search:'खोजें', cityph:'शहर खोजें…',
+    copy:'कॉपी करें', dl:'डाउनलोड', print:'प्रिंट',
+    remph:'अनुष्ठान या पूजा का नाम…', addrem:'जोड़ें',
+    noon:'दोपहर', tlsr:'उदय', tlss:'अस्त',
+    rights:'सर्वाधिकार सुरक्षित · सभी सिद्धांत समर्थित',
+    theme:'थीम',
+    days:['रवि','सोम','मंगल','बुध','गुरु','शुक्र','शनि'],
+  },
+};
+
+
+// ── Multilingual data arrays ─────────────────────────────────
+const WBN_LANG={
+  bn:['রবিবার','সোমবার','মঙ্গলবার','বুধবার','বৃহস্পতিবার','শুক্রবার','শনিবার'],
+  en:['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
+  hi:['रविवार','सोमवार','मंगलवार','बुधवार','गुरुवार','शुक्रवार','शनिवार'],
+};
+const PAKSHA_LANG={
+  bn:{s:'শুক্লপক্ষ',k:'কৃষ্ণপক্ষ'},
+  en:{s:'Shukla Paksha',k:'Krishna Paksha'},
+  hi:{s:'शुक्ल पक्ष',k:'कृष्ण पक्ष'},
+};
+const MOON_PHASES_LANG={
+  bn:['অমাবস্যা','শুক্লপক্ষ প্রতিপদ','শুক্লপক্ষ দ্বিতীয়া','শুক্লপক্ষ তৃতীয়া','শুক্লপক্ষ চতুর্থী','শুক্লপক্ষ পঞ্চমী','শুক্লপক্ষ ষষ্ঠী','শুক্লপক্ষ সপ্তমী','অষ্টমী (শুক্ল)','নবমী','দশমী','একাদশী','দ্বাদশী','ত্রয়োদশী','চতুর্দশী','পূর্ণিমা','কৃষ্ণপক্ষ প্রতিপদ','দ্বিতীয়া','তৃতীয়া','চতুর্থী','পঞ্চমী','ষষ্ঠী','সপ্তমী','অষ্টমী','নবমী','দশমী','একাদশী','দ্বাদশী','ত্রয়োদশী','চতুর্দশী'],
+  en:['Amavasya','Shukla Pratipada','Shukla Dwitiya','Shukla Tritiya','Shukla Chaturthi','Shukla Panchami','Shukla Shashthi','Shukla Saptami','Shukla Ashtami','Shukla Navami','Shukla Dashami','Shukla Ekadashi','Shukla Dwadashi','Shukla Trayodashi','Shukla Chaturdashi','Purnima','Krishna Pratipada','Krishna Dwitiya','Krishna Tritiya','Krishna Chaturthi','Krishna Panchami','Krishna Shashthi','Krishna Saptami','Krishna Ashtami','Krishna Navami','Krishna Dashami','Krishna Ekadashi','Krishna Dwadashi','Krishna Trayodashi','Krishna Chaturdashi'],
+  hi:['अमावस्या','शुक्ल प्रतिपदा','शुक्ल द्वितीया','शुक्ल तृतीया','शुक्ल चतुर्थी','शुक्ल पंचमी','शुक्ल षष्ठी','शुक्ल सप्तमी','शुक्ल अष्टमी','शुक्ल नवमी','शुक्ल दशमी','शुक्ल एकादशी','शुक्ल द्वादशी','शुक्ल त्रयोदशी','शुक्ल चतुर्दशी','पूर्णिमा','कृष्ण प्रतिपदा','कृष्ण द्वितीया','कृष्ण तृतीया','कृष्ण चतुर्थी','कृष्ण पंचमी','कृष्ण षष्ठी','कृष्ण सप्तमी','कृष्ण अष्टमी','कृष्ण नवमी','कृष्ण दशमी','कृष्ण एकादशी','कृष्ण द्वादशी','कृष्ण त्रयोदशी','कृष्ण चतुर्दशी'],
+};
+const TARA_NAMES_LANG={
+  bn:['জন্ম','সম্পদ','বিপদ','ক্ষেম','প্রত্যরি','সাধক','বধ','মিত্র','পরম-মিত্র'],
+  en:['Janma','Sampat','Vipat','Kshema','Pratyari','Sadhaka','Vadha','Mitra','Parama-Mitra'],
+  hi:['जन्म','संपद','विपद','क्षेम','प्रत्यरि','साधक','वध','मित्र','परम-मित्र'],
+};
+const HORA_LANG={
+  bn:['সূর্য','চন্দ্র','মঙ্গল','বুধ','বৃহস্পতি','শুক্র','শনি'],
+  en:['Sun','Moon','Mars','Mercury','Jupiter','Venus','Saturn'],
+  hi:['सूर्य','चंद्र','मंगल','बुध','बृहस्पति','शुक्र','शनि'],
+};
+const PLANETS_LANG={
+  bn:['সূর্য','চন্দ্র','মঙ্গল','বুধ','বৃহস্পতি','শুক্র','শনি','রাহু','কেতু'],
+  en:['Sun','Moon','Mars','Mercury','Jupiter','Venus','Saturn','Rahu','Ketu'],
+  hi:['सूर्य','चंद्र','मंगल','बुध','बृहस्पति','शुक्र','शनि','राहु','केतु'],
+};
+const ACTIVITIES_LANG={
+  bn:['বিবাহ','গৃহ প্রবেশ','ব্যবসা শুরু','ভ্রমণ','পড়াশোনা','চিকিৎসা','কৃষি কাজ','দান-ধর্ম'],
+  en:['Marriage','House Entry','Start Business','Travel','Study','Medical','Agriculture','Charity'],
+  hi:['विवाह','गृह प्रवेश','व्यापार शुरू','यात्रा','पढ़ाई','चिकित्सा','कृषि कार्य','दान-धर्म'],
+};
+const TL_LABELS_LANG={
+  bn:{rahu:'রাহুকাল',abhijit:'অভিজিৎ',paksha:'পক্ষ',noon:'দুপুর',rise:'উদয়',set:'অস্ত'},
+  en:{rahu:'Rahu Kaal',abhijit:'Abhijit',paksha:'Paksha',noon:'Noon',rise:'Sunrise',set:'Sunset'},
+  hi:{rahu:'राहुकाल',abhijit:'अभिजित',paksha:'पक्ष',noon:'दोपहर',rise:'उदय',set:'अस्त'},
+};
+const GPS_STATUS_LANG={
+  bn:{searching:'GPS খুঁজছে…',finding:'অবস্থান নির্ণয় হচ্ছে…',tzok:'টাইমজোন থেকে ✓',offline:'GPS ✓ (অফলাইন)',denied:'GPS অনুমতি নেই',unavail:'অবস্থান পাওয়া যায়নি',timeout:'সময় শেষ',nofound:'কোনো শহর পাওয়া যায়নি'},
+  en:{searching:'Searching GPS…',finding:'Locating…',tzok:'From timezone ✓',offline:'GPS ✓ (offline)',denied:'GPS permission denied',unavail:'Location unavailable',timeout:'Timed out',nofound:'No city found'},
+  hi:{searching:'GPS खोज रहे हैं…',finding:'स्थान निर्धारित हो रहा है…',tzok:'टाइमज़ोन से ✓',offline:'GPS ✓ (ऑफलाइन)',denied:'GPS अनुमति नहीं',unavail:'स्थान उपलब्ध नहीं',timeout:'समय समाप्त',nofound:'कोई शहर नहीं मिला'},
+};
+const FEST_DAYS_LANG={
+  bn:{today:'আজ 🎉',tomorrow:'আগামীকাল',days:' দিন বাকি',done:'এই বছরের সব উৎসব সম্পন্ন হয়েছে 🙏'},
+  en:{today:'Today 🎉',tomorrow:'Tomorrow',days:' days left',done:'All festivals for this year are done 🙏'},
+  hi:{today:'आज 🎉',tomorrow:'कल',days:' दिन बाकी',done:'इस वर्ष के सभी उत्सव पूर्ण हो गए 🙏'},
+};
+const BALA_LANG={
+  bn:{taraGood:'শুভ তারাবল',taraBad:'অশুভ তারাবল',chandGood:'চন্দ্র শুভ অবস্থানে',chandBad:'চন্দ্র দুর্বল অবস্থানে',house:' ভাব'},
+  en:{taraGood:'Auspicious Tarabala',taraBad:'Inauspicious Tarabala',chandGood:'Moon in auspicious house',chandBad:'Moon in weak house',house:' House'},
+  hi:{taraGood:'शुभ ताराबल',taraBad:'अशुभ ताराबल',chandGood:'चंद्र शुभ स्थान पर',chandBad:'चंद्र कमज़ोर स्थान पर',house:' भाव'},
+};
+const MANTRA_LABEL_LANG={
+  bn:' নক্ষত্র — ',
+  en:' Nakshatra — ',
+  hi:' नक्षत्र — ',
+};
+const PAKSHA_LABEL_LANG={
+  bn:{p:'পক্ষ: ',k:'করণ: '},
+  en:{p:'Paksha: ',k:'Karana: '},
+  hi:{p:'पक्ष: ',k:'करण: '},
+};
+const MOON_SUB_LANG={
+  bn:{tithi:'তিথি: ',s:'শুক্লপক্ষ',k:'কৃষ্ণপক্ষ'},
+  en:{tithi:'Tithi: ',s:'Shukla Paksha',k:'Krishna Paksha'},
+  hi:{tithi:'तिथि: ',s:'शुक्ल पक्ष',k:'कृष्ण पक्ष'},
+};
+const RASHI_LANG={
+  bn:['মেষ','বৃষ','মিথুন','কর্কট','সিংহ','কন্যা','তুলা','বৃশ্চিক','ধনু','মকর','কুম্ভ','মীন'],
+  en:['Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius','Capricorn','Aquarius','Pisces'],
+  hi:['मेष','वृष','मिथुन','कर्क','सिंह','कन्या','तुला','वृश्चिक','धनु','मकर','कुंभ','मीन'],
+};
+const COLOR_LANG={
+  bn:['লাল','সবুজ','হলুদ','সাদা','কমলা','নীল','বেগুনি','গোলাপি','আকাশী','মেজেন্টা','মাটির রঙ','চাঁপা'],
+  en:['Red','Green','Yellow','White','Orange','Blue','Purple','Pink','Sky Blue','Magenta','Brown','Champagne'],
+  hi:['लाल','हरा','पीला','सफेद','नारंगी','नीला','बैंगनी','गुलाबी','आसमानी','मैजेंटा','मिट्टी रंग','चंपा'],
+};
+const DIK_LANG={
+  bn:['পূর্ব','পশ্চিম','উত্তর','দক্ষিণ','ঈশান','নৈঋত','বায়ু','অগ্নি'],
+  en:['East','West','North','South','Northeast','Southwest','Northwest','Southeast'],
+  hi:['पूर्व','पश्चिम','उत्तर','दक्षिण','ईशान','नैऋत्य','वायव्य','अग्नि'],
+};
+const TITHI_LANG={
+  bn:['প্রতিপদ','দ্বিতীয়া','তৃতীয়া','চতুর্থী','পঞ্চমী','ষষ্ঠী','সপ্তমী','অষ্টমী','নবমী','দশমী','একাদশী','দ্বাদশী','ত্রয়োদশী','চতুর্দশী','পূর্ণিমা/অমাবস্যা'],
+  en:['Pratipada','Dwitiya','Tritiya','Chaturthi','Panchami','Shashthi','Saptami','Ashtami','Navami','Dashami','Ekadashi','Dwadashi','Trayodashi','Chaturdashi','Purnima/Amavasya'],
+  hi:['प्रतिपदा','द्वितीया','तृतीया','चतुर्थी','पंचमी','षष्ठी','सप्तमी','अष्टमी','नवमी','दशमी','एकादशी','द्वादशी','त्रयोदशी','चतुर्दशी','पूर्णिमा/अमावस्या'],
+};
+const NAK_LANG={
+  bn:['অশ্বিনী','ভরণী','কৃত্তিকা','রোহিণী','মৃগশিরা','আর্দ্রা','পুনর্বসু','পুষ্যা','আশ্লেষা','মঘা','পূর্বফাল্গুনী','উত্তরফাল্গুনী','হস্তা','চিত্রা','স্বাতী','বিশাখা','অনুরাধা','জ্যেষ্ঠা','মূলা','পূর্বাষাঢ়া','উত্তরাষাঢ়া','শ্রবণা','ধনিষ্ঠা','শতভিষা','পূর্বভাদ্রপদ','উত্তরভাদ্রপদ','রেবতী'],
+  en:['Ashwini','Bharani','Krittika','Rohini','Mrigashira','Ardra','Punarvasu','Pushya','Ashlesha','Magha','Purva Phalguni','Uttara Phalguni','Hasta','Chitra','Swati','Vishakha','Anuradha','Jyeshtha','Mula','Purva Ashadha','Uttara Ashadha','Shravana','Dhanishtha','Shatabhisha','Purva Bhadrapada','Uttara Bhadrapada','Revati'],
+  hi:['अश्विनी','भरणी','कृत्तिका','रोहिणी','मृगशिरा','आर्द्रा','पुनर्वसु','पुष्य','आश्लेषा','मघा','पूर्व फाल्गुनी','उत्तर फाल्गुनी','हस्त','चित्रा','स्वाति','विशाखा','अनुराधा','ज्येष्ठा','मूल','पूर्व आषाढ़','उत्तर आषाढ़','श्रवण','धनिष्ठा','शतभिषा','पूर्व भाद्रपद','उत्तर भाद्रपद','रेवती'],
+};
+const YOGA_LANG={
+  bn:['বিষ্কুম্ভ','প্রীতি','আয়ুষ্মান','সৌভাগ্য','শোভন','অতিগণ্ড','সুকর্মা','ধৃতি','শূল','গণ্ড','বৃদ্ধি','ধ্রুব','ব্যাঘাত','হর্ষণ','বজ্র','সিদ্ধি','ব্যতীপাত','বরীয়ান','পরিঘ','শিব','সিদ্ধ','সাধ্য','শুভ','শুক্ল','ব্রহ্মা','ইন্দ্র','বৈধৃতি'],
+  en:['Vishkambha','Priti','Ayushman','Saubhagya','Shobhana','Atiganda','Sukarma','Dhriti','Shula','Ganda','Vriddhi','Dhruva','Vyaghata','Harshana','Vajra','Siddhi','Vyatipata','Variyana','Parigha','Shiva','Siddha','Sadhya','Shubha','Shukla','Brahma','Indra','Vaidhriti'],
+  hi:['विष्कुम्भ','प्रीति','आयुष्मान','सौभाग्य','शोभन','अतिगंड','सुकर्मा','धृति','शूल','गंड','वृद्धि','ध्रुव','व्याघात','हर्षण','वज्र','सिद्धि','व्यतीपात','वरीयान','परिघ','शिव','सिद्ध','साध्य','शुभ','शुक्ल','ब्रह्मा','इंद्र','वैधृति'],
+};
+const KARAN_LANG={
+  bn:['বব','বালব','কৌলব','তৈতিল','গর','বণিজ','বিষ্টি','শকুনি','চতুষ্পাদ','নাগ','কিন্তুঘ্ন'],
+  en:['Bava','Balava','Kaulava','Taitila','Gara','Vanija','Vishti','Shakuni','Chatushpada','Naga','Kimstughna'],
+  hi:['बव','बालव','कौलव','तैतिल','गर','वणिज','विष्टि','शकुनि','चतुष्पाद','नाग','किंस्तुघ्न'],
+};
+const BM_LANG={
+  bn:['বৈশাখ','জ্যৈষ্ঠ','আষাঢ়','শ্রাবণ','ভাদ্র','আশ্বিন','কার্তিক','অগ্রহায়ণ','পৌষ','মাঘ','ফাল্গুন','চৈত্র'],
+  en:['Baishakh','Jyoishtho','Asharh','Shraban','Bhadra','Ashwin','Kartik','Agrahayan','Poush','Magh','Falgun','Chaitra'],
+  hi:['वैशाख','ज्येष्ठ','आषाढ़','श्रावण','भाद्रपद','आश्विन','कार्तिक','अग्रहायण','पौष','माघ','फाल्गुन','चैत्र'],
+};
+
+const locState={lat:22.5726,lon:88.3639,name:'কলকাতা, পশ্চিমবঙ্গ',tz:'Asia/Kolkata',utcOff:5.5,tzLabel:'IST (UTC+5:30)',country:'IN'};
+
+function setLocation(lat,lon,name,utcOff,tzLabel,country){
+  locState.lat=lat; locState.lon=lon;
+  locState.name=name||(activeLang==='en'?'Unknown city':activeLang==='hi'?'अज्ञात शहर':'অজানা শহর');
+  // utcOff: hours offset from UTC (e.g. 5.5 for IST, -5 for EST, 1 for CET)
+  locState.utcOff=(utcOff!==undefined&&utcOff!==null)?utcOff:lon/15;
+  locState.tzLabel=tzLabel||formatUTCOffset(locState.utcOff);
+  locState.country=country||'';
+  document.getElementById('loc-name').textContent=locState.name;
+  document.getElementById('loc-coords').textContent=
+    'lat: '+lat.toFixed(4)+', lon: '+lon.toFixed(4)+'  ·  '+locState.tzLabel;
+  document.getElementById('loc-badge').textContent=locState.tzLabel+' · '+locState.name;
+  document.getElementById('clock-tz').textContent=locState.tzLabel+' · '+locState.name;
+  const ml=document.getElementById('muh-loc-lbl');if(ml)ml.textContent=locState.tzLabel+' · '+locState.name;
+  const fl=document.getElementById('foot-loc');if(fl)fl.textContent=locState.name+' · '+locState.tzLabel;
+  const dot=document.getElementById('loc-dot'); dot.className='loc-dot';
+  document.getElementById('loc-status-txt').textContent=activeLang==='en'?'Connected ✓':activeLang==='hi'?'जुड़ा हुआ ✓':'সংযুক্ত ✓';
+  renderDetail(selDate); renderHdrToday(); renderTimeline();
+  showToast('📍 '+locState.name+(activeLang==='en'?' — set':activeLang==='hi'?' — सेट हुआ':' — সেট হয়েছে'));
+}
+
+function formatUTCOffset(off){
+  const sign=off>=0?'+':'-';
+  const abs=Math.abs(off);
+  const h=Math.floor(abs);
+  const m=Math.round((abs-h)*60);
+  return 'UTC'+sign+pad2(h)+(m?':'+pad2(m):'');
+}
+
+function getGPS(){
+  const dot=document.getElementById('loc-dot');
+  const statusEl=document.getElementById('loc-status-txt');
+  dot.className='loc-dot pending';
+  statusEl.textContent=GPS_STATUS_LANG[activeLang||'bn'].searching;
+
+  if(!navigator.geolocation){
+    useTimezoneLocation();
+    return;
+  }
+  navigator.geolocation.getCurrentPosition(
+    pos=>{
+      dot.className='loc-dot pending';
+      statusEl.textContent=GPS_STATUS_LANG[activeLang||'bn'].finding;
+      reverseGeocode(pos.coords.latitude, pos.coords.longitude);
+    },
+    err=>{
+      // Permission denied or unavailable — silently fall back to timezone-based location
+      useTimezoneLocation();
+    },
+    {timeout:8000, enableHighAccuracy:false, maximumAge:60000}
+  );
+}
+
+// Detect location from browser timezone — works without GPS permission
+function useTimezoneLocation(){
+  const dot=document.getElementById('loc-dot');
+  const statusEl=document.getElementById('loc-status-txt');
+  try{
+    const tz=Intl.DateTimeFormat().resolvedOptions().timeZone; // e.g. "Asia/Kolkata"
+    const utcOff=tzToOffset(tz);
+    const tzLabel=formatUTCOffset(utcOff)+' ('+tz.replace(/_/g,' ')+')';
+    // Find best matching city from local DB by timezone proximity
+    const tzCity=findCityByTimezone(tz, utcOff);
+    if(tzCity){
+      setLocation(tzCity.lat, tzCity.lon, tzCity.n, tzCity.utc, tzCity.tz||tzLabel);
+      dot.className='loc-dot';
+      statusEl.textContent=GPS_STATUS_LANG[activeLang||'bn'].tzok;
+      showToast('📍 '+(activeLang==='en'?'From timezone: ':activeLang==='hi'?'टाइमज़ोन से: ':'টাইমজোন অনুযায়ী: ')+tzCity.n);
+    } else {
+      // Absolute fallback: use UTC offset to pick nearest city
+      const byOff=CITY_DB.reduce((best,c)=>
+        Math.abs((c.utc||0)-utcOff) < Math.abs((best.utc||0)-utcOff) ? c : best
+      , CITY_DB[0]);
+      setLocation(byOff.lat, byOff.lon, byOff.n, utcOff, tzLabel);
+      dot.className='loc-dot';
+      statusEl.textContent=GPS_STATUS_LANG[activeLang||'bn'].tzok;
+      showToast('📍 '+(activeLang==='en'?'Approx location: ':activeLang==='hi'?'अनुमानित स्थान: ':'আনুমানিক অবস্থান: ')+byOff.n);
+    }
+  } catch(e){
+    dot.className='loc-dot err';
+    document.getElementById('loc-status-txt').textContent=activeLang==='en'?'Default: Kolkata':activeLang==='hi'?'डिफ़ॉल्ट: कोलकाता':'ডিফল্ট: কলকাতা';
+    showToast(activeLang==='en'?'Location not found — search a city':activeLang==='hi'?'स्थान नहीं मिला — शहर खोजें':'অবস্থান পাওয়া যায়নি — শহর খুঁজে নিন');
+  }
+}
+
+// Match IANA timezone string to a city in CITY_DB
+function findCityByTimezone(tz, utcOff){
+  if(!tz) return null;
+  const tzLower=tz.toLowerCase();
+  const region=tz.split('/').pop().replace(/_/g,' ').toLowerCase();
+  // Try exact city name match first
+  let match=CITY_DB.find(c=>c.e.toLowerCase().includes(region)||tzLower.includes(c.e.split(',')[0].toLowerCase()));
+  if(match) return match;
+  // Fall back to matching by UTC offset (prefer cities with same offset)
+  const sameOff=CITY_DB.filter(c=>Math.abs((c.utc||0)-utcOff)<0.1);
+  return sameOff[0]||null;
+}
+
+async function reverseGeocode(lat,lon){
+  const dot=document.getElementById('loc-dot');
+  const statusEl=document.getElementById('loc-status-txt');
+
+  // Step 1: Get UTC offset from browser's Intl API — no network needed, always works
+  const utcOff=getBrowserUTCOffset();
+  const tzLabel=formatUTCOffset(utcOff);
+
+  // Step 2: Find nearest city from local DB as immediate fallback
+  const nearest=nearestCity(lat,lon);
+  const fallbackName=nearest
+    ? nearest.n+' (~'+Math.round(haversine(lat,lon,nearest.lat,nearest.lon))+'km)'
+    : lat.toFixed(3)+'°, '+lon.toFixed(3)+'°';
+
+  // Step 3: Apply immediately with fallback name so app works right away
+  setLocation(lat, lon, fallbackName, utcOff, tzLabel);
+
+  // Step 4: Try to get real city name from Open-Meteo (network optional)
+  try{
+    const ctrl=new AbortController();
+    setTimeout(()=>ctrl.abort(), 6000);
+    const r=await fetch(
+      'https://api.open-meteo.com/v1/forecast?latitude='+lat.toFixed(4)+
+      '&longitude='+lon.toFixed(4)+
+      '&current=temperature_2m&timezone=auto&forecast_days=1',
+      {signal:ctrl.signal}
+    );
+    const d=await r.json();
+    const tzStr=d.timezone||'';
+    const apiOffset=d.utc_offset_seconds!=null ? d.utc_offset_seconds/3600 : utcOff;
+    const apiLabel=tzStr
+      ? formatUTCOffset(apiOffset)+' ('+tzStr.replace('_',' ')+')'
+      : formatUTCOffset(apiOffset);
+    // Build a human city name from timezone region
+    const tzCity=tzStr ? tzStr.split('/').pop().replace(/_/g,' ') : null;
+    const cityName=nearest
+      ? nearest.n+(tzCity&&tzCity!==nearest.n.split(',')[0] ? ' / '+tzCity : '')
+      : (tzCity||fallbackName);
+    setLocation(lat, lon, cityName, apiOffset, apiLabel);
+    // Also update weather with proper timezone
+  }catch(e){
+    // Network unavailable — fallback name already set, that's fine
+    dot.className='loc-dot';
+    statusEl.textContent=GPS_STATUS_LANG[activeLang||'bn'].offline;
+  }
+}
+
+// Get the browser's current UTC offset in hours (uses Intl, no network)
+function getBrowserUTCOffset(){
+  try{
+    const tz=Intl.DateTimeFormat().resolvedOptions().timeZone;
+    return tzToOffset(tz);
+  }catch{
+    return -(new Date().getTimezoneOffset()/60);
+  }
+}
+
+// Find nearest city in CITY_DB by Haversine distance
+function nearestCity(lat,lon){
+  let best=null, bestDist=Infinity;
+  CITY_DB.forEach(c=>{
+    const d=haversine(lat,lon,c.lat,c.lon);
+    if(d<bestDist){bestDist=d;best=c;}
+  });
+  return bestDist<500?best:null; // only use if within 500km
+}
+
+function haversine(lat1,lon1,lat2,lon2){
+  const R=6371, r=Math.PI/180;
+  const dLat=(lat2-lat1)*r, dLon=(lon2-lon1)*r;
+  const a=Math.sin(dLat/2)**2+Math.cos(lat1*r)*Math.cos(lat2*r)*Math.sin(dLon/2)**2;
+  return R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
+}
+
+// ── WORLDWIDE CITY SEARCH ──────────────────────────────────────────────────
+// Quick-access Indian cities (instant, offline)
+const CITY_DB=[
+  {n:'কলকাতা, পশ্চিমবঙ্গ',e:'Kolkata, West Bengal',lat:22.5726,lon:88.3639,utc:5.5,tz:'IST (UTC+5:30)'},
+  {n:'দিল্লি',e:'New Delhi',lat:28.6139,lon:77.2090,utc:5.5,tz:'IST (UTC+5:30)'},
+  {n:'মুম্বই',e:'Mumbai',lat:19.0760,lon:72.8777,utc:5.5,tz:'IST (UTC+5:30)'},
+  {n:'চেন্নাই',e:'Chennai',lat:13.0827,lon:80.2707,utc:5.5,tz:'IST (UTC+5:30)'},
+  {n:'বেঙ্গালুরু',e:'Bengaluru',lat:12.9716,lon:77.5946,utc:5.5,tz:'IST (UTC+5:30)'},
+  {n:'হায়দ্রাবাদ',e:'Hyderabad',lat:17.3850,lon:78.4867,utc:5.5,tz:'IST (UTC+5:30)'},
+  {n:'পুণে',e:'Pune',lat:18.5204,lon:73.8567,utc:5.5,tz:'IST (UTC+5:30)'},
+  {n:'আহমদাবাদ',e:'Ahmedabad',lat:23.0225,lon:72.5714,utc:5.5,tz:'IST (UTC+5:30)'},
+  {n:'জয়পুর',e:'Jaipur',lat:26.9124,lon:75.7873,utc:5.5,tz:'IST (UTC+5:30)'},
+  {n:'লখনৌ',e:'Lucknow',lat:26.8467,lon:80.9462,utc:5.5,tz:'IST (UTC+5:30)'},
+  {n:'পটনা',e:'Patna',lat:25.5941,lon:85.1376,utc:5.5,tz:'IST (UTC+5:30)'},
+  {n:'ভুবনেশ্বর',e:'Bhubaneswar',lat:20.2961,lon:85.8245,utc:5.5,tz:'IST (UTC+5:30)'},
+  {n:'গুয়াহাটি',e:'Guwahati',lat:26.1445,lon:91.7362,utc:5.5,tz:'IST (UTC+5:30)'},
+  {n:'ভারানসী',e:'Varanasi',lat:25.3176,lon:82.9739,utc:5.5,tz:'IST (UTC+5:30)'},
+  {n:'শিলং',e:'Shillong',lat:25.5788,lon:91.8933,utc:5.5,tz:'IST (UTC+5:30)'},
+  {n:'গ্যাংটক',e:'Gangtok',lat:27.3389,lon:88.6065,utc:5.5,tz:'IST (UTC+5:30)'},
+  {n:'পানাজি',e:'Panaji, Goa',lat:15.4909,lon:73.8278,utc:5.5,tz:'IST (UTC+5:30)'},
+  {n:'দেহরাদুন',e:'Dehradun',lat:30.3165,lon:78.0322,utc:5.5,tz:'IST (UTC+5:30)'},
+  {n:'চণ্ডীগড়',e:'Chandigarh',lat:30.7333,lon:76.7794,utc:5.5,tz:'IST (UTC+5:30)'},
+  {n:'অমৃতসর',e:'Amritsar',lat:31.6340,lon:74.8723,utc:5.5,tz:'IST (UTC+5:30)'},
+  {n:'শ্রীনগর',e:'Srinagar',lat:34.0837,lon:74.7973,utc:5.5,tz:'IST (UTC+5:30)'},
+  {n:'শিমলা',e:'Shimla',lat:31.1048,lon:77.1734,utc:5.5,tz:'IST (UTC+5:30)'},
+  {n:'মানালি',e:'Manali',lat:32.2396,lon:77.1887,utc:5.5,tz:'IST (UTC+5:30)'},
+  {n:'উদয়পুর',e:'Udaipur',lat:24.5854,lon:73.7125,utc:5.5,tz:'IST (UTC+5:30)'},
+  {n:'প্রয়াগরাজ',e:'Prayagraj',lat:25.4358,lon:81.8463,utc:5.5,tz:'IST (UTC+5:30)'},
+  {n:'কোচি',e:'Kochi',lat:9.9312,lon:76.2673,utc:5.5,tz:'IST (UTC+5:30)'},
+  {n:'তিরুবনন্তপুরম',e:'Thiruvananthapuram',lat:8.5241,lon:76.9366,utc:5.5,tz:'IST (UTC+5:30)'},
+  {n:'রাঁচি',e:'Ranchi',lat:23.3441,lon:85.3096,utc:5.5,tz:'IST (UTC+5:30)'},
+  {n:'নাগপুর',e:'Nagpur',lat:21.1458,lon:79.0882,utc:5.5,tz:'IST (UTC+5:30)'},
+  {n:'সুরাট',e:'Surat',lat:21.1702,lon:72.8311,utc:5.5,tz:'IST (UTC+5:30)'},
+  // World cities
+  {n:'লন্ডন',e:'London, UK',lat:51.5074,lon:-0.1278,utc:0,tz:'GMT (UTC+0)'},
+  {n:'প্যারিস',e:'Paris, France',lat:48.8566,lon:2.3522,utc:1,tz:'CET (UTC+1)'},
+  {n:'বার্লিন',e:'Berlin, Germany',lat:52.5200,lon:13.4050,utc:1,tz:'CET (UTC+1)'},
+  {n:'রোম',e:'Rome, Italy',lat:41.9028,lon:12.4964,utc:1,tz:'CET (UTC+1)'},
+  {n:'মাদ্রিদ',e:'Madrid, Spain',lat:40.4168,lon:-3.7038,utc:1,tz:'CET (UTC+1)'},
+  {n:'আমস্টারডাম',e:'Amsterdam, Netherlands',lat:52.3676,lon:4.9041,utc:1,tz:'CET (UTC+1)'},
+  {n:'জুরিখ',e:'Zurich, Switzerland',lat:47.3769,lon:8.5417,utc:1,tz:'CET (UTC+1)'},
+  {n:'মস্কো',e:'Moscow, Russia',lat:55.7558,lon:37.6173,utc:3,tz:'MSK (UTC+3)'},
+  {n:'দুবাই',e:'Dubai, UAE',lat:25.2048,lon:55.2708,utc:4,tz:'GST (UTC+4)'},
+  {n:'আবুধাবি',e:'Abu Dhabi, UAE',lat:24.4539,lon:54.3773,utc:4,tz:'GST (UTC+4)'},
+  {n:'রিয়াদ',e:'Riyadh, Saudi Arabia',lat:24.6877,lon:46.7219,utc:3,tz:'AST (UTC+3)'},
+  {n:'তেহরান',e:'Tehran, Iran',lat:35.6892,lon:51.3890,utc:3.5,tz:'IRST (UTC+3:30)'},
+  {n:'করাচি',e:'Karachi, Pakistan',lat:24.8607,lon:67.0011,utc:5,tz:'PKT (UTC+5)'},
+  {n:'ঢাকা',e:'Dhaka, Bangladesh',lat:23.8103,lon:90.4125,utc:6,tz:'BST (UTC+6)'},
+  {n:'চট্টগ্রাম',e:'Chittagong, Bangladesh',lat:22.3569,lon:91.7832,utc:6,tz:'BST (UTC+6)'},
+  {n:'কাঠমান্ডু',e:'Kathmandu, Nepal',lat:27.7172,lon:85.3240,utc:5.75,tz:'NPT (UTC+5:45)'},
+  {n:'কলম্বো',e:'Colombo, Sri Lanka',lat:6.9271,lon:79.8612,utc:5.5,tz:'IST (UTC+5:30)'},
+  {n:'মালে',e:'Male, Maldives',lat:4.1755,lon:73.5093,utc:5,tz:'MVT (UTC+5)'},
+  {n:'ইয়াঙ্গুন',e:'Yangon, Myanmar',lat:16.8661,lon:96.1951,utc:6.5,tz:'MMT (UTC+6:30)'},
+  {n:'ব্যাংকক',e:'Bangkok, Thailand',lat:13.7563,lon:100.5018,utc:7,tz:'ICT (UTC+7)'},
+  {n:'সিঙ্গাপুর',e:'Singapore',lat:1.3521,lon:103.8198,utc:8,tz:'SGT (UTC+8)'},
+  {n:'কুয়ালালামপুর',e:'Kuala Lumpur, Malaysia',lat:3.1390,lon:101.6869,utc:8,tz:'MYT (UTC+8)'},
+  {n:'জাকার্তা',e:'Jakarta, Indonesia',lat:-6.2088,lon:106.8456,utc:7,tz:'WIB (UTC+7)'},
+  {n:'ম্যানিলা',e:'Manila, Philippines',lat:14.5995,lon:120.9842,utc:8,tz:'PST (UTC+8)'},
+  {n:'হংকং',e:'Hong Kong',lat:22.3193,lon:114.1694,utc:8,tz:'HKT (UTC+8)'},
+  {n:'সাংহাই',e:'Shanghai, China',lat:31.2304,lon:121.4737,utc:8,tz:'CST (UTC+8)'},
+  {n:'বেইজিং',e:'Beijing, China',lat:39.9042,lon:116.4074,utc:8,tz:'CST (UTC+8)'},
+  {n:'সিউল',e:'Seoul, South Korea',lat:37.5665,lon:126.9780,utc:9,tz:'KST (UTC+9)'},
+  {n:'টোকিও',e:'Tokyo, Japan',lat:35.6762,lon:139.6503,utc:9,tz:'JST (UTC+9)'},
+  {n:'ওসাকা',e:'Osaka, Japan',lat:34.6937,lon:135.5023,utc:9,tz:'JST (UTC+9)'},
+  {n:'সিডনি',e:'Sydney, Australia',lat:-33.8688,lon:151.2093,utc:11,tz:'AEDT (UTC+11)'},
+  {n:'মেলবোর্ন',e:'Melbourne, Australia',lat:-37.8136,lon:144.9631,utc:11,tz:'AEDT (UTC+11)'},
+  {n:'অকল্যান্ড',e:'Auckland, New Zealand',lat:-36.8485,lon:174.7633,utc:13,tz:'NZDT (UTC+13)'},
+  {n:'নিউ ইয়র্ক',e:'New York, USA',lat:40.7128,lon:-74.0060,utc:-5,tz:'EST (UTC-5)'},
+  {n:'লস অ্যাঞ্জেলেস',e:'Los Angeles, USA',lat:34.0522,lon:-118.2437,utc:-8,tz:'PST (UTC-8)'},
+  {n:'শিকাগো',e:'Chicago, USA',lat:41.8781,lon:-87.6298,utc:-6,tz:'CST (UTC-6)'},
+  {n:'হিউস্টন',e:'Houston, USA',lat:29.7604,lon:-95.3698,utc:-6,tz:'CST (UTC-6)'},
+  {n:'টরন্টো',e:'Toronto, Canada',lat:43.6532,lon:-79.3832,utc:-5,tz:'EST (UTC-5)'},
+  {n:'ভ্যাংকুভার',e:'Vancouver, Canada',lat:49.2827,lon:-123.1207,utc:-8,tz:'PST (UTC-8)'},
+  {n:'মেক্সিকো সিটি',e:'Mexico City, Mexico',lat:19.4326,lon:-99.1332,utc:-6,tz:'CST (UTC-6)'},
+  {n:'সাও পাওলো',e:'São Paulo, Brazil',lat:-23.5505,lon:-46.6333,utc:-3,tz:'BRT (UTC-3)'},
+  {n:'বুয়েনস আইরেস',e:'Buenos Aires, Argentina',lat:-34.6037,lon:-58.3816,utc:-3,tz:'ART (UTC-3)'},
+  {n:'কায়রো',e:'Cairo, Egypt',lat:30.0444,lon:31.2357,utc:2,tz:'EET (UTC+2)'},
+  {n:'নাইরোবি',e:'Nairobi, Kenya',lat:-1.2921,lon:36.8219,utc:3,tz:'EAT (UTC+3)'},
+  {n:'লাগোস',e:'Lagos, Nigeria',lat:6.5244,lon:3.3792,utc:1,tz:'WAT (UTC+1)'},
+  {n:'জোহানেসবার্গ',e:'Johannesburg, South Africa',lat:-26.2041,lon:28.0473,utc:2,tz:'SAST (UTC+2)'},
+  {n:'ইস্তাম্বুল',e:'Istanbul, Turkey',lat:41.0082,lon:28.9784,utc:3,tz:'TRT (UTC+3)'},
+  {n:'তেল আবিব',e:'Tel Aviv, Israel',lat:32.0853,lon:34.7818,utc:2,tz:'IST (UTC+2)'},
+  {n:'কুয়েত সিটি',e:'Kuwait City, Kuwait',lat:29.3759,lon:47.9774,utc:3,tz:'AST (UTC+3)'},
+  {n:'দোহা',e:'Doha, Qatar',lat:25.2854,lon:51.5310,utc:3,tz:'AST (UTC+3)'},
+  {n:'মাস্কাট',e:'Muscat, Oman',lat:23.5880,lon:58.3829,utc:4,tz:'GST (UTC+4)'},
+  {n:'ইসলামাবাদ',e:'Islamabad, Pakistan',lat:33.7294,lon:73.0931,utc:5,tz:'PKT (UTC+5)'},
+  {n:'লাহোর',e:'Lahore, Pakistan',lat:31.5497,lon:74.3436,utc:5,tz:'PKT (UTC+5)'},
+  {n:'কাবুল',e:'Kabul, Afghanistan',lat:34.5553,lon:69.2075,utc:4.5,tz:'AFT (UTC+4:30)'},
+  {n:'তাশখন্দ',e:'Tashkent, Uzbekistan',lat:41.2995,lon:69.2401,utc:5,tz:'UZT (UTC+5)'},
+  {n:'আলমাটি',e:'Almaty, Kazakhstan',lat:43.2220,lon:76.8512,utc:6,tz:'ALMT (UTC+6)'},
+  {n:'ঢাকা',e:'Dhaka, Bangladesh',lat:23.8103,lon:90.4125,utc:6,tz:'BST (UTC+6)'},
+];
+
+// ── Search: instant local match + live Open-Meteo geocoding fallback ──
+let cityTimer=null;
+let lastQuery='';
+
+function onCityInput(){
+  const raw=document.getElementById('city-input').value;
+  const q=raw.trim();
+  if(q.length<2){hideSugg();return;}
+  if(q===lastQuery)return;
+  lastQuery=q;
+  // Always show local matches instantly
+  const local=searchCitiesLocal(q.toLowerCase());
+  if(local.length) showSuggestions(local);
+  // Always also fire API for worldwide results (debounced)
+  clearTimeout(cityTimer);
+  cityTimer=setTimeout(()=>fetchCitiesAPI(q),350);
+}
+
+function searchCitiesLocal(q){
+  const words=q.split(/\s+/).filter(Boolean);
+  return CITY_DB.filter(c=>{
+    const el=c.e.toLowerCase(); const nl=c.n.toLowerCase();
+    return words.every(w=>el.includes(w)||nl.includes(w));
+  });
+}
+
+async function fetchCitiesAPI(q){
+  try{
+    const r=await fetch(
+      'https://geocoding-api.open-meteo.com/v1/search?name='+
+      encodeURIComponent(q)+'&count=8&language=en&format=json'
+    );
+    const d=await r.json();
+    if(!d.results||!d.results.length){
+      // Keep showing local results; just don't clear
+      const local=searchCitiesLocal(q.toLowerCase());
+      if(!local.length) showNoResults();
+      return;
+    }
+    // Merge: API results converted to same shape, then deduplicate by proximity
+    const apiItems=d.results.map(it=>({
+      n:it.name+(it.admin1?', '+it.admin1:'')+(it.country_code?' ('+it.country_code+')':''),
+      e:it.name+(it.admin1?', '+it.admin1:'')+(it.country?', '+it.country:''),
+      lat:it.latitude, lon:it.longitude,
+      utc:it.timezone?tzToOffset(it.timezone):it.longitude/15,
+      tz:it.timezone?it.timezone.replace('_',' '):'UTC'+formatUTCOffset(it.longitude/15),
+      fromAPI:true,
+    }));
+    // Prepend any local matches so they stay at top
+    const local=searchCitiesLocal(q.toLowerCase());
+    const merged=[...local];
+    apiItems.forEach(a=>{
+      const dup=merged.some(m=>Math.abs(m.lat-a.lat)<0.5&&Math.abs(m.lon-a.lon)<0.5);
+      if(!dup) merged.push(a);
+    });
+    showSuggestions(merged);
+  }catch(e){
+    // Network unavailable — just keep showing local matches silently
+  }
+}
+
+// Convert IANA timezone string → UTC offset hours (approximation for display)
+function tzToOffset(tz){
+  // Use Intl API if available
+  try{
+    const now=new Date();
+    const utcMs=now.getTime();
+    const locStr=now.toLocaleString('en-US',{timeZone:tz,hour12:false,
+      year:'numeric',month:'2-digit',day:'2-digit',
+      hour:'2-digit',minute:'2-digit',second:'2-digit'});
+    const parts=locStr.match(/(\d+)\/(\d+)\/(\d+),\s*(\d+):(\d+):(\d+)/);
+    if(!parts)return 0;
+    const locMs=Date.UTC(+parts[3],+parts[1]-1,+parts[2],+parts[4]%24,+parts[5],+parts[6]);
+    return Math.round((locMs-utcMs)/36000)/100;
+  }catch{return 0;}
+}
+
+function showSuggestions(items){
+  const box=document.getElementById('loc-suggestions');
+  box.innerHTML='';
+  if(!items.length){showNoResults();return;}
+  items.slice(0,8).forEach(item=>{
+    const div=document.createElement('div');
+    div.className='loc-sugg-item';
+    const tzBadge=item.tz||item.utc!=null?
+      '<span style="font-size:11.5px;background:var(--hs);color:var(--hi);border-radius:4px;padding:1px 5px;margin-left:4px;">'+
+      (item.tz||formatUTCOffset(item.utc))+'</span>':'';
+    div.innerHTML=
+      '<div style="display:flex;align-items:center;justify-content:space-between;">'+
+      '<div>'+
+      '<span style="font-size:14.5px;color:var(--t1);">'+(activeLang==='bn'?item.n:(item.e||item.n))+'</span>'+
+      '<span style="font-size:12.0px;color:var(--tm);display:block;">'+(activeLang==='bn'?(item.e||''):item.n)+'</span>'+
+      '</div>'+tzBadge+'</div>';
+    div.onclick=()=>{
+      document.getElementById('city-input').value='';
+      hideSugg(); lastQuery='';
+      const utcOff=item.utc!=null?item.utc:item.lon/15;
+      const tzLabel=item.tz||formatUTCOffset(utcOff);
+      const displayName=activeLang==='bn'?item.n:(item.e||item.n);
+      setLocation(item.lat,item.lon,displayName,utcOff,tzLabel);
+    };
+    box.appendChild(div);
+  });
+  box.style.display='block';
+}
+
+function showNoResults(){
+  const box=document.getElementById('loc-suggestions');
+  box.innerHTML='<div style="padding:10px 12px;font-size:13.5px;color:var(--tm);">'+GPS_STATUS_LANG[activeLang||'bn'].nofound+'</div>';
+  box.style.display='block';
+}
+
+function hideSugg(){document.getElementById('loc-suggestions').style.display='none';}
+
+function searchCity(){
+  const q=document.getElementById('city-input').value.trim();
+  if(!q)return;
+  lastQuery='';
+  const local=searchCitiesLocal(q.toLowerCase());
+  if(local.length) showSuggestions(local);
+  fetchCitiesAPI(q);
+}
+
+document.addEventListener('click',e=>{if(!e.target.closest('.loc-bar')){hideSugg();lastQuery='';}});
+
+/* ══════════════════════════════════════════════
+   WEATHER (Open-Meteo — free, no API key)
+══════════════════════════════════════════════ */
+/* ══════════════════════════════════════════════
+   STATE
+══════════════════════════════════════════════ */
+const today=new Date();
+let vY=today.getFullYear(),vM=today.getMonth();
+let selDate=new Date(today);
+
+/* ══════════════════════════════════════════════
+   RENDER CALENDAR
+══════════════════════════════════════════════ */
+function renderCal(){
+  const firstDay=new Date(vY,vM,1).getDay();
+  const daysInM=new Date(vY,vM+1,0).getDate();
+  const bn1=gregToBengali(new Date(vY,vM,1));
+  // Bengali month always shown in Bengali script
+  document.getElementById('nav-mbn').textContent=BM_LANG.bn[bn1.bM]+' '+bn(bn1.bY);
+  document.getElementById('nav-men').textContent=BMEN[bn1.bM]+' '+bn1.bY+' · '+new Date(vY,vM).toLocaleString('en',{month:'long'})+' '+vY;
+  const grid=document.getElementById('days-grid');grid.innerHTML='';
+  for(let i=0;i<firstDay;i++){const c=document.createElement('div');c.className='dc empty';grid.appendChild(c);}
+  for(let d=1;d<=daysInM;d++){
+    const date=new Date(vY,vM,d);
+    const ben=gregToBengali(date);
+    const isToday=date.toDateString()===today.toDateString();
+    const isSel=date.toDateString()===selDate.toDateString();
+    const wd=date.getDay();
+    const jdn=gToJDN(vY,vM+1,d);
+    const kDay=Number(BigInt(jdn)-KALI_JDN);
+    const sid=getSid();
+    const tI=Math.floor(((kDay*30/sid.SYNODIC)%30+30)%30);
+    const isPurnima=tI===14;const isAmavasya=tI===29;
+    const cell=document.createElement('div');
+    let cls='dc';
+    if(isToday)cls+=' today';if(isSel)cls+=' sel';
+    if(wd===0)cls+=' sun';if(wd===6)cls+=' sat';
+    if(isPurnima)cls+=' purnima';if(isAmavasya)cls+=' amavasya';
+    cell.className=cls;
+    cell.innerHTML=`<span class="gn2">${bn(d)}</span><span class="bn2">${bn(ben.bD)}</span><span class="td-dot"></span>`;
+    cell.onclick=()=>{selDate=date;renderCal();renderDetail(date);};
+    grid.appendChild(cell);
+  }
+}
+
+/* ══════════════════════════════════════════════
+   RENDER DETAIL
+══════════════════════════════════════════════ */
+function renderDetail(date){
+  const ben=gregToBengali(date);
+  const pd=panjikaData(date);
+  const wd=date.getDay();
+  // Bengali date always shown in Bengali script
+  document.getElementById('det-main').textContent=bn(ben.bD)+' '+BM_LANG.bn[ben.bM]+' '+bn(ben.bY);
+  const dsL=activeLang||'bn';
+  const dsWd=WBN_LANG[dsL][wd];
+  const dsMon=dsL==='bn'?date.toLocaleString('en',{month:'long'}):date.toLocaleString('en',{month:'long'});
+  document.getElementById('det-sub').textContent=dsWd+', '+date.getDate()+' '+dsMon+' '+date.getFullYear();
+  const ems=['🌸','🌺','🌻','🌼','🌷','🪷','🌹','🌙','⭐','💫','🌟','✨'];
+  document.getElementById('det-em').textContent=ems[date.getDate()%ems.length];
+  document.getElementById('dv-tithi').innerHTML=pd.tithi;
+  document.getElementById('dv-nak').textContent=pd.nak;
+  document.getElementById('dv-yoga').textContent=pd.yoga;
+  document.getElementById('dv-karan').textContent=pd.karan;
+  document.getElementById('dv-rashi').textContent=pd.moonRashi.n+' '+pd.moonRashi.i;
+  document.getElementById('dv-color').textContent=pd.color;
+  document.getElementById('dv-lucky').textContent=pd.lucky;
+  document.getElementById('dv-dik').textContent=pd.dik;
+  document.getElementById('dv-vikram').textContent=pd.vikram?(activeLang==='bn'?bn(pd.vikram):String(pd.vikram)):'—';
+  // Sun moon
+  document.getElementById('sunrise').textContent=pd.sunrise;
+  document.getElementById('sunset').textContent=pd.sunset;
+  document.getElementById('day-len').textContent=pd.dayLen;
+  document.getElementById('sun-rashi').textContent=pd.sunRashi.n+' '+pd.sunRashi.i;
+  document.getElementById('moonrise').textContent=pd.moonrise;
+  document.getElementById('moonset').textContent=pd.moonset;
+  document.getElementById('paksha').textContent=pd.paksha;
+  document.getElementById('moon-rashi').textContent=pd.moonRashi.n+' '+pd.moonRashi.i;
+  // Muhurta
+  document.getElementById('m-abhijit').textContent=pd.abhijit;
+  document.getElementById('m-amrit').textContent=pd.amritSiddhi;
+  document.getElementById('m-rahu').textContent=pd.rahukal;
+  document.getElementById('m-yama').textContent=pd.yamghanta;
+  document.getElementById('m-gulika').textContent=pd.gulika;
+  document.getElementById('m-brahma').textContent=pd.brahma;
+  // Tithi progress
+  document.getElementById('tp-name').innerHTML=pd.tithi;
+  document.getElementById('tp-pct').textContent=(activeLang==='bn'?bn(pd.tithiPct):pd.tithiPct)+'%';
+  document.getElementById('tp-fill').style.width=pd.tithiPct+'%';
+  const PLL=PAKSHA_LABEL_LANG[activeLang||'bn'];
+  document.getElementById('tp-l').textContent=PLL.p+pd.paksha;
+  document.getElementById('tp-r').textContent=PLL.k+pd.karan;
+  // Moon phase SVG
+  renderMoonPhase(pd.tithiIdx);
+  // Tarabala / Chandrabala
+  renderBala(pd.nakIdx,date);
+  // Mantra
+  const mantra=MANTRAS[pd.nakIdx]||MANTRAS[0];
+  const mL=activeLang||'bn';
+  const mNak=mL==='en'?mantra.nak_en:mL==='hi'?mantra.nak_hi:mantra.nak;
+  const mDesc=mantra.d[mL]||mantra.d.bn;
+  document.getElementById('mantra-text').textContent=mantra.m;
+  document.getElementById('mantra-sub').textContent=mNak+MANTRA_LABEL_LANG[mL]+mDesc;
+  // Activities
+  renderActivities(pd.tithiIdx%15+1);
+  // Hora
+  renderHora(date);
+  // Graha
+  renderGraha(date);
+  // Timeline
+  renderTimeline(pd);
+}
+
+/* ══════════════════════════════════════════════
+   MOON PHASE SVG
+══════════════════════════════════════════════ */
+function renderMoonPhase(tithiIdx){
+  const pct=(tithiIdx/30)*100;
+  const L=activeLang||'bn';
+  const phases=MOON_PHASES_LANG[L];
+  const ms=MOON_SUB_LANG[L];
+  document.getElementById('moon-pct').textContent=(L==='bn'?bn(Math.round(pct)):Math.round(pct))+'%';
+  document.getElementById('moon-phase-name').textContent=phases[tithiIdx]||'—';
+  const tNum=activeLang==='bn'?bn(tithiIdx+1):(tithiIdx+1);
+  document.getElementById('moon-sub').textContent=ms.tithi+tNum+' · '+(tithiIdx<15?ms.s:ms.k);
+  // Draw SVG moon
+  const angle=(tithiIdx/30)*Math.PI*2;
+  const cx=32,cy=32,r=27;
+  let path='';
+  if(tithiIdx===0){path='';}
+  else if(tithiIdx===15){path=`M ${cx} ${cy-r} A ${r} ${r} 0 1 1 ${cx} ${cy+r} A ${r} ${r} 0 1 1 ${cx} ${cy-r}`;}
+  else{
+    const waxing=tithiIdx<15;
+    const phasePct=waxing?(tithiIdx/15):(tithiIdx-15)/15;
+    const ry=r,rx=Math.abs(Math.cos(Math.PI*phasePct)*r);
+    const sweep=waxing?1:0;
+    path=`M ${cx} ${cy-r} A ${r} ${r} 0 1 ${waxing?1:0} ${cx} ${cy+r} A ${rx} ${ry} 0 1 ${sweep} ${cx} ${cy-r} Z`;
+  }
+  document.getElementById('moon-path').setAttribute('d',path);
+}
+
+/* ══════════════════════════════════════════════
+   TARABALA & CHANDRABALA
+══════════════════════════════════════════════ */
+function renderBala(nakIdx,date){
+  // Tarabala: based on birth nakshatra (use day-derived approx)
+  const birthNak=(date.getDate()+3)%27;
+  const diff=((nakIdx-birthNak)+27)%27;
+  const taraNum=(diff%9)+1;
+  const L=activeLang||'bn';
+  const taraNames=TARA_NAMES_LANG[L];
+  const taraGood=[false,true,false,true,false,true,false,true,true];
+  const tara=taraNames[taraNum-1];
+  const taraOk=taraGood[taraNum-1];
+  const BL=BALA_LANG[L];
+  document.getElementById('tara-val').textContent=tara;
+  document.getElementById('tara-val').style.color=taraOk?'var(--gn)':'var(--rd)';
+  document.getElementById('tara-desc').textContent=taraOk?BL.taraGood:BL.taraBad;
+  document.getElementById('tara-fill').style.width=(taraNum/9*100)+'%';
+  document.getElementById('tara-fill').style.background=taraOk?'var(--gn)':'var(--rd)';
+  // Chandrabala
+  const moonHouse=((nakIdx*3)%12)+1;
+  const chandGood=[1,3,6,7,10,11].includes(moonHouse);
+  document.getElementById('chand-val').textContent=(L==='bn'?bn(moonHouse):moonHouse)+BL.house;
+  document.getElementById('chand-val').style.color=chandGood?'var(--gn)':'var(--rd)';
+  document.getElementById('chand-desc').textContent=chandGood?BL.chandGood:BL.chandBad;
+  document.getElementById('chand-fill').style.width=(moonHouse/12*100)+'%';
+  document.getElementById('chand-fill').style.background=chandGood?'var(--gn)':'var(--rd)';
+}
+
+/* ══════════════════════════════════════════════
+   AUSPICIOUS ACTIVITIES
+══════════════════════════════════════════════ */
+function renderActivities(tithiNum){
+  const grid=document.getElementById('activ-grid');grid.innerHTML='';
+  const AL=ACTIVITIES_LANG[activeLang||'bn'];
+  ACTIVITIES_BASE.forEach((a,i)=>{
+    const ok=a.yes.includes(tithiNum);
+    const div=document.createElement('div');div.className='activ-item';
+    div.innerHTML='<span class="activ-dot '+(ok?'yes':'no')+'"></span><span class="activ-name">'+(AL[i]||a.name)+'</span>';
+    grid.appendChild(div);
+  });
+}
+
+/* ══════════════════════════════════════════════
+   PLANETARY HORA
+══════════════════════════════════════════════ */
+function renderHora(date){
+  const wd=date.getDay();
+  const now=new Date();
+  const isToday=date.toDateString()===now.toDateString();
+  const curH=isToday?now.getHours():6;
+  // Hora sequence starting from sunrise (~6AM) for this weekday
+  const baseOrder=[0,5,4,6,2,3,1];// Sun,Venus,Mercury,Moon,Saturn,Jupiter,Mars for planetary hours starting lord
+  const dayLord=wd; // 0=Sun,1=Mon,2=Tue,3=Wed,4=Thu,5=Fri,6=Sat
+  const scroll=document.getElementById('hora-scroll');scroll.innerHTML='';
+  for(let h=0;h<12;h++){
+    const horaIdx=(dayLord+h)%7;
+    const startH=6+h;const endH=startH+1;
+    const isActive=isToday&&curH>=startH&&curH<endH;
+    const card=document.createElement('div');
+    card.className='hora-card'+(isActive?' active':'');
+    const timeStr=activeLang==='bn'?bn(startH)+':০০':startH+':00';
+    card.innerHTML='<div class="hora-planet">'+HORA_EMOJI[horaIdx]+'</div><div class="hora-name">'+HORA_LANG[activeLang||'bn'][horaIdx]+'</div><div class="hora-time">'+timeStr+'</div>';
+    scroll.appendChild(card);
+  }
+}
+
+/* ══════════════════════════════════════════════
+   GRAHA POSITIONS
+══════════════════════════════════════════════ */
+function renderGraha(date){
+  const grid=document.getElementById('graha-grid');grid.innerHTML='';
+  const jdn=Number(gToJDN(date.getFullYear(),date.getMonth()+1,date.getDate()));
+  PLANETS.forEach((p,i)=>{
+    const rashiOff=(jdn+i*53)%12;
+    const rashi=RASHIS[rashiOff];
+    const div=document.createElement('div');div.className='graha-item';
+    div.innerHTML='<div class="graha-sym">'+p.s+'</div><div class="graha-nm">'+PLANETS_LANG[activeLang||'bn'][i]+'</div><div class="graha-rashi">'+RASHI_LANG[activeLang||'bn'][rashiOff]+' '+rashi.i+'</div>';
+    grid.appendChild(div);
+  });
+}
+
+/* ══════════════════════════════════════════════
+   PANCHANG TIMELINE
+══════════════════════════════════════════════ */
+function renderTimeline(pd){
+  if(!pd)pd=panjikaData(selDate);
+  const now=new Date();
+  const isToday=selDate.toDateString()===today.toDateString();
+  const curMin=isToday?(now.getHours()*60+now.getMinutes()):720;
+  // Sunrise ~6:00, Sunset ~18:00 by default
+  const{sr,ss}=calcSunTimes(selDate.getFullYear(),selDate.getMonth()+1,selDate.getDate(),locState.lat,locState.lon);
+  const srMin=sr.h*60+sr.m;const ssMin=ss.h*60+ss.m;
+  const dayWidth=((ssMin-srMin)/1440*100).toFixed(1);
+  const dayLeft=(srMin/1440*100).toFixed(1);
+  const nowPct=Math.min(100,Math.max(0,(curMin/1440*100))).toFixed(1);
+  document.getElementById('tl-day').style.width=dayWidth+'%';
+  document.getElementById('tl-day').style.marginLeft=dayLeft+'%';
+  document.getElementById('tl-now').style.left=nowPct+'%';
+  const TL=TL_LABELS_LANG[activeLang||'bn'];
+  const timeF=(h,m)=>activeLang==='bn'?bnT(h,m):(pad2(h)+':'+pad2(m));
+  document.getElementById('tl-sr').textContent=timeF(sr.h,sr.m)+' '+TL.rise;
+  document.getElementById('tl-ss').textContent=timeF(ss.h,ss.m)+' '+TL.set;
+  const noonEl=document.getElementById('lbl-noon');if(noonEl)noonEl.textContent=TL.noon;
+  const events=document.getElementById('tl-events');events.innerHTML='';
+  [{t:TL.rahu,s:pd.rahukal},{t:TL.abhijit,s:pd.abhijit},{t:TL.paksha,s:pd.paksha}].forEach(e=>{
+    const sp=document.createElement('span');sp.className='tl-ev';sp.textContent=e.t+': '+e.s;events.appendChild(sp);
+  });
+}
+
+/* ══════════════════════════════════════════════
+   HEADER TODAY
+══════════════════════════════════════════════ */
+function renderHdrToday(){
+  const ben=gregToBengali(today);
+  const pd=panjikaData(today);
+  // Bengali date always shown in Bengali script
+  document.getElementById('hdr-bd').textContent=bn(ben.bD)+' '+BM_LANG.bn[ben.bM]+' '+bn(ben.bY);
+  document.getElementById('hdr-tithi').innerHTML=pd.tithi;
+  document.getElementById('hdr-nak').textContent=pd.nak;
+  document.getElementById('hdr-yoga').textContent=pd.yoga;
+}
+
+/* ══════════════════════════════════════════════
+   RASHIFAL
+══════════════════════════════════════════════ */
+function renderRashis(){
+  const scr=document.getElementById('rashi-scroll');
+  RASHIS.forEach(r=>{
+    const c=document.createElement('div');c.className='rashi-card';
+    c.innerHTML=`<span class="ri">${r.i}</span><span class="rn">${r.n}</span><span class="re">${r.e}</span><span class="rl">🌿 ${r.l}</span>`;
+    scr.appendChild(c);
+  });
+}
+
+/* ══════════════════════════════════════════════
+   FESTIVALS + COUNTDOWN
+══════════════════════════════════════════════ */
+function renderFests(){
+  const list=document.getElementById('fest-list');
+  list.innerHTML='';
+  const now=new Date(); now.setHours(0,0,0,0);
+  const upcoming=buildFestivals(); // already filtered & sorted
+  if(!upcoming.length){
+    list.innerHTML='<div style="padding:16px;text-align:center;color:var(--tm);font-family:var(--fs);font-size:15.0px;">'+FEST_DAYS_LANG[activeLang||'bn'].done+'</div>';
+    return;
+  }
+  upcoming.forEach(f=>{
+    const item=document.createElement('div');
+    item.className='fest-item au';
+    const dstr=f.d.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+    const diffDays=Math.round((f.d-now)/86400000);
+    const isToday=diffDays===0;
+    const isSoon=diffDays>0&&diffDays<=7;
+    const FDL=FEST_DAYS_LANG[activeLang||'bn'];
+    const daysLabel=isToday?FDL.today:diffDays===1?FDL.tomorrow:(activeLang==='bn'?bn(diffDays):diffDays)+FDL.days;
+    item.style.cssText=isToday
+      ?'border-color:var(--gd);background:var(--gs);'
+      :isSoon?'border-color:var(--hi);':'';
+    item.innerHTML=
+      '<span class="fe">'+f.e+'</span>'+
+      '<div class="fi">'+
+        '<div class="fn">'+(f.name&&typeof f.name==='object'?f.name[activeLang||'bn']||f.name.bn:f.name)+'</div>'+
+        '<div class="fd2">'+dstr+'</div>'+
+      '</div>'+
+      '<div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;">'+
+        '<span class="fb">'+(f.b&&typeof f.b==='object'?f.b[activeLang||'bn']||f.b.bn:f.b)+'</span>'+
+        '<span style="font-size:11.5px;font-weight:600;color:'+(isToday?'var(--gd)':isSoon?'var(--hi)':'var(--tm)')+';">'+daysLabel+'</span>'+
+      '</div>';
+    list.appendChild(item);
+  });
+}
+
+/* ══════════════════════════════════════════════
+   REMINDER
+══════════════════════════════════════════════ */
+let reminders=JSON.parse(localStorage.getItem('pj-reminders')||'[]');
+function addReminder(){
+  const txt=document.getElementById('rem-text').value.trim();
+  const time=document.getElementById('rem-time').value;
+  if(!txt)return;
+  reminders.push({txt,time:time||'00:00',id:Date.now()});
+  localStorage.setItem('pj-reminders',JSON.stringify(reminders));
+  document.getElementById('rem-text').value='';document.getElementById('rem-time').value='';
+  renderReminders();showToast(activeLang==='en'?'🔔 Reminder added':activeLang==='hi'?'🔔 रिमाइंडर जोड़ा गया':'🔔 রিমাইন্ডার যোগ করা হয়েছে');
+}
+function removeReminder(id){
+  reminders=reminders.filter(r=>r.id!==id);
+  localStorage.setItem('pj-reminders',JSON.stringify(reminders));
+  renderReminders();
+}
+function renderReminders(){
+  const list=document.getElementById('rem-list');list.innerHTML='';
+  reminders.forEach(r=>{
+    const item=document.createElement('div');item.className='rem-item';
+    item.innerHTML=`<span>${r.time} — ${r.txt}</span><button class="rem-del" onclick="removeReminder(${r.id})">✕</button>`;
+    list.appendChild(item);
+  });
+}
+
+/* ══════════════════════════════════════════════
+   SHARE / EXPORT
+══════════════════════════════════════════════ */
+function getPanchangText(){
+  const ben=gregToBengali(selDate);
+  const pd=panjikaData(selDate);
+  const L=activeLang||'bn';
+  const sid=L==='hi'?getSid().hi:L==='en'?getSid().en:getSid().nm;
+  if(L==='en') return `📅 Bangla Panjika — ${selDate.toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}
+Bengali Date: ${ben.bD} ${BM_LANG.en[ben.bM]} ${ben.bY}
+Tithi: ${pd.tithi.replace(/<[^>]+>/g,'')} | Nakshatra: ${pd.nak} | Yoga: ${pd.yoga} | Karana: ${pd.karan}
+Moon Sign: ${pd.moonRashi.n} | Sun Sign: ${pd.sunRashi.n}
+Paksha: ${pd.paksha} | Siddhanta: ${sid}
+Sunrise: ${pd.sunrise} | Sunset: ${pd.sunset}
+Rahu Kaal: ${pd.rahukal} | Yamaghanta: ${pd.yamghanta}
+Abhijit Muhurta: ${pd.abhijit}
+Location: ${locState.name}
+— © Manik Roy · Bangla Panjika · India 🇮🇳`;
+  if(L==='hi') return `📅 बांगला पंचांग — ${selDate.toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}
+बंगाली तिथि: ${ben.bD} ${BM_LANG.hi[ben.bM]} ${ben.bY}
+तिथि: ${pd.tithi.replace(/<[^>]+>/g,'')} | नक्षत्र: ${pd.nak} | योग: ${pd.yoga} | करण: ${pd.karan}
+चंद्र राशि: ${pd.moonRashi.n} | सूर्य राशि: ${pd.sunRashi.n}
+पक्ष: ${pd.paksha} | सिद्धांत: ${sid}
+सूर्योदय: ${pd.sunrise} | सूर्यास्त: ${pd.sunset}
+राहुकाल: ${pd.rahukal} | यमघंट: ${pd.yamghanta}
+अभिजित मुहूर्त: ${pd.abhijit}
+स्थान: ${locState.name}
+— © Manik Roy · बांगला पंचांग · India 🇮🇳`;
+  return `📅 বাংলা পঞ্জিকা — ${selDate.toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}
+বাংলা তারিখ: ${ben.bD} ${BM_LANG.bn[ben.bM]} ${ben.bY}
+তিথি: ${pd.tithi.replace(/<[^>]+>/g,'')} | নক্ষত্র: ${pd.nak} | যোগ: ${pd.yoga} | করণ: ${pd.karan}
+রাশি (চন্দ্র): ${pd.moonRashi.n} | সূর্য রাশি: ${pd.sunRashi.n}
+পক্ষ: ${pd.paksha} | সিদ্ধান্ত: ${getSid().nm}
+সূর্যোদয়: ${pd.sunrise} | সূর্যাস্ত: ${pd.sunset}
+রাহুকাল: ${pd.rahukal} | যমঘণ্ট: ${pd.yamghanta}
+অভিজিৎ মুহূর্ত: ${pd.abhijit}
+অবস্থান: ${locState.name}
+— © Manik Roy · বাংলা পঞ্জিকা · India 🇮🇳`;
+}
+
+function copyPanchang(){navigator.clipboard.writeText(getPanchangText()).then(()=>showToast(activeLang==='en'?'📋 Panchang copied!':activeLang==='hi'?'📋 पंचांग कॉपी हुआ!':'📋 পঞ্চাঙ্গ কপি হয়েছে!'));}
+function shareWhatsApp(){window.open('https://wa.me/?text='+encodeURIComponent(getPanchangText()),'_blank');}
+function downloadTxt(){
+  const blob=new Blob([getPanchangText()],{type:'text/plain'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download=`panjika-${selDate.toISOString().slice(0,10)}.txt`;a.click();
+  showToast(activeLang==='en'?'⬇️ Download started':activeLang==='hi'?'⬇️ डाउनलोड शुरू हुआ':'⬇️ ডাউনলোড শুরু হয়েছে');
+}
+function printDay(){
+  const w=window.open('','_blank');
+  w.document.write('<pre style="font-family:serif;font-size:16.0px;padding:20px;">'+getPanchangText()+'</pre>');
+  w.print();w.close();
+}
+
+/* ══════════════════════════════════════════════
+   CLOCK
+══════════════════════════════════════════════ */
+function updateClock(){
+  // Compute city-local time: Date.now() is already UTC ms
+  const cityMs = Date.now() + locState.utcOff * 3600000;
+  const cityDate = new Date(cityMs);
+  let h=cityDate.getUTCHours(), m=cityDate.getUTCMinutes(), s=cityDate.getUTCSeconds();
+  const ampm=h>=12?'PM':'AM'; h=h%12||12;
+  document.getElementById('clock-time').textContent=activeLang==='bn'?bn(pad2(h))+':'+bn(pad2(m))+':'+bn(pad2(s)):pad2(h)+':'+pad2(m)+':'+pad2(s);
+  document.getElementById('clock-ampm').textContent=ampm;
+  document.getElementById('clock-en').textContent=cityDate.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'});
+  const ben=gregToBengali(cityDate);
+  const CL=activeLang||'bn';
+  const wdName=WBN_LANG[CL][cityDate.getUTCDay()];
+  const bDateStr=bn(ben.bD)+' '+BM_LANG.bn[ben.bM];
+  document.getElementById('clock-bn').textContent=wdName+', '+bDateStr;
+  document.getElementById('clock-tz').textContent=locState.tzLabel+' · '+locState.name;
+  const ml=document.getElementById('muh-loc-lbl');if(ml)ml.textContent=locState.tzLabel+' · '+locState.name;
+  const fl=document.getElementById('foot-loc');if(fl)fl.textContent=locState.name+' · '+locState.tzLabel;
+  checkReminders(cityDate);
+}
+
+function checkReminders(now){
+  const hh=pad2(now.getUTCHours()),mm=pad2(now.getUTCMinutes());
+  const ts=hh+':'+mm;
+  if(now.getSeconds()===0){
+    reminders.filter(r=>r.time===ts).forEach(r=>{
+      showToast('🔔 '+r.txt);
+      if('Notification'in window&&Notification.permission==='granted')new Notification(activeLang==='en'?'Bangla Panjika':activeLang==='hi'?'बांगला पंचांग':'বাংলা পঞ্জিকা',{body:r.txt});
+    });
+  }
+}
+
+/* ══════════════════════════════════════════════
+   NAVIGATION
+══════════════════════════════════════════════ */
+function chM(d){vM+=d;if(vM>11){vM=0;vY++;}if(vM<0){vM=11;vY--;}renderCal();}
+function chY(d){vY+=d;renderCal();}
+
+/* ══════════════════════════════════════════════
+   THEME
+══════════════════════════════════════════════ */
+function setTheme(t){
+  document.documentElement.setAttribute('data-theme',t);
+  document.querySelectorAll('.tbtn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('btn-'+t).classList.add('active');
+  localStorage.setItem('pj-theme',t);
+}
+
+/* ══════════════════════════════════════════════
+   TOAST
+══════════════════════════════════════════════ */
+let toastTimer=null;
+function showToast(msg){
+  const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
+  clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),3000);
+}
+
+/* ══════════════════════════════════════════════
+   INIT
+══════════════════════════════════════════════ */
+/* ══════════════════════════════════════════════
+   LANGUAGE SYSTEM
+══════════════════════════════════════════════ */
+function t(key){ return (LANG[activeLang]||LANG.bn)[key] || (LANG.bn[key]||key); }
+
+function applyLang(){
+  const L = LANG[activeLang] || LANG.bn;
+  // Update button states
+  ['bn','en','hi'].forEach(l=>{
+    document.getElementById('lbtn-'+l).classList.toggle('active',l===activeLang);
+  });
+  // Theme label
+  const tl = document.getElementById('lbl-theme'); if(tl) tl.textContent = L.theme;
+  // Header band
+  const setTxt = (id, v) => { const el=document.getElementById(id); if(el) el.textContent=v; };
+  const setHTML = (id, v) => { const el=document.getElementById(id); if(el) el.innerHTML=v; };
+  setTxt('lbl-bdate', L.bdate); setTxt('lbl-tithi', L.tithi);
+  setTxt('lbl-nak', L.nak); setTxt('lbl-yoga', L.yoga);
+  // Section titles (with innerHTML for spans)
+  setHTML('lbl-sid', L.sid);
+  // Update siddhanta button labels
+  document.getElementById('sid-surya').querySelector('.sid-name').textContent=activeLang==='hi'?'सूर्य':activeLang==='en'?'Surya':'সূর্য';
+  document.getElementById('sid-drik').querySelector('.sid-name').textContent=activeLang==='hi'?'दृक':'Drik';
+  document.getElementById('sid-chandra').querySelector('.sid-name').textContent=activeLang==='hi'?'चंद्र':activeLang==='en'?'Chandra':'চন্দ্র';
+  document.getElementById('sid-desc').textContent=getSid().desc[activeLang]||getSid().desc.bn;
+  setHTML('lbl-sunmoon', L.sunmoon + ' — <span id="loc-badge">'+document.getElementById('loc-badge').textContent+'</span>');
+  setHTML('lbl-muh', L.muh + ' — <span id="muh-loc-lbl">'+document.getElementById('muh-loc-lbl').textContent+'</span>');
+  setHTML('lbl-rashi', L.rashi); setHTML('lbl-fest', L.fest);
+  // Detail keys
+  ['tithi','nak','yoga','karan','rashi','color','lucky','dik','vikram'].forEach(k=>{
+    setTxt('dk-'+k, L['dk-'+k]);
+  });
+  // Sun/Moon labels
+  setTxt('lbl-sun', L.sun); setTxt('lbl-moon', L.moon);
+  setTxt('lbl-sunrise', L.sunrise); setTxt('lbl-sunset', L.sunset);
+  setTxt('lbl-daylen', L.daylen); setTxt('lbl-sunrashi', L.sunrashi);
+  setTxt('lbl-moonrise', L.moonrise); setTxt('lbl-moonset', L.moonset);
+  setTxt('lbl-paksha', L.paksha); setTxt('lbl-moonrashi', L.moonrashi);
+  // Muhurta names
+  setTxt('mn-abhijit', L.abhijit); setTxt('mn-amrit', L.amrit);
+  setTxt('mn-rahu', L.rahu); setTxt('mn-yama', L.yama);
+  setTxt('mn-gulika', L.gulika); setTxt('mn-brahma', L.brahma);
+  // Panel labels
+  setTxt('lbl-tara', L.tara); setTxt('lbl-chand', L.chand);
+  setTxt('lbl-mantra', L.mantra); setTxt('lbl-activ', L.activ);
+  setTxt('lbl-hora', L.hora); setTxt('lbl-graha', L.graha);
+  setTxt('lbl-tl', L.tl); setTxt('lbl-rem', L.rem);
+  setTxt('lbl-share', L.share); setTxt('lbl-loc', L.loc);
+  setTxt('lbl-search', L.search); setTxt('lbl-copy', L.copy);
+  setTxt('lbl-dl', L.dl); setTxt('lbl-print', L.print);
+  setTxt('lbl-addrem', L.addrem); setTxt('lbl-noon', L.noon);
+  setTxt('lbl-rights', L.rights);
+  // Placeholders
+  const ci = document.getElementById('city-input'); if(ci) ci.placeholder = L.cityph;
+  const ri = document.getElementById('rem-text'); if(ri) ri.placeholder = L.remph;
+  // Calendar weekday row
+  const wds = document.querySelectorAll('.wd-cell');
+  L.days.forEach((d,i)=>{ if(wds[i]) wds[i].textContent=d; });
+  // Timeline labels
+  // tl-sr/tl-ss set by renderTimeline()
+  // Re-render all dynamic content in new language
+  renderFests();
+  renderDetail(selDate);
+  renderHdrToday();
+  const _pd=panjikaData(selDate);
+  renderBala(_pd.nakIdx,selDate);
+  renderMoonPhase(_pd.tithiIdx);
+  renderActivities(_pd.tithiIdx%15+1);
+  renderHora(selDate);
+  renderGraha(selDate);
+  renderTimeline();
+  renderRashis();
+  renderCal();
+}
+
+function setLang(l){
+  activeLang = l;
+  localStorage.setItem('pj-lang', l);
+  applyLang();
+}
+
+(function init(){
+  document.getElementById('foot-yr').textContent=new Date().getFullYear();
+  setTheme(localStorage.getItem('pj-theme')||'dark');
+  const savedSid=localStorage.getItem('pj-sid')||'surya';
+  activeSid=savedSid;
+  ['surya','drik','chandra'].forEach(k=>document.getElementById('sid-'+k).classList.toggle('active',k===savedSid));
+  document.getElementById('sid-desc').textContent=getSid().desc[activeLang]||getSid().desc.bn;
+  document.getElementById('sid-badge').textContent=activeLang==='hi'?getSid().hi:getSid().en;
+  renderHdrToday();
+  renderCal();
+  renderDetail(selDate);
+  renderRashis();
+  renderFests();
+  renderReminders();
+  applyLang();
+  updateClock();
+  setInterval(updateClock,1000);
+  // Set default location (Kolkata) immediately so app is usable right away
+  document.getElementById('loc-name').textContent=locState.name;
+  document.getElementById('loc-coords').textContent='lat: '+locState.lat+', lon: '+locState.lon+'  ·  '+locState.tzLabel;
+  document.getElementById('loc-status-txt').textContent=activeLang==='en'?'Default: Kolkata':activeLang==='hi'?'डिफ़ॉल्ट: कोलकाता':'ডিফল্ট: কলকাতা';
+  document.getElementById('loc-dot').className='loc-dot';
+  // Request notification permission
+  if('Notification'in window&&Notification.permission==='default')Notification.requestPermission();
+  // Auto-detect location on load — tries GPS first, falls back to timezone
+  if(navigator.geolocation){
+    navigator.geolocation.getCurrentPosition(
+      pos=>{ reverseGeocode(pos.coords.latitude, pos.coords.longitude); },
+      ()=>{ useTimezoneLocation(); },
+      {timeout:6000, enableHighAccuracy:false, maximumAge:300000}
+    );
+  } else {
+    useTimezoneLocation();
+  }
+})();
+
+
+
+/* ══════════════════════════════════════════════
+   PWA — SERVICE WORKER & INSTALL PROMPT
+══════════════════════════════════════════════ */
+let _deferredInstall = null;
+
+// Register Service Worker — skip in preview/iframe environments
+const _swOk = 'serviceWorker' in navigator &&
+  location.protocol === 'https:' &&
+  !location.hostname.includes('claudeusercontent.com') &&
+  !location.hostname.includes('claude.ai') &&
+  window.self === window.top; // not inside an iframe
+if (_swOk) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js')
+      .then(reg => {
+        console.log('[PWA] SW registered, scope:', reg.scope);
+        setInterval(() => reg.update(), 60 * 60 * 1000);
+      })
+      .catch(err => console.warn('[PWA] SW registration failed:', err));
+  });
+}
+
+// Capture install prompt
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault();
+  _deferredInstall = e;
+  // Show banner after 3 seconds if not already installed
+  if (!localStorage.getItem('pwa-dismissed')) {
+    setTimeout(showPWABanner, 3000);
+  }
+});
+
+// Hide banner after install
+window.addEventListener('appinstalled', () => {
+  hidePWABanner();
+  localStorage.setItem('pwa-dismissed', '1');
+  showToast('✅ ' + (activeLang==='en'?'App installed!':activeLang==='hi'?'ऐप इंस्टॉल हुआ!':'অ্যাপ ইনস্টল হয়েছে!'));
+});
+
+function showPWABanner() {
+  const banner = document.getElementById('pwa-banner');
+  if (!banner) return;
+  // Update banner text per language
+  const txt = document.getElementById('pwa-banner-txt');
+  if (txt) {
+    txt.textContent = activeLang==='en'
+      ? 'Add to Home Screen — works offline too'
+      : activeLang==='hi'
+      ? 'होम स्क्रीन पर जोड़ें — ऑफलाइन भी काम करता है'
+      : 'হোম স্ক্রিনে যোগ করুন — অফলাইনেও কাজ করে';
+  }
+  banner.style.display = 'flex';
+}
+
+function hidePWABanner() {
+  const banner = document.getElementById('pwa-banner');
+  if (banner) banner.style.display = 'none';
+}
+
+function dismissPWA() {
+  hidePWABanner();
+  localStorage.setItem('pwa-dismissed', '1');
+}
+
+async function installPWA() {
+  if (!_deferredInstall) {
+    // Fallback — show instructions
+    showToast(activeLang==='en'
+      ? '📲 Use browser menu → Add to Home Screen'
+      : activeLang==='hi'
+      ? '📲 ब्राउज़र मेनू → होम स्क्रीन में जोड़ें'
+      : '📲 ব্রাউজার মেনু → হোম স্ক্রিনে যোগ করুন');
+    return;
+  }
+  _deferredInstall.prompt();
+  const { outcome } = await _deferredInstall.userChoice;
+  _deferredInstall = null;
+  hidePWABanner();
+  if (outcome === 'dismissed') {
+    localStorage.setItem('pwa-dismissed', '1');
+  }
+}
+
+// Online/Offline indicator
+window.addEventListener('online',  () => showToast(activeLang==='en'?'🌐 Back online':activeLang==='hi'?'🌐 वापस ऑनलाइन':'🌐 অনলাইন হয়েছে'));
+window.addEventListener('offline', () => showToast(activeLang==='en'?'📴 Offline mode — full panchang still works':activeLang==='hi'?'📴 ऑफलाइन — पूर्ण पंचांग उपलब्ध है':'📴 অফলাইন — সম্পূর্ণ পঞ্জিকা কাজ করছে'));
+
+</script>
+</body>
+</html>
