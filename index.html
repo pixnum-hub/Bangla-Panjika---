@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,viewport-fit=cover"/>
-<title>বাংলা পঞ্জিকা — Manik Roy</title>
+<title>বাংলা পঞ্জিকা</title>
 
 <!-- PWA Manifest -->
 <link rel="manifest" href="manifest.json"/>
@@ -15,7 +15,7 @@
 <!-- iOS PWA -->
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
-<meta name="apple-mobile-web-app-title" content="পঞ্জিকা"/>
+<meta name="apple-mobile-web-app-title" content="বাংলা পঞ্জিকা"/>
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png"/>
 <link rel="apple-touch-icon" sizes="152x152" href="icons/icon-152x152.png"/>
 <link rel="apple-touch-icon" sizes="192x192" href="icons/icon-192x192.png"/>
@@ -328,6 +328,55 @@ footer{margin-top:auto;border-top:1px solid var(--bdr);padding:16px 20px;text-al
 /* TOAST */
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--card);border:1.5px solid var(--hi);border-radius:var(--r);padding:10px 18px;font-size:14.5px;font-family:var(--fs);color:var(--t1);box-shadow:var(--sh);z-index:1000;opacity:0;transition:all .3s;pointer-events:none;white-space:nowrap;}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* HELP GUIDE */
+.help-fab{background:linear-gradient(135deg,#c084fc,#f472b6);border:none;color:#fff;font-size:13px;font-family:var(--fd);letter-spacing:1px;cursor:pointer;border-radius:99px;padding:5px 12px;transition:all .2s;white-space:nowrap;}
+.help-fab:hover{opacity:.85;}
+.help-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.65);z-index:1100;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(3px);}
+.help-overlay.open{opacity:1;pointer-events:all;}
+.help-drawer{position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(100%);width:100%;max-width:480px;max-height:92vh;background:var(--bg2);border-radius:22px 22px 0 0;border-top:2px solid var(--bdr);z-index:1200;transition:transform .35s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;overflow:hidden;}
+.help-drawer.open{transform:translateX(-50%) translateY(0);}
+.help-handle{width:40px;height:4px;background:var(--sb);border-radius:99px;margin:10px auto 0;}
+.help-hdr{display:flex;align-items:center;justify-content:space-between;padding:12px 18px 10px;border-bottom:1px solid var(--bdr);flex-shrink:0;}
+.help-title{font-family:var(--fd);font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--hi);}
+.help-close{background:none;border:none;color:var(--t2);font-size:20px;cursor:pointer;padding:0 4px;line-height:1;}
+.help-tabs{display:flex;gap:0;border-bottom:1px solid var(--bdr);flex-shrink:0;overflow-x:auto;scrollbar-width:none;}
+.help-tabs::-webkit-scrollbar{display:none;}
+.help-tab{flex:0 0 auto;padding:9px 14px;font-family:var(--fd);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--tm);cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap;}
+.help-tab.active{color:var(--hi);border-bottom-color:var(--hi);}
+.help-body{overflow-y:auto;padding:16px 18px 30px;flex:1;}
+.help-sec{margin-bottom:20px;}
+.help-sec-title{font-family:var(--fd);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gd);margin-bottom:10px;display:flex;align-items:center;gap:7px;}
+.help-sec-title::after{content:'';flex:1;height:1px;background:var(--bdr);}
+.help-card{background:var(--card);border:1px solid var(--bdr);border-radius:12px;padding:12px 14px;margin-bottom:8px;}
+.help-card-title{font-family:var(--fs);font-size:14px;font-weight:600;color:var(--t1);margin-bottom:4px;display:flex;align-items:center;gap:6px;}
+.help-card-body{font-family:var(--fn);font-size:13px;color:var(--t2);line-height:1.6;}
+.help-tip{background:var(--hs);border:1px solid rgba(192,132,252,0.25);border-radius:10px;padding:10px 13px;margin-bottom:8px;font-size:13px;color:var(--t1);line-height:1.6;font-family:var(--fn);}
+.help-tip b{color:var(--hi);}
+.help-badge{display:inline-block;background:var(--gs);color:var(--gd);border-radius:99px;padding:1px 8px;font-size:11px;font-family:var(--fd);letter-spacing:.5px;margin-right:4px;}
+.help-step{display:flex;gap:10px;margin-bottom:10px;align-items:flex-start;}
+.help-step-num{width:24px;height:24px;border-radius:50%;background:var(--hi);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.help-step-txt{font-family:var(--fn);font-size:13px;color:var(--t2);line-height:1.6;}
+.help-step-txt b{color:var(--t1);}
+.help-glossary{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.help-gitem{background:var(--card);border:1px solid var(--bdr);border-radius:8px;padding:8px 10px;}
+.help-gterm{font-family:var(--fs);font-size:13px;font-weight:600;color:var(--hi);}
+.help-gdef{font-family:var(--fn);font-size:11.5px;color:var(--tm);margin-top:2px;line-height:1.4;}
+
+/* RASHI DETAIL */
+.rashi-detail{margin:6px 14px 0;background:var(--card);border:1.5px solid var(--hi);border-radius:var(--r);padding:14px 16px;display:none;animation:fadeUp .3s ease both;}
+.rashi-detail.show{display:block;}
+.rd-hdr{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+.rd-sym{font-size:36px;line-height:1;}
+.rd-info{flex:1;}
+.rd-name{font-family:var(--fs);font-size:18px;font-weight:700;color:var(--hi);}
+.rd-en{font-size:12px;color:var(--tm);letter-spacing:1px;text-transform:uppercase;font-family:var(--fd);}
+.rd-close{background:none;border:none;color:var(--tm);font-size:18px;cursor:pointer;padding:4px;}
+.rd-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.rd-item{background:var(--acc);border-radius:var(--rs);padding:8px 10px;}
+.rd-key{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--tm);font-family:var(--fd);margin-bottom:3px;}
+.rd-val{font-family:var(--fs);font-size:13px;font-weight:600;color:var(--t1);}
+.rd-desc{font-family:var(--fn);font-size:13px;color:var(--t2);line-height:1.65;margin-top:10px;padding-top:10px;border-top:1px solid var(--bdr);}
 </style>
 </head>
 <body>
@@ -367,7 +416,7 @@ footer{margin-top:auto;border-top:1px solid var(--bdr);padding:16px 20px;text-al
 <div class="loc-bar au">
   <div class="loc-top">
     <span class="loc-label" id="lbl-loc">📍 অবস্থান</span>
-    <span class="loc-status"><span class="loc-dot pending" id="loc-dot"></span><span id="loc-status-txt">অনুসন্ধান করছি…</span></span>
+    <span class="loc-status"><span class="loc-dot pending" id="loc-dot"></span><span id="loc-status-txt">…</span></span>
   </div>
   <div class="loc-name" id="loc-name">—</div>
   <div class="loc-coords" id="loc-coords">lat: —, lon: —</div>
@@ -547,11 +596,16 @@ footer{margin-top:auto;border-top:1px solid var(--bdr);padding:16px 20px;text-al
   <div class="muh-card ina"><div class="muh-icon">🚫</div><div class="muh-name" id="mn-yama">যমঘণ্ট</div><div class="muh-time" id="m-yama">—</div></div>
   <div class="muh-card ina"><div class="muh-icon">🌑</div><div class="muh-name" id="mn-gulika">গুলিক কাল</div><div class="muh-time" id="m-gulika">—</div></div>
   <div class="muh-card aus"><div class="muh-icon">🌟</div><div class="muh-name" id="mn-brahma">ব্রহ্ম মুহূর্ত</div><div class="muh-time" id="m-brahma">—</div></div>
+  <div class="muh-card aus"><div class="muh-icon">🌅</div><div class="muh-name" id="mn-godhuli">গোধূলি</div><div class="muh-time" id="m-godhuli">—</div></div>
+  <div class="muh-card aus"><div class="muh-icon">🏆</div><div class="muh-name" id="mn-vijaya">বিজয়</div><div class="muh-time" id="m-vijaya">—</div></div>
+  <div class="muh-card aus"><div class="muh-icon">🌙</div><div class="muh-name" id="mn-nishita">নিশিত</div><div class="muh-time" id="m-nishita">—</div></div>
+  <div class="muh-card aus"><div class="muh-icon">✨</div><div class="muh-name" id="mn-sarvartha">সর্বার্থ সিদ্ধি</div><div class="muh-time" id="m-sarvartha">—</div></div>
 </div>
 
 <!-- RASHIFAL -->
-<div class="sec-title" id="lbl-rashi">রাশিফল — <span>১২ রাশি</span></div>
+<div style="display:flex;align-items:center;justify-content:space-between;padding:14px 16px 6px;"><div class="sec-title" id="lbl-rashi" style="padding:0;flex:1;">রাশিফল — <span>১২ রাশি</span></div><button class="help-fab" onclick="openHelp()" id="help-fab">❓ Help</button></div>
 <div class="rashi-scroll" id="rashi-scroll"></div>
+<div class="rashi-detail" id="rashi-detail"></div>
 
 <!-- FESTIVALS -->
 <div class="sec-title" id="lbl-fest">উৎসব ও পার্বণ — <span>ভারত · পশ্চিমবঙ্গ</span></div>
@@ -590,6 +644,28 @@ footer{margin-top:auto;border-top:1px solid var(--bdr);padding:16px 20px;text-al
 </div>
 
 <div class="toast" id="toast"></div>
+
+
+<!-- HELP OVERLAY -->
+<div class="help-overlay" id="help-overlay" onclick="closeHelp()"></div>
+
+<!-- HELP DRAWER -->
+<div class="help-drawer" id="help-drawer">
+  <div class="help-handle"></div>
+  <div class="help-hdr">
+    <span class="help-title" id="hlp-title">📖 Help Guide</span>
+    <button class="help-close" onclick="closeHelp()">✕</button>
+  </div>
+  <div class="help-tabs" id="help-tabs">
+    <div class="help-tab active" onclick="showHelpTab(0)" id="htab-0" data-tab="0">Getting Started</div>
+    <div class="help-tab" onclick="showHelpTab(1)" id="htab-1" data-tab="1">Panchang</div>
+    <div class="help-tab" onclick="showHelpTab(2)" id="htab-2" data-tab="2">Calendar</div>
+    <div class="help-tab" onclick="showHelpTab(3)" id="htab-3" data-tab="3">Location</div>
+    <div class="help-tab" onclick="showHelpTab(4)" id="htab-4" data-tab="4">Glossary</div>
+    <div class="help-tab" onclick="showHelpTab(5)" id="htab-5" data-tab="5">Install</div>
+  </div>
+  <div class="help-body" id="help-body"></div>
+</div>
 
 <!-- PWA Install Banner -->
 <div id="pwa-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:2000;background:linear-gradient(135deg,#1a1828,#13112a);border-top:1.5px solid rgba(192,132,252,0.3);padding:12px 16px;display:none;align-items:center;justify-content:space-between;gap:10px;box-shadow:0 -4px 20px rgba(0,0,0,0.5);">
@@ -888,6 +964,10 @@ function panjikaData(dateOrJDN){
     moonrise:timeF(mrH,mrM),moonset:timeF((mrH+13)%24,mrM),
     rahukal:getRahu(wd),yamghanta:getYama(wd),gulika:getGulika(wd),
     abhijit:L==='bn'?'১১:৪৮–১২:৩৬':'11:48–12:36',
+    godhuli:(()=>{const gm=ss.h*60+ss.m;const g1=gm-15,g2=gm+15;return timeF(Math.floor(g1/60)%24,g1%60)+'–'+timeF(Math.floor(g2/60)%24,g2%60);})(),
+    vijaya:(()=>{const vm=Math.round((sr.h*60+sr.m+(ss.h*60+ss.m-sr.h*60-sr.m)*2/5));return timeF(Math.floor(vm/60)%24,vm%60)+'–'+timeF(Math.floor((vm+48)/60)%24,(vm+48)%60);})(),
+    nishita:(()=>{const nm=Math.round((sr.h*60+sr.m+ss.h*60+ss.m)/2)+720;return timeF(Math.floor(nm/60)%24,nm%60)+'–'+timeF(Math.floor((nm+48)/60)%24,(nm+48)%60);})(),
+    sarvartha:nakIdx===3||nakIdx===7||nakIdx===22||nakIdx===27?(L==='bn'?'আজ সর্বার্থ সিদ্ধি যোগ':L==='hi'?'आज सर्वार्थ सिद्धि':'Today: Sarvartha Siddhi'):(L==='bn'?'প্রযোজ্য নয়':L==='hi'?'लागू नहीं':'Not today'),
     amritSiddhi:amritStr,
     brahma:timeF(sr.h>0?sr.h-1:4,48)+' – '+timeF(sr.h,36),
     kaliYear,vikram:kaliYear>0?kaliYear+3044:null,shaka:kaliYear>0?kaliYear+2909:null,
@@ -953,6 +1033,7 @@ const LANG = {
     // Muhurta
     abhijit:'অভিজিৎ', amrit:'অমৃত সিদ্ধি', rahu:'রাহুকাল',
     yama:'যমঘণ্ট', gulika:'গুলিক কাল', brahma:'ব্রহ্ম মুহূর্ত',
+    godhuli:'গোধূলি', vijaya:'বিজয় মুহূর্ত', nishita:'নিশিত মুহূর্ত', sarvartha:'সর্বার্থ সিদ্ধি',
     // Panels
     tara:'⭐ তারাবল', chand:'🌙 চন্দ্রবল',
     mantra:'🪔 আজকের মন্ত্র — নক্ষত্র অনুযায়ী',
@@ -963,7 +1044,7 @@ const LANG = {
     rem:'🔔 স্মরণিকা — পঞ্চাঙ্গ রিমাইন্ডার',
     share:'📤 শেয়ার ও এক্সপোর্ট',
     // Location
-    loc:'📍 অবস্থান', search:'খুঁজুন', cityph:'শহর খুঁজুন…',
+    loc:'📍 অবস্থান', search:'খুঁজুন', cityph:'শহর খুঁজুন…', helpbtn:'❓ সাহায্য',
     // Share buttons
     copy:'কপি করুন', dl:'ডাউনলোড', print:'প্রিন্ট',
     // Reminder
@@ -992,6 +1073,7 @@ const LANG = {
     paksha:'Paksha', moonrashi:'Sign',
     abhijit:'Abhijit', amrit:'Amrit Siddhi', rahu:'Rahu Kaal',
     yama:'Yamaghanta', gulika:'Gulika Kaal', brahma:'Brahma Muhurta',
+    godhuli:'Godhuli', vijaya:'Vijaya Muhurta', nishita:'Nishita Muhurta', sarvartha:'Sarvartha Siddhi',
     tara:'⭐ Tarabala', chand:'🌙 Chandrabala',
     mantra:'🪔 Mantra of the Day — by Nakshatra',
     activ:'✅ Auspicious Activities — Today',
@@ -1000,7 +1082,7 @@ const LANG = {
     tl:'⏱️ Panchang Timeline — Today',
     rem:'🔔 Reminders — Panchang Alerts',
     share:'📤 Share & Export',
-    loc:'📍 Location', search:'Search', cityph:'Search city…',
+    loc:'📍 Location', search:'Search', cityph:'Search city…', helpbtn:'❓ Help',
     copy:'Copy', dl:'Download', print:'Print',
     remph:'Event or puja name…', addrem:'Add',
     noon:'Noon', tlsr:'Sunrise', tlss:'Sunset',
@@ -1024,6 +1106,7 @@ const LANG = {
     paksha:'पक्ष', moonrashi:'राशि',
     abhijit:'अभिजित', amrit:'अमृत सिद्धि', rahu:'राहुकाल',
     yama:'यमघंट', gulika:'गुलिक काल', brahma:'ब्रह्म मुहूर्त',
+    godhuli:'गोधूलि', vijaya:'विजय मुहूर्त', nishita:'निशित मुहूर्त', sarvartha:'सर्वार्थ सिद्धि',
     tara:'⭐ ताराबल', chand:'🌙 चंद्रबल',
     mantra:'🪔 आज का मंत्र — नक्षत्र अनुसार',
     activ:'✅ आज के कार्यक्रम — शुभाशुभ',
@@ -1032,7 +1115,7 @@ const LANG = {
     tl:'⏱️ पंचांग टाइमलाइन — आज का दिन',
     rem:'🔔 स्मरणिका — पंचांग रिमाइंडर',
     share:'📤 शेयर व निर्यात',
-    loc:'📍 स्थान', search:'खोजें', cityph:'शहर खोजें…',
+    loc:'📍 स्थान', search:'खोजें', cityph:'शहर खोजें…', helpbtn:'❓ सहायता',
     copy:'कॉपी करें', dl:'डाउनलोड', print:'प्रिंट',
     remph:'अनुष्ठान या पूजा का नाम…', addrem:'जोड़ें',
     noon:'दोपहर', tlsr:'उदय', tlss:'अस्त',
@@ -1085,9 +1168,9 @@ const TL_LABELS_LANG={
   hi:{rahu:'राहुकाल',abhijit:'अभिजित',paksha:'पक्ष',noon:'दोपहर',rise:'उदय',set:'अस्त'},
 };
 const GPS_STATUS_LANG={
-  bn:{searching:'GPS খুঁজছে…',finding:'অবস্থান নির্ণয় হচ্ছে…',tzok:'টাইমজোন থেকে ✓',offline:'GPS ✓ (অফলাইন)',denied:'GPS অনুমতি নেই',unavail:'অবস্থান পাওয়া যায়নি',timeout:'সময় শেষ',nofound:'কোনো শহর পাওয়া যায়নি'},
-  en:{searching:'Searching GPS…',finding:'Locating…',tzok:'From timezone ✓',offline:'GPS ✓ (offline)',denied:'GPS permission denied',unavail:'Location unavailable',timeout:'Timed out',nofound:'No city found'},
-  hi:{searching:'GPS खोज रहे हैं…',finding:'स्थान निर्धारित हो रहा है…',tzok:'टाइमज़ोन से ✓',offline:'GPS ✓ (ऑफलाइन)',denied:'GPS अनुमति नहीं',unavail:'स्थान उपलब्ध नहीं',timeout:'समय समाप्त',nofound:'कोई शहर नहीं मिला'},
+  bn:{searching:'GPS খুঁজছে…',finding:'অবস্থান নির্ণয় হচ্ছে…',tzok:'টাইমজোন থেকে ✓',offline:'GPS ✓ (অফলাইন)',denied:'GPS অনুমতি নেই',unavail:'অবস্থান পাওয়া যায়নি',timeout:'সময় শেষ',nofound:'কোনো শহর পাওয়া যায়নি',connected:'সংযুক্ত ✓',defaultCity:'ডিফল্ট: কলকাতা'},
+  en:{searching:'Searching GPS…',finding:'Locating…',tzok:'From timezone ✓',offline:'GPS ✓ (offline)',denied:'GPS permission denied',unavail:'Location unavailable',timeout:'Timed out',nofound:'No city found',connected:'Connected ✓',defaultCity:'Default: Kolkata'},
+  hi:{searching:'GPS खोज रहे हैं…',finding:'स्थान निर्धारित हो रहा है…',tzok:'टाइमज़ोन से ✓',offline:'GPS ✓ (ऑफलाइन)',denied:'GPS अनुमति नहीं',unavail:'स्थान उपलब्ध नहीं',timeout:'समय समाप्त',nofound:'कोई शहर नहीं मिला',connected:'जुड़ा हुआ ✓',defaultCity:'डिफ़ॉल्ट: कोलकाता'},
 };
 const FEST_DAYS_LANG={
   bn:{today:'আজ 🎉',tomorrow:'আগামীকাল',days:' দিন বাকি',done:'এই বছরের সব উৎসব সম্পন্ন হয়েছে 🙏'},
@@ -1172,7 +1255,7 @@ function setLocation(lat,lon,name,utcOff,tzLabel,country){
   const ml=document.getElementById('muh-loc-lbl');if(ml)ml.textContent=locState.tzLabel+' · '+locState.name;
   const fl=document.getElementById('foot-loc');if(fl)fl.textContent=locState.name+' · '+locState.tzLabel;
   const dot=document.getElementById('loc-dot'); dot.className='loc-dot';
-  document.getElementById('loc-status-txt').textContent=activeLang==='en'?'Connected ✓':activeLang==='hi'?'जुड़ा हुआ ✓':'সংযুক্ত ✓';
+  document.getElementById('loc-status-txt').textContent=GPS_STATUS_LANG[activeLang||'bn'].connected||'Connected ✓';
   renderDetail(selDate); renderHdrToday(); renderTimeline();
   showToast('📍 '+locState.name+(activeLang==='en'?' — set':activeLang==='hi'?' — सेट हुआ':' — সেট হয়েছে'));
 }
@@ -1236,7 +1319,7 @@ function useTimezoneLocation(){
     }
   } catch(e){
     dot.className='loc-dot err';
-    document.getElementById('loc-status-txt').textContent=activeLang==='en'?'Default: Kolkata':activeLang==='hi'?'डिफ़ॉल्ट: कोलकाता':'ডিফল্ট: কলকাতা';
+    document.getElementById('loc-status-txt').textContent=GPS_STATUS_LANG[activeLang||'bn'].defaultCity||'Default: Kolkata';
     showToast(activeLang==='en'?'Location not found — search a city':activeLang==='hi'?'स्थान नहीं मिला — शहर खोजें':'অবস্থান পাওয়া যায়নি — শহর খুঁজে নিন');
   }
 }
@@ -1565,7 +1648,10 @@ function renderCal(){
   const bn1=gregToBengali(new Date(vY,vM,1));
   // Bengali month always shown in Bengali script
   document.getElementById('nav-mbn').textContent=BM_LANG.bn[bn1.bM]+' '+bn(bn1.bY);
-  document.getElementById('nav-men').textContent=BMEN[bn1.bM]+' '+bn1.bY+' · '+new Date(vY,vM).toLocaleString('en',{month:'long'})+' '+vY;
+  const _NL=activeLang||'bn';
+  const _benMonName=BM_LANG[_NL]?BM_LANG[_NL][bn1.bM]:BMEN[bn1.bM];
+  const _gregMon=new Date(vY,vM).toLocaleString('en',{month:'long'});
+  document.getElementById('nav-men').textContent=_benMonName+' '+bn1.bY+' · '+_gregMon+' '+vY;
   const grid=document.getElementById('days-grid');grid.innerHTML='';
   for(let i=0;i<firstDay;i++){const c=document.createElement('div');c.className='dc empty';grid.appendChild(c);}
   for(let d=1;d<=daysInM;d++){
@@ -1631,6 +1717,10 @@ function renderDetail(date){
   document.getElementById('m-yama').textContent=pd.yamghanta;
   document.getElementById('m-gulika').textContent=pd.gulika;
   document.getElementById('m-brahma').textContent=pd.brahma;
+  document.getElementById('m-godhuli').textContent=pd.godhuli||'—';
+  document.getElementById('m-vijaya').textContent=pd.vijaya||'—';
+  document.getElementById('m-nishita').textContent=pd.nishita||'—';
+  document.getElementById('m-sarvartha').textContent=pd.sarvartha||'—';
   // Tithi progress
   document.getElementById('tp-name').innerHTML=pd.tithi;
   document.getElementById('tp-pct').textContent=(activeLang==='bn'?bn(pd.tithiPct):pd.tithiPct)+'%';
@@ -1813,13 +1903,111 @@ function renderHdrToday(){
 /* ══════════════════════════════════════════════
    RASHIFAL
 ══════════════════════════════════════════════ */
+const RASHI_DETAILS={
+  lords:{bn:['মঙ্গল','শুক্র','বুধ','চন্দ্র','সূর্য','বুধ','শুক্র','মঙ্গল','বৃহস্পতি','শনি','শনি','বৃহস্পতি'],
+         en:['Mars','Venus','Mercury','Moon','Sun','Mercury','Venus','Mars','Jupiter','Saturn','Saturn','Jupiter'],
+         hi:['मंगल','शुक्र','बुध','चंद्र','सूर्य','बुध','शुक्र','मंगल','बृहस्पति','शनि','शनि','बृहस्पति']},
+  elem:{bn:['অগ্নি','পৃথিবী','বায়ু','জল','অগ্নি','পৃথিবী','বায়ু','জল','অগ্নি','পৃথিবী','বায়ু','জল'],
+        en:['Fire','Earth','Air','Water','Fire','Earth','Air','Water','Fire','Earth','Air','Water'],
+        hi:['अग्नि','पृथ्वी','वायु','जल','अग्नि','पृथ्वी','वायु','जल','अग्नि','पृथ्वी','वायु','जल']},
+  qual:{bn:['চর','স্থির','দ্বিস্বভাব','চর','স্থির','দ্বিস্বভাব','চর','স্থির','দ্বিস্বভাব','চর','স্থির','দ্বিস্বভাব'],
+        en:['Cardinal','Fixed','Mutable','Cardinal','Fixed','Mutable','Cardinal','Fixed','Mutable','Cardinal','Fixed','Mutable'],
+        hi:['चर','स्थिर','द्विस्वभाव','चर','स्थिर','द्विस्वभाव','चर','स्थिर','द्विस्वभाव','चर','स्थिर','द्विस्वभाव']},
+  desc:{bn:['সাহসী, উদ্যমী, নেতৃত্বের গুণ। মঙ্গলের প্রভাবে সক্রিয় ও প্রতিযোগিতামূলক।',
+            'ধৈর্যশীল, নির্ভরযোগ্য, সৌন্দর্যপ্রিয়। শুক্রের প্রভাবে ভোগপ্রিয় ও স্থিতিশীল।',
+            'বুদ্ধিমান, কৌতূহলী, যোগাযোগদক্ষ। বুধের প্রভাবে চঞ্চল ও বহুমুখী।',
+            'সংবেদনশীল, অনুভবপ্রবণ, পরিচর্যাকারী। চন্দ্রের প্রভাবে আবেগপ্রবণ ও পরিবারমুখী।',
+            'আত্মবিশ্বাসী, উদার, সৃজনশীল। সূর্যের প্রভাবে নেতৃত্বপ্রিয় ও গর্বিত।',
+            'বিশ্লেষণাত্মক, ব্যবহারিক, পরিশ্রমী। বুধের প্রভাবে বিস্তারিত-মনোযোগী।',
+            'ন্যায়পরায়ণ, সামাজিক, কূটনৈতিক। শুক্রের প্রভাবে ভারসাম্যপ্রিয় ও সৌন্দর্যমুখী।',
+            'তীব্র, রহস্যময়, রূপান্তরকারী। মঙ্গলের প্রভাবে গভীর ও দৃঢ়প্রতিজ্ঞ।',
+            'আশাবাদী, দার্শনিক, স্বাধীনতাপ্রিয়। বৃহস্পতির প্রভাবে জ্ঞানপিপাসু ও ভ্রমণপ্রিয়।',
+            'উচ্চাভিলাষী, শৃঙ্খলাবদ্ধ, দায়িত্বশীল। শনির প্রভাবে কর্মঠ ও লক্ষ্যনিষ্ঠ।',
+            'মৌলিক, মানবতাবাদী, স্বতন্ত্র। শনির প্রভাবে উদ্ভাবনী ও সমাজসচেতন।',
+            'স্বপ্নদ্রষ্টা, সহানুভূতিশীল, আধ্যাত্মিক। বৃহস্পতির প্রভাবে কল্পনাপ্রবণ ও করুণাময়।'],
+       en:['Bold, energetic, natural leader. Ruled by Mars — active and competitive.',
+           'Patient, reliable, love of beauty. Ruled by Venus — sensual and stable.',
+           'Intelligent, curious, communicative. Ruled by Mercury — versatile and quick.',
+           'Sensitive, nurturing, emotional. Ruled by Moon — intuitive and family-oriented.',
+           'Confident, generous, creative. Ruled by Sun — proud and leadership-driven.',
+           'Analytical, practical, hardworking. Ruled by Mercury — detail-oriented and precise.',
+           'Fair, social, diplomatic. Ruled by Venus — harmony-seeking and artistic.',
+           'Intense, mysterious, transformative. Ruled by Mars — deep and determined.',
+           'Optimistic, philosophical, freedom-loving. Ruled by Jupiter — adventurous and wise.',
+           'Ambitious, disciplined, responsible. Ruled by Saturn — hardworking and goal-oriented.',
+           'Original, humanitarian, independent. Ruled by Saturn — innovative and progressive.',
+           'Dreamy, compassionate, spiritual. Ruled by Jupiter — imaginative and empathetic.'],
+       hi:['साहसी, ऊर्जावान, नेतृत्व गुण। मंगल शासित — सक्रिय और प्रतिस्पर्धी।',
+           'धैर्यशील, विश्वसनीय, सौंदर्यप्रिय। शुक्र शासित — स्थिर और भोगप्रिय।',
+           'बुद्धिमान, जिज्ञासु, संचार कुशल। बुध शासित — बहुमुखी और चंचल।',
+           'संवेदनशील, पोषणकारी, भावुक। चंद्र शासित — सहज और परिवार-उन्मुख।',
+           'आत्मविश्वासी, उदार, रचनात्मक। सूर्य शासित — गर्वित और नेतृत्वप्रिय।',
+           'विश्लेषणात्मक, व्यावहारिक, परिश्रमी। बुध शासित — विस्तार-उन्मुख।',
+           'न्यायप्रिय, सामाजिक, कूटनीतिक। शुक्र शासित — संतुलन-प्रेमी।',
+           'तीव्र, रहस्यमय, परिवर्तनकारी। मंगल शासित — गहन और दृढ़निश्चयी।',
+           'आशावादी, दार्शनिक, स्वतंत्रताप्रिय। बृहस्पति शासित — ज्ञानपिपासु।',
+           'महत्वाकांक्षी, अनुशासित, जिम्मेदार। शनि शासित — कर्मठ और लक्ष्यनिष्ठ।',
+           'मौलिक, मानवतावादी, स्वतंत्र। शनि शासित — नवोन्मेषी और प्रगतिशील।',
+           'स्वप्नदर्शी, दयालु, आध्यात्मिक। बृहस्पति शासित — कल्पनाशील।']},
+  lucky_days:{bn:['মঙ্গল, শনি','শুক্র, বুধ','বুধ, শুক্র','সোম, বৃহস্পতি','রবি, সোম','বুধ, শনি','শুক্র, বুধ','মঙ্গল, রবি','বৃহস্পতি, মঙ্গল','শনি, শুক্র','শনি, রবি','বৃহস্পতি, চন্দ্র'],
+              en:['Tue, Sat','Fri, Wed','Wed, Fri','Mon, Thu','Sun, Mon','Wed, Sat','Fri, Wed','Tue, Sun','Thu, Tue','Sat, Fri','Sat, Sun','Thu, Mon'],
+              hi:['मंगल, शनि','शुक्र, बुध','बुध, शुक्र','सोम, गुरु','रवि, सोम','बुध, शनि','शुक्र, बुध','मंगल, रवि','गुरु, मंगल','शनि, शुक्र','शनि, रवि','गुरु, चंद्र']},
+  stone:{bn:['মূঙ্গা','হীরা','পান্না','মুক্তা','মাণিক্য','পান্না','হীরা','মূঙ্গা','পুখরাজ','নীলা','নীলা','পুখরাজ'],
+         en:['Red Coral','Diamond','Emerald','Pearl','Ruby','Emerald','Diamond','Red Coral','Yellow Sapphire','Blue Sapphire','Blue Sapphire','Yellow Sapphire'],
+         hi:['मूंगा','हीरा','पन्ना','मोती','माणिक्य','पन्ना','हीरा','मूंगा','पुखराज','नीलम','नीलम','पुखराज']},
+};
+
+let _selRashi = -1;
 function renderRashis(){
   const scr=document.getElementById('rashi-scroll');
-  RASHIS.forEach(r=>{
-    const c=document.createElement('div');c.className='rashi-card';
-    c.innerHTML=`<span class="ri">${r.i}</span><span class="rn">${r.n}</span><span class="re">${r.e}</span><span class="rl">🌿 ${r.l}</span>`;
+  scr.innerHTML='';
+  const RL=RASHI_LANG[activeLang||'bn'];
+  RASHIS.forEach((r,i)=>{
+    const c=document.createElement('div');
+    c.className='rashi-card'+(i===_selRashi?' sel':'');
+    c.style.cssText=i===_selRashi?'border-color:var(--hi);background:var(--hs);':'';
+    c.innerHTML='<span class="ri">'+r.i+'</span><span class="rn">'+RL[i]+'</span><span class="re">'+r.e+'</span><span class="rl">🌿 '+r.l+'</span>';
+    c.onclick=()=>showRashiDetail(i);
     scr.appendChild(c);
   });
+  if(_selRashi>=0) _renderRashiDetail(_selRashi);
+}
+function closeRashiDetail(){_selRashi=-1;const d=document.getElementById('rashi-detail');if(d)d.className='rashi-detail';renderRashis();}
+function showRashiDetail(i){
+  _selRashi=i;
+  renderRashis();
+}
+function _renderRashiDetail(i){
+  const L=activeLang||'bn';
+  const RL=RASHI_LANG[L];const r=RASHIS[i];
+  const D=RASHI_DETAILS;
+  const lbl={lord:L==='en'?'Ruling Planet':L==='hi'?'ग्रह स्वामी':'গ্রহ স্বামী',
+              elem:L==='en'?'Element':L==='hi'?'तत्व':'তত্ত্ব',
+              qual:L==='en'?'Quality':L==='hi'?'गुण':'গুণ',
+              lucky:L==='en'?'Lucky Days':L==='hi'?'शुभ दिन':'শুভ দিন',
+              stone:L==='en'?'Gemstone':L==='hi'?'रत्न':'রত্নপাথর',
+              lucky_n:L==='en'?'Lucky Numbers':L==='hi'?'शुभ अंक':'শুভ সংখ্যা'};
+  const det=document.getElementById('rashi-detail');
+  det.className='rashi-detail show';
+  det.innerHTML=
+    '<div class="rd-hdr">'+
+      '<div class="rd-sym">'+r.i+'</div>'+
+      '<div class="rd-info">'+
+        '<div class="rd-name">'+RL[i]+'</div>'+
+        '<div class="rd-en">'+r.e+'</div>'+
+      '</div>'+
+      '<button class="rd-close" onclick="closeRashiDetail()">✕</button>'+
+    '</div>'+
+    '<div class="rd-grid">'+
+      '<div class="rd-item"><div class="rd-key">'+lbl.lord+'</div><div class="rd-val">'+D.lords[L][i]+'</div></div>'+
+      '<div class="rd-item"><div class="rd-key">'+lbl.elem+'</div><div class="rd-val">'+D.elem[L][i]+'</div></div>'+
+      '<div class="rd-item"><div class="rd-key">'+lbl.qual+'</div><div class="rd-val">'+D.qual[L][i]+'</div></div>'+
+      '<div class="rd-item"><div class="rd-key">'+lbl.lucky+'</div><div class="rd-val">'+D.lucky_days[L][i]+'</div></div>'+
+      '<div class="rd-item"><div class="rd-key">'+lbl.stone+'</div><div class="rd-val">'+D.stone[L][i]+'</div></div>'+
+      '<div class="rd-item"><div class="rd-key">'+lbl.lucky_n+'</div><div class="rd-val">'+r.l+'</div></div>'+
+    '</div>'+
+    '<div class="rd-desc">'+D.desc[L][i]+'</div>';
+  det.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 
 /* ══════════════════════════════════════════════
@@ -2025,7 +2213,7 @@ function applyLang(){
   setHTML('lbl-sid', L.sid);
   // Update siddhanta button labels
   document.getElementById('sid-surya').querySelector('.sid-name').textContent=activeLang==='hi'?'सूर्य':activeLang==='en'?'Surya':'সূর্য';
-  document.getElementById('sid-drik').querySelector('.sid-name').textContent=activeLang==='hi'?'दृक':'Drik';
+  document.getElementById('sid-drik').querySelector('.sid-name').textContent=activeLang==='hi'?'दृक':activeLang==='en'?'Drik':'দৃক্‌';
   document.getElementById('sid-chandra').querySelector('.sid-name').textContent=activeLang==='hi'?'चंद्र':activeLang==='en'?'Chandra':'চন্দ্র';
   document.getElementById('sid-desc').textContent=getSid().desc[activeLang]||getSid().desc.bn;
   setHTML('lbl-sunmoon', L.sunmoon + ' — <span id="loc-badge">'+document.getElementById('loc-badge').textContent+'</span>');
@@ -2045,6 +2233,10 @@ function applyLang(){
   setTxt('mn-abhijit', L.abhijit); setTxt('mn-amrit', L.amrit);
   setTxt('mn-rahu', L.rahu); setTxt('mn-yama', L.yama);
   setTxt('mn-gulika', L.gulika); setTxt('mn-brahma', L.brahma);
+  setTxt('mn-godhuli', L.godhuli||(activeLang==='en'?'Godhuli':activeLang==='hi'?'गोधूलि':'গোধূলি'));
+  setTxt('mn-vijaya', L.vijaya||(activeLang==='en'?'Vijaya Muhurta':activeLang==='hi'?'विजय मुहूर्त':'বিজয় মুহূর্ত'));
+  setTxt('mn-nishita', L.nishita||(activeLang==='en'?'Nishita Muhurta':activeLang==='hi'?'निशित मुहूर्त':'নিশিত মুহূর্ত'));
+  setTxt('mn-sarvartha', L.sarvartha||(activeLang==='en'?'Sarvartha Siddhi':activeLang==='hi'?'सर्वार्थ सिद्धि':'সর্বার্থ সিদ্ধি'));
   // Panel labels
   setTxt('lbl-tara', L.tara); setTxt('lbl-chand', L.chand);
   setTxt('lbl-mantra', L.mantra); setTxt('lbl-activ', L.activ);
@@ -2054,10 +2246,37 @@ function applyLang(){
   setTxt('lbl-search', L.search); setTxt('lbl-copy', L.copy);
   setTxt('lbl-dl', L.dl); setTxt('lbl-print', L.print);
   setTxt('lbl-addrem', L.addrem); setTxt('lbl-noon', L.noon);
+  const hfab=document.getElementById('help-fab');if(hfab)hfab.textContent=L.helpbtn||'❓ Help';
   setTxt('lbl-rights', L.rights);
   // Placeholders
   const ci = document.getElementById('city-input'); if(ci) ci.placeholder = L.cityph;
   const ri = document.getElementById('rem-text'); if(ri) ri.placeholder = L.remph;
+  // Location status text - re-apply with correct language
+  const _stEl = document.getElementById('loc-status-txt');
+  if(_stEl){
+    const _st = _stEl.textContent;
+    // Re-map known Bengali/English status strings to current lang
+    const _stMap = {
+      'অনুসন্ধান করছি…': GPS_STATUS_LANG[activeLang].searching,
+      'GPS খুঁজছে…': GPS_STATUS_LANG[activeLang].searching,
+      'Searching GPS…': GPS_STATUS_LANG[activeLang].searching,
+      'अनुसन्धान हो रहा है…': GPS_STATUS_LANG[activeLang].searching,
+      'অবস্থান নির্ণয় হচ্ছে…': GPS_STATUS_LANG[activeLang].finding,
+      'Locating…': GPS_STATUS_LANG[activeLang].finding,
+      'টাইমজোন থেকে ✓': GPS_STATUS_LANG[activeLang].tzok,
+      'From timezone ✓': GPS_STATUS_LANG[activeLang].tzok,
+      'টाइमज़ोन से ✓': GPS_STATUS_LANG[activeLang].tzok,
+      'সংযুক্ত ✓': GPS_STATUS_LANG[activeLang].connected||'Connected ✓',
+      'Connected ✓': GPS_STATUS_LANG[activeLang].connected||'Connected ✓',
+      'जुड़ा हुआ ✓': GPS_STATUS_LANG[activeLang].connected||'Connected ✓',
+      'ডিফল্ট: কলকাতা': GPS_STATUS_LANG[activeLang].defaultCity,
+      'Default: Kolkata': GPS_STATUS_LANG[activeLang].defaultCity,
+      'डिफ़ॉल्ट: कोलकाता': GPS_STATUS_LANG[activeLang].defaultCity,
+      'GPS ✓ (অফলাইন)': GPS_STATUS_LANG[activeLang].offline,
+      'GPS ✓ (offline)': GPS_STATUS_LANG[activeLang].offline,
+    };
+    if(_stMap[_st]) _stEl.textContent = _stMap[_st];
+  }
   // Calendar weekday row
   const wds = document.querySelectorAll('.wd-cell');
   L.days.forEach((d,i)=>{ if(wds[i]) wds[i].textContent=d; });
@@ -2074,8 +2293,10 @@ function applyLang(){
   renderHora(selDate);
   renderGraha(selDate);
   renderTimeline();
-  renderRashis();
+  renderRashis();  // also re-renders detail if open
   renderCal();
+  // Refresh help content if open
+  if(document.getElementById('help-drawer').classList.contains('open')) showHelpTab(_helpTab);
 }
 
 function setLang(l){
@@ -2104,7 +2325,7 @@ function setLang(l){
   // Set default location (Kolkata) immediately so app is usable right away
   document.getElementById('loc-name').textContent=locState.name;
   document.getElementById('loc-coords').textContent='lat: '+locState.lat+', lon: '+locState.lon+'  ·  '+locState.tzLabel;
-  document.getElementById('loc-status-txt').textContent=activeLang==='en'?'Default: Kolkata':activeLang==='hi'?'डिफ़ॉल्ट: कोलकाता':'ডিফল্ট: কলকাতা';
+  document.getElementById('loc-status-txt').textContent=GPS_STATUS_LANG[activeLang||'bn'].defaultCity||'Default: Kolkata';
   document.getElementById('loc-dot').className='loc-dot';
   // Request notification permission
   if('Notification'in window&&Notification.permission==='default')Notification.requestPermission();
@@ -2208,6 +2429,446 @@ async function installPWA() {
 // Online/Offline indicator
 window.addEventListener('online',  () => showToast(activeLang==='en'?'🌐 Back online':activeLang==='hi'?'🌐 वापस ऑनलाइन':'🌐 অনলাইন হয়েছে'));
 window.addEventListener('offline', () => showToast(activeLang==='en'?'📴 Offline mode — full panchang still works':activeLang==='hi'?'📴 ऑफलाइन — पूर्ण पंचांग उपलब्ध है':'📴 অফলাইন — সম্পূর্ণ পঞ্জিকা কাজ করছে'));
+
+
+/* ══════════════════════════════════════════════
+   HELP GUIDE
+══════════════════════════════════════════════ */
+const HELP_CONTENT = {
+  en: {
+    title: '📖 Help Guide',
+    tabs: ['Getting Started','Panchang','Calendar','Location','Glossary','Install'],
+    pages: [
+      // ── Tab 0: Getting Started ──────────────────────────────────
+      `<div class="help-sec">
+        <div class="help-sec-title">Welcome to Bangla Panjika</div>
+        <div class="help-tip">
+          <b>Bangla Panjika</b> is a complete Bengali Hindu almanac (পঞ্জিকা) that gives you daily panchang data — tithi, nakshatra, yoga, muhurta, festivals and much more — for any location in the world.
+        </div>
+      </div>
+      <div class="help-sec">
+        <div class="help-sec-title">Quick Tour</div>
+        <div class="help-step"><div class="help-step-num">1</div><div class="help-step-txt"><b>Header strip</b> — today's Bengali date, tithi, nakshatra and yoga at a glance.</div></div>
+        <div class="help-step"><div class="help-step-num">2</div><div class="help-step-txt"><b>Siddhanta toggle</b> — switch between Surya ☀️, Drik 🔭 and Chandra 🌙 calculation systems. Your choice is saved automatically.</div></div>
+        <div class="help-step"><div class="help-step-num">3</div><div class="help-step-txt"><b>Calendar grid</b> — tap any date to see full panchang details for that day. Today is highlighted in purple.</div></div>
+        <div class="help-step"><div class="help-step-num">4</div><div class="help-step-txt"><b>Live clock</b> — shows real-time in your selected city's timezone, updating every second.</div></div>
+        <div class="help-step"><div class="help-step-num">5</div><div class="help-step-txt"><b>Language</b> — tap <b>বাং / EN / हि</b> in the top-right corner to switch between Bengali, English and Hindi.</div></div>
+        <div class="help-step"><div class="help-step-num">6</div><div class="help-step-txt"><b>Theme</b> — tap ☀️ 🌙 ⚫ to switch between Light, Dark and OLED true-black modes.</div></div>
+      </div>
+      <div class="help-sec">
+        <div class="help-sec-title">Navigation</div>
+        <div class="help-card"><div class="help-card-title">« »</div><div class="help-card-body">Jump one year backward or forward.</div></div>
+        <div class="help-card"><div class="help-card-title">‹ ›</div><div class="help-card-body">Move one month backward or forward.</div></div>
+        <div class="help-card"><div class="help-card-title">Tap any date cell</div><div class="help-card-body">Opens the full detail panel for that day — tithi, nakshatra, yoga, karana, muhurta, moon phase, tarabala, activities, graha positions and more.</div></div>
+      </div>`,
+
+      // ── Tab 1: Panchang ─────────────────────────────────────────
+      `<div class="help-sec">
+        <div class="help-sec-title">What is Panchang?</div>
+        <div class="help-tip">
+          <b>Panchang</b> (পঞ্চাঙ্গ) means "five limbs" — the five essential elements of the Hindu almanac that describe the quality of each moment in time.
+        </div>
+      </div>
+      <div class="help-sec">
+        <div class="help-sec-title">The Five Limbs</div>
+        <div class="help-card"><div class="help-card-title">1. তিথি (Tithi)</div><div class="help-card-body">The lunar day — one of 30 phases of the moon cycle (15 waxing Shukla + 15 waning Krishna). Governs auspiciousness of activities. Updates throughout the day as the moon moves.</div></div>
+        <div class="help-card"><div class="help-card-title">2. নক্ষত্র (Nakshatra)</div><div class="help-card-body">The lunar mansion — one of 27 star clusters the moon passes through. Each nakshatra has its own deity, energy and purpose. Determines the mantra of the day.</div></div>
+        <div class="help-card"><div class="help-card-title">3. যোগ (Yoga)</div><div class="help-card-body">The combination of the sun and moon's longitudes, divided into 27 parts. Some yogas are highly auspicious (Siddhi, Shubha) while others are inauspicious (Shula, Ganda).</div></div>
+        <div class="help-card"><div class="help-card-title">4. করণ (Karana)</div><div class="help-card-body">Half a tithi — there are 11 karanas that repeat through the lunar month. Used for choosing the right half-day for important work.</div></div>
+        <div class="help-card"><div class="help-card-title">5. বার (Vara/Weekday)</div><div class="help-card-body">The day of the week, each ruled by a planet — Ravi (Sun), Soma (Moon), Mangal (Mars), Budha (Mercury), Guru (Jupiter), Shukra (Venus), Shani (Saturn).</div></div>
+      </div>
+      <div class="help-sec">
+        <div class="help-sec-title">Muhurta (Auspicious Times)</div>
+        <div class="help-card"><div class="help-card-title">🕛 অভিজিৎ (Abhijit)</div><div class="help-card-body">The most powerful auspicious muhurta — midday period ~11:48–12:36. Ideal for starting important work, signing agreements, travel.</div></div>
+        <div class="help-card"><div class="help-card-title">⭐ অমৃত সিদ্ধি (Amrit Siddhi)</div><div class="help-card-body">Rare combination of an auspicious nakshatra and weekday — anything started here is said to succeed ("nectar of success").</div></div>
+        <div class="help-card"><div class="help-card-title">🌟 ব্রহ্ম মুহূর্ত (Brahma Muhurta)</div><div class="help-card-body">The sacred hour before sunrise (~4:24–5:12 AM local time). Best for meditation, study, yoga and spiritual practice.</div></div>
+        <div class="help-card"><div class="help-card-title">⚠️ রাহুকাল (Rahu Kaal)</div><div class="help-card-body">Inauspicious 90-minute period ruled by Rahu each day. Avoid starting new ventures, travel or important decisions during this time. Changes by weekday.</div></div>
+        <div class="help-card"><div class="help-card-title">🚫 যমঘণ্ট (Yamaghanta)</div><div class="help-card-body">Inauspicious period ruled by Yama (lord of death). Avoid auspicious activities and journeys.</div></div>
+        <div class="help-card"><div class="help-card-title">🌑 গুলিক কাল (Gulika Kaal)</div><div class="help-card-body">Inauspicious period associated with Saturn's son Gulika. Avoid new beginnings during this window.</div></div>
+      </div>
+      <div class="help-sec">
+        <div class="help-sec-title">Tarabala & Chandrabala</div>
+        <div class="help-card"><div class="help-card-title">⭐ তারাবল (Tarabala)</div><div class="help-card-body">Measures the relationship between the day's nakshatra and your birth nakshatra. A strong tarabala means the day's energy supports you personally.</div></div>
+        <div class="help-card"><div class="help-card-title">🌙 চন্দ্রবল (Chandrabala)</div><div class="help-card-body">Moon's strength based on its house position from your birth moon sign. Moon in houses 1,3,6,7,10,11 from natal moon gives strong chandrabala.</div></div>
+      </div>
+      <div class="help-sec">
+        <div class="help-sec-title">Three Siddhantas</div>
+        <div class="help-card"><div class="help-card-title">☀️ Surya Siddhanta</div><div class="help-card-body">Ancient classical system (~400 CE). Used by most traditional Bengali almanacs and priests. Based on the foundational Sanskrit astronomical text.</div></div>
+        <div class="help-card"><div class="help-card-title">🔭 Drik Siddhanta</div><div class="help-card-body">Modern observation-based system aligned with actual planetary positions (IAU/JPL ephemeris). Most accurate for the present era — used by most apps and digital panchangs.</div></div>
+        <div class="help-card"><div class="help-card-title">🌙 Chandra Siddhanta</div><div class="help-card-body">Chandrasekhar Samanta's 19th-century system (~1869), emphasising precise lunar motion. Used by some Odisha and Bengal traditions.</div></div>
+      </div>`,
+
+      // ── Tab 2: Calendar ─────────────────────────────────────────
+      `<div class="help-sec">
+        <div class="help-sec-title">Reading the Calendar</div>
+        <div class="help-tip">Each date cell shows two numbers — the <b>large top number</b> is the Gregorian date in Bengali numerals, and the <b>small bottom number</b> is the corresponding Bengali calendar date.</div>
+      </div>
+      <div class="help-sec">
+        <div class="help-sec-title">Cell Colours</div>
+        <div class="help-card"><div class="help-card-title" style="color:var(--hi)">Purple outline</div><div class="help-card-body">Today's date — the current day is always highlighted.</div></div>
+        <div class="help-card"><div class="help-card-title" style="color:var(--rd)">Red number (রবি)</div><div class="help-card-body">Sunday — traditionally the day of the Sun (Ravi).</div></div>
+        <div class="help-card"><div class="help-card-title" style="color:var(--h2)">Pink number (শনি)</div><div class="help-card-body">Saturday — day of Saturn (Shani), considered significant in Hindu tradition.</div></div>
+        <div class="help-card"><div class="help-card-title">🔴 Small dot</div><div class="help-card-body">Indicates a festival or special event on that date.</div></div>
+      </div>
+      <div class="help-sec">
+        <div class="help-sec-title">Detail Panel</div>
+        <div class="help-tip">Tap any date to open the full detail panel. It shows tithi, nakshatra, yoga, karana, moon sign, lucky colour, lucky number, direction, Vikram Samvat year, sunrise/sunset, moon phase, muhurta times, mantra, auspicious activities, planetary hora, graha positions and the panchang timeline.</div>
+      </div>
+      <div class="help-sec">
+        <div class="help-sec-title">Bengali Calendar System</div>
+        <div class="help-card"><div class="help-card-title">Bengali Year (বাংলা সন)</div><div class="help-card-body">The Bengali solar calendar begins with Pohela Boishakh (পয়লা বৈশাখ) in mid-April. The current year is approximately 556–557 years behind the Gregorian year.</div></div>
+        <div class="help-card"><div class="help-card-title">Twelve Bengali Months</div><div class="help-card-body">বৈশাখ · জ্যৈষ্ঠ · আষাঢ় · শ্রাবণ · ভাদ্র · আশ্বিন · কার্তিক · অগ্রহায়ণ · পৌষ · মাঘ · ফাল্গুন · চৈত্র</div></div>
+        <div class="help-card"><div class="help-card-title">Vikram Samvat</div><div class="help-card-body">The traditional Hindu calendar era, approximately 56–57 years ahead of the Gregorian year. Shown in the detail panel for each selected date.</div></div>
+      </div>
+      <div class="help-sec">
+        <div class="help-sec-title">Rashifal (Zodiac)</div>
+        <div class="help-tip">Scroll the zodiac strip horizontally to see all 12 signs. Each card shows the sign symbol, Bengali name, English name and lucky number.</div>
+      </div>`,
+
+      // ── Tab 3: Location ─────────────────────────────────────────
+      `<div class="help-sec">
+        <div class="help-sec-title">Why Location Matters</div>
+        <div class="help-tip">Sunrise, sunset, muhurta times and the panchang timeline all depend on your geographic location and timezone. Setting your city gives you accurate local timings.</div>
+      </div>
+      <div class="help-sec">
+        <div class="help-sec-title">Setting Your Location</div>
+        <div class="help-step"><div class="help-step-num">1</div><div class="help-step-txt"><b>Auto GPS</b> — tap the green <b>📡 GPS</b> button. Allow location permission when prompted. The app fetches your exact coordinates and determines your timezone automatically.</div></div>
+        <div class="help-step"><div class="help-step-num">2</div><div class="help-step-txt"><b>City Search</b> — type a city name in the search box (e.g. "Kolkata", "Tokyo", "New York"). Results come from 87 built-in cities plus live geocoding — works offline for major cities.</div></div>
+        <div class="help-step"><div class="help-step-num">3</div><div class="help-step-txt"><b>Timezone auto-detect</b> — if GPS permission is denied, the app automatically reads your device timezone and finds the nearest matching city. No action needed.</div></div>
+      </div>
+      <div class="help-sec">
+        <div class="help-sec-title">Location Status Indicator</div>
+        <div class="help-card"><div class="help-card-title">🟢 Green dot</div><div class="help-card-body">Location is set and connected. Times shown are accurate for this city.</div></div>
+        <div class="help-card"><div class="help-card-title">🟡 Yellow dot</div><div class="help-card-body">Location is being searched or timezone is being detected.</div></div>
+        <div class="help-card"><div class="help-card-title">🔴 Red dot</div><div class="help-card-body">Location could not be determined. Default (Kolkata) is being used.</div></div>
+      </div>
+      <div class="help-sec">
+        <div class="help-sec-title">Live Clock</div>
+        <div class="help-tip">The clock always shows the <b>real current time at your selected city</b> — not your device's local time. So if you select Tokyo, the clock shows Tokyo time even if your device is set to IST.</div>
+      </div>
+      <div class="help-sec">
+        <div class="help-sec-title">Supported Cities</div>
+        <div class="help-tip">87 offline cities across India and worldwide — Kolkata, Delhi, Mumbai, London, Tokyo, New York, Dubai, Sydney and more. Any city can be found via live search when online.</div>
+      </div>`,
+
+      // ── Tab 4: Glossary ─────────────────────────────────────────
+      `<div class="help-sec">
+        <div class="help-sec-title">Panchang Terms</div>
+        <div class="help-glossary">
+          <div class="help-gitem"><div class="help-gterm">তিথি</div><div class="help-gdef">Lunar day (1–30)</div></div>
+          <div class="help-gitem"><div class="help-gterm">নক্ষত্র</div><div class="help-gdef">Lunar mansion (1–27)</div></div>
+          <div class="help-gitem"><div class="help-gterm">যোগ</div><div class="help-gdef">Sun+Moon combination (1–27)</div></div>
+          <div class="help-gitem"><div class="help-gterm">করণ</div><div class="help-gdef">Half lunar day (1–11)</div></div>
+          <div class="help-gitem"><div class="help-gterm">শুক্লপক্ষ</div><div class="help-gdef">Waxing moon fortnight</div></div>
+          <div class="help-gitem"><div class="help-gterm">কৃষ্ণপক্ষ</div><div class="help-gdef">Waning moon fortnight</div></div>
+          <div class="help-gitem"><div class="help-gterm">পূর্ণিমা</div><div class="help-gdef">Full moon day</div></div>
+          <div class="help-gitem"><div class="help-gterm">অমাবস্যা</div><div class="help-gdef">New moon day</div></div>
+          <div class="help-gitem"><div class="help-gterm">মুহূর্ত</div><div class="help-gdef">Auspicious time period</div></div>
+          <div class="help-gitem"><div class="help-gterm">রাহুকাল</div><div class="help-gdef">Inauspicious Rahu period</div></div>
+          <div class="help-gitem"><div class="help-gterm">হোরা</div><div class="help-gdef">Planetary hour</div></div>
+          <div class="help-gitem"><div class="help-gterm">রাশি</div><div class="help-gdef">Zodiac sign</div></div>
+          <div class="help-gitem"><div class="help-gterm">তারাবল</div><div class="help-gdef">Star strength</div></div>
+          <div class="help-gitem"><div class="help-gterm">চন্দ্রবল</div><div class="help-gdef">Moon strength</div></div>
+          <div class="help-gitem"><div class="help-gterm">বিক্রম সংবৎ</div><div class="help-gdef">Hindu Vikram era year</div></div>
+          <div class="help-gitem"><div class="help-gterm">সিদ্ধান্ত</div><div class="help-gdef">Astronomical system</div></div>
+          <div class="help-gitem"><div class="help-gterm">উদয়</div><div class="help-gdef">Sunrise</div></div>
+          <div class="help-gitem"><div class="help-gterm">অস্ত</div><div class="help-gdef">Sunset</div></div>
+          <div class="help-gitem"><div class="help-gterm">নবগ্রহ</div><div class="help-gdef">Nine planets</div></div>
+          <div class="help-gitem"><div class="help-gterm">পঞ্চাঙ্গ</div><div class="help-gdef">Five-limbed almanac</div></div>
+        </div>
+      </div>
+      <div class="help-sec">
+        <div class="help-sec-title">Nine Planets (নবগ্রহ)</div>
+        <div class="help-glossary">
+          <div class="help-gitem"><div class="help-gterm">☉ সূর্য</div><div class="help-gdef">Sun — soul, authority</div></div>
+          <div class="help-gitem"><div class="help-gterm">☽ চন্দ্র</div><div class="help-gdef">Moon — mind, emotion</div></div>
+          <div class="help-gitem"><div class="help-gterm">♂ মঙ্গল</div><div class="help-gdef">Mars — energy, courage</div></div>
+          <div class="help-gitem"><div class="help-gterm">☿ বুধ</div><div class="help-gdef">Mercury — intellect</div></div>
+          <div class="help-gitem"><div class="help-gterm">♃ বৃহস্পতি</div><div class="help-gdef">Jupiter — wisdom</div></div>
+          <div class="help-gitem"><div class="help-gterm">♀ শুক্র</div><div class="help-gdef">Venus — beauty, love</div></div>
+          <div class="help-gitem"><div class="help-gterm">♄ শনি</div><div class="help-gdef">Saturn — discipline</div></div>
+          <div class="help-gitem"><div class="help-gterm">☊ রাহু</div><div class="help-gdef">North Node — desire</div></div>
+          <div class="help-gitem"><div class="help-gterm">☋ কেতু</div><div class="help-gdef">South Node — liberation</div></div>
+        </div>
+      </div>`,
+
+      // ── Tab 5: Install ──────────────────────────────────────────
+      `<div class="help-sec">
+        <div class="help-sec-title">Install as App (PWA)</div>
+        <div class="help-tip">Bangla Panjika is a <b>Progressive Web App</b> — you can install it on your phone or desktop and use it like a native app, even <b>offline</b>.</div>
+      </div>
+      <div class="help-sec">
+        <div class="help-sec-title">Android (Chrome)</div>
+        <div class="help-step"><div class="help-step-num">1</div><div class="help-step-txt">Open the app in <b>Chrome</b> browser.</div></div>
+        <div class="help-step"><div class="help-step-num">2</div><div class="help-step-txt">Tap the <b>three-dot menu ⋮</b> in the top-right corner.</div></div>
+        <div class="help-step"><div class="help-step-num">3</div><div class="help-step-txt">Tap <b>"Add to Home screen"</b> or <b>"Install app"</b>.</div></div>
+        <div class="help-step"><div class="help-step-num">4</div><div class="help-step-txt">Tap <b>Install</b> on the confirmation dialog. The app icon appears on your home screen.</div></div>
+      </div>
+      <div class="help-sec">
+        <div class="help-sec-title">iPhone / iPad (Safari)</div>
+        <div class="help-step"><div class="help-step-num">1</div><div class="help-step-txt">Open the app in <b>Safari</b> — must be Safari, not Chrome.</div></div>
+        <div class="help-step"><div class="help-step-num">2</div><div class="help-step-txt">Tap the <b>Share button</b> (box with arrow ↑) at the bottom.</div></div>
+        <div class="help-step"><div class="help-step-num">3</div><div class="help-step-txt">Scroll down and tap <b>"Add to Home Screen"</b>.</div></div>
+        <div class="help-step"><div class="help-step-num">4</div><div class="help-step-txt">Tap <b>Add</b>. The panjika icon now appears on your home screen.</div></div>
+      </div>
+      <div class="help-sec">
+        <div class="help-sec-title">Desktop (Chrome / Edge)</div>
+        <div class="help-step"><div class="help-step-num">1</div><div class="help-step-txt">Look for the <b>install icon ⊕</b> in the browser address bar.</div></div>
+        <div class="help-step"><div class="help-step-num">2</div><div class="help-step-txt">Click it and select <b>Install</b>. The app opens in its own window.</div></div>
+      </div>
+      <div class="help-sec">
+        <div class="help-sec-title">Offline Features</div>
+        <div class="help-card"><div class="help-card-title">✅ Works offline</div><div class="help-card-body">Full panchang calculation, calendar, tithi, nakshatra, yoga, muhurta, moon phase, festivals — all work without internet.</div></div>
+        <div class="help-card"><div class="help-card-title">🌐 Needs internet for</div><div class="help-card-body">Live city geocoding search (new cities not in the 87 built-in), and real-time timezone detection via GPS.</div></div>
+      </div>
+      <div class="help-sec">
+        <div class="help-sec-title">Share & Export</div>
+        <div class="help-card"><div class="help-card-title">📋 Copy</div><div class="help-card-body">Copies today's full panchang summary to clipboard. Paste into any app.</div></div>
+        <div class="help-card"><div class="help-card-title">💬 WhatsApp</div><div class="help-card-body">Opens WhatsApp with today's panchang pre-filled. Share with family and friends.</div></div>
+        <div class="help-card"><div class="help-card-title">⬇️ Download</div><div class="help-card-body">Saves today's panchang as a .txt file to your device.</div></div>
+        <div class="help-card"><div class="help-card-title">🖨️ Print</div><div class="help-card-body">Opens a print-friendly version of the day's panchang.</div></div>
+      </div>`
+    ]
+  },
+
+  bn: {
+    title: '📖 সহায়িকা',
+    tabs: ['শুরু করুন','পঞ্চাঙ্গ','ক্যালেন্ডার','অবস্থান','পরিভাষা','ইনস্টল'],
+    pages: [
+      `<div class="help-sec">
+        <div class="help-sec-title">বাংলা পঞ্জিকায় স্বাগতম</div>
+        <div class="help-tip"><b>বাংলা পঞ্জিকা</b> একটি সম্পূর্ণ হিন্দু পঞ্চাঙ্গ অ্যাপ — তিথি, নক্ষত্র, যোগ, মুহূর্ত, উৎসব এবং আরও অনেক কিছু বিশ্বের যেকোনো অবস্থানের জন্য।</div>
+      </div>
+      <div class="help-sec">
+        <div class="help-sec-title">দ্রুত পরিচিতি</div>
+        <div class="help-step"><div class="help-step-num">১</div><div class="help-step-txt"><b>হেডার স্ট্রিপ</b> — আজকের বাংলা তারিখ, তিথি, নক্ষত্র ও যোগ এক নজরে।</div></div>
+        <div class="help-step"><div class="help-step-num">২</div><div class="help-step-txt"><b>সিদ্ধান্ত টগল</b> — সূর্য ☀️, দৃক্‌ 🔭 বা চন্দ্র 🌙 গণনা পদ্ধতি বেছে নিন।</div></div>
+        <div class="help-step"><div class="help-step-num">৩</div><div class="help-step-txt"><b>ক্যালেন্ডার গ্রিড</b> — যেকোনো তারিখে ট্যাপ করলে সেই দিনের সম্পূর্ণ পঞ্চাঙ্গ তথ্য দেখা যাবে।</div></div>
+        <div class="help-step"><div class="help-step-num">৪</div><div class="help-step-txt"><b>লাইভ ঘড়ি</b> — নির্বাচিত শহরের সঠিক সময় প্রতি সেকেন্ডে আপডেট হয়।</div></div>
+        <div class="help-step"><div class="help-step-num">৫</div><div class="help-step-txt"><b>ভাষা পরিবর্তন</b> — উপরের ডানদিকে <b>বাং / EN / हि</b> বোতামে ট্যাপ করুন।</div></div>
+        <div class="help-step"><div class="help-step-num">৬</div><div class="help-step-txt"><b>থিম</b> — ☀️ 🌙 ⚫ বোতামে ট্যাপ করে লাইট, ডার্ক বা OLED মোড বদলান।</div></div>
+      </div>
+      <div class="help-sec">
+        <div class="help-sec-title">নেভিগেশন</div>
+        <div class="help-card"><div class="help-card-title">« »</div><div class="help-card-body">এক বছর পিছনে বা সামনে যান।</div></div>
+        <div class="help-card"><div class="help-card-title">‹ ›</div><div class="help-card-body">এক মাস পিছনে বা সামনে যান।</div></div>
+        <div class="help-card"><div class="help-card-title">যেকোনো তারিখে ট্যাপ</div><div class="help-card-body">সেই দিনের সম্পূর্ণ পঞ্চাঙ্গ তথ্য খুলে যাবে।</div></div>
+      </div>`,
+
+      `<div class="help-sec">
+        <div class="help-sec-title">পঞ্চাঙ্গ কী?</div>
+        <div class="help-tip"><b>পঞ্চাঙ্গ</b> মানে "পাঁচটি অঙ্গ" — হিন্দু পঞ্জিকার পাঁচটি মূল উপাদান যা প্রতিটি মুহূর্তের গুণমান নির্ধারণ করে।</div>
+      </div>
+      <div class="help-sec">
+        <div class="help-sec-title">পাঁচটি অঙ্গ</div>
+        <div class="help-card"><div class="help-card-title">১. তিথি</div><div class="help-card-body">চান্দ্র দিন — চন্দ্রচক্রের ৩০টি পর্যায়ের একটি (১৫টি শুক্লপক্ষ + ১৫টি কৃষ্ণপক্ষ)।</div></div>
+        <div class="help-card"><div class="help-card-title">২. নক্ষত্র</div><div class="help-card-body">চন্দ্রের আবাস — ২৭টি তারকাগুচ্ছের একটি যার মধ্য দিয়ে চন্দ্র যায়।</div></div>
+        <div class="help-card"><div class="help-card-title">৩. যোগ</div><div class="help-card-body">সূর্য ও চন্দ্রের দ্রাঘিমার সমষ্টি থেকে নির্ণীত ২৭টি যোগের একটি।</div></div>
+        <div class="help-card"><div class="help-card-title">৪. করণ</div><div class="help-card-body">অর্ধ-তিথি — ১১টি করণ যা চান্দ্র মাস জুড়ে পুনরাবৃত্তি হয়।</div></div>
+        <div class="help-card"><div class="help-card-title">৫. বার (বারবার)</div><div class="help-card-body">সপ্তাহের দিন — রবি, সোম, মঙ্গল, বুধ, বৃহস্পতি, শুক্র, শনি।</div></div>
+      </div>
+      <div class="help-sec">
+        <div class="help-sec-title">মুহূর্ত</div>
+        <div class="help-card"><div class="help-card-title">🕛 অভিজিৎ মুহূর্ত</div><div class="help-card-body">দিনের সবচেয়ে শক্তিশালী শুভ মুহূর্ত — দুপুর ১১:৪৮–১২:৩৬।</div></div>
+        <div class="help-card"><div class="help-card-title">⚠️ রাহুকাল</div><div class="help-card-body">প্রতিদিন ৯০ মিনিটের অশুভ সময়। এই সময়ে নতুন কাজ শুরু করবেন না।</div></div>
+        <div class="help-card"><div class="help-card-title">🌟 ব্রহ্ম মুহূর্ত</div><div class="help-card-body">সূর্যোদয়ের আগের পবিত্র সময়। ধ্যান, পূজা ও পড়াশোনার জন্য শ্রেষ্ঠ।</div></div>
+      </div>`,
+
+      `<div class="help-sec">
+        <div class="help-sec-title">ক্যালেন্ডার পড়ার নিয়ম</div>
+        <div class="help-tip">প্রতিটি ঘরে দুটি সংখ্যা — <b>বড় উপরের সংখ্যা</b> গ্রেগরিয়ান তারিখ (বাংলায়), <b>ছোট নিচের সংখ্যা</b> বাংলা ক্যালেন্ডারের তারিখ।</div>
+      </div>
+      <div class="help-sec">
+        <div class="help-sec-title">রঙের মানে</div>
+        <div class="help-card"><div class="help-card-title" style="color:var(--hi)">বেগুনি আউটলাইন</div><div class="help-card-body">আজকের তারিখ।</div></div>
+        <div class="help-card"><div class="help-card-title" style="color:var(--rd)">লাল সংখ্যা (রবি)</div><div class="help-card-body">রবিবার — সূর্যের দিন।</div></div>
+        <div class="help-card"><div class="help-card-title" style="color:var(--h2)">গোলাপি সংখ্যা (শনি)</div><div class="help-card-body">শনিবার — শনির দিন।</div></div>
+        <div class="help-card"><div class="help-card-title">🔴 ছোট বিন্দু</div><div class="help-card-body">সেই দিনে উৎসব বা বিশেষ অনুষ্ঠান আছে।</div></div>
+      </div>`,
+
+      `<div class="help-sec">
+        <div class="help-sec-title">অবস্থান কেন গুরুত্বপূর্ণ?</div>
+        <div class="help-tip">সূর্যোদয়, অস্ত এবং মুহূর্তের সময় আপনার ভৌগোলিক অবস্থানের উপর নির্ভর করে। সঠিক শহর সেট করলে সঠিক সময় পাবেন।</div>
+      </div>
+      <div class="help-sec">
+        <div class="help-sec-title">অবস্থান সেট করার উপায়</div>
+        <div class="help-step"><div class="help-step-num">১</div><div class="help-step-txt"><b>GPS বোতাম</b> — সবুজ 📡 GPS বোতামে ট্যাপ করুন। অনুমতি দিলে স্বয়ংক্রিয়ভাবে অবস্থান নির্ণয় হবে।</div></div>
+        <div class="help-step"><div class="help-step-num">২</div><div class="help-step-txt"><b>শহর অনুসন্ধান</b> — সার্চ বক্সে শহরের নাম টাইপ করুন (যেমন: Kolkata, Delhi, London)।</div></div>
+        <div class="help-step"><div class="help-step-num">৩</div><div class="help-step-txt"><b>স্বয়ংক্রিয় টাইমজোন</b> — GPS অনুমতি না দিলেও অ্যাপ নিজে থেকে আপনার ডিভাইসের টাইমজোন পড়ে অবস্থান নির্ধারণ করে।</div></div>
+      </div>`,
+
+      `<div class="help-sec">
+        <div class="help-sec-title">পঞ্চাঙ্গ পরিভাষা</div>
+        <div class="help-glossary">
+          <div class="help-gitem"><div class="help-gterm">তিথি</div><div class="help-gdef">চান্দ্র দিন (১–৩০)</div></div>
+          <div class="help-gitem"><div class="help-gterm">নক্ষত্র</div><div class="help-gdef">চান্দ্র আবাস (১–২৭)</div></div>
+          <div class="help-gitem"><div class="help-gterm">যোগ</div><div class="help-gdef">সূর্য+চন্দ্র সমন্বয় (১–২৭)</div></div>
+          <div class="help-gitem"><div class="help-gterm">করণ</div><div class="help-gdef">অর্ধ-তিথি (১–১১)</div></div>
+          <div class="help-gitem"><div class="help-gterm">শুক্লপক্ষ</div><div class="help-gdef">চন্দ্রের বৃদ্ধির পক্ষ</div></div>
+          <div class="help-gitem"><div class="help-gterm">কৃষ্ণপক্ষ</div><div class="help-gdef">চন্দ্রের ক্ষয়ের পক্ষ</div></div>
+          <div class="help-gitem"><div class="help-gterm">পূর্ণিমা</div><div class="help-gdef">পূর্ণচন্দ্রের দিন</div></div>
+          <div class="help-gitem"><div class="help-gterm">অমাবস্যা</div><div class="help-gdef">নতুন চাঁদের দিন</div></div>
+          <div class="help-gitem"><div class="help-gterm">মুহূর্ত</div><div class="help-gdef">শুভ সময়কাল</div></div>
+          <div class="help-gitem"><div class="help-gterm">রাহুকাল</div><div class="help-gdef">রাহুর অশুভ সময়</div></div>
+          <div class="help-gitem"><div class="help-gterm">হোরা</div><div class="help-gdef">গ্রহের ঘন্টা</div></div>
+          <div class="help-gitem"><div class="help-gterm">রাশি</div><div class="help-gdef">রাশিচক্রের চিহ্ন</div></div>
+          <div class="help-gitem"><div class="help-gterm">তারাবল</div><div class="help-gdef">তারার শক্তি</div></div>
+          <div class="help-gitem"><div class="help-gterm">চন্দ্রবল</div><div class="help-gdef">চন্দ্রের শক্তি</div></div>
+          <div class="help-gitem"><div class="help-gterm">উদয়</div><div class="help-gdef">সূর্যোদয়</div></div>
+          <div class="help-gitem"><div class="help-gterm">অস্ত</div><div class="help-gdef">সূর্যাস্ত</div></div>
+        </div>
+      </div>`,
+
+      `<div class="help-sec">
+        <div class="help-sec-title">অ্যাপ হিসেবে ইনস্টল করুন</div>
+        <div class="help-tip">বাংলা পঞ্জিকা একটি <b>Progressive Web App</b> — ইন্টারনেট ছাড়াও কাজ করে।</div>
+      </div>
+      <div class="help-sec">
+        <div class="help-sec-title">Android (Chrome)</div>
+        <div class="help-step"><div class="help-step-num">১</div><div class="help-step-txt">Chrome-এ অ্যাপটি খুলুন।</div></div>
+        <div class="help-step"><div class="help-step-num">২</div><div class="help-step-txt">উপরের ডানদিকে <b>তিন বিন্দু ⋮</b> মেনুতে ট্যাপ করুন।</div></div>
+        <div class="help-step"><div class="help-step-num">৩</div><div class="help-step-txt"><b>"Add to Home screen"</b> বা <b>"Install app"</b> ট্যাপ করুন।</div></div>
+        <div class="help-step"><div class="help-step-num">৪</div><div class="help-step-txt"><b>Install</b> নিশ্চিত করুন। হোম স্ক্রিনে আইকন যোগ হবে।</div></div>
+      </div>
+      <div class="help-sec">
+        <div class="help-sec-title">iPhone (Safari)</div>
+        <div class="help-step"><div class="help-step-num">১</div><div class="help-step-txt">Safari-তে অ্যাপটি খুলুন।</div></div>
+        <div class="help-step"><div class="help-step-num">২</div><div class="help-step-txt">নিচের <b>শেয়ার বোতাম ↑</b> ট্যাপ করুন।</div></div>
+        <div class="help-step"><div class="help-step-num">৩</div><div class="help-step-txt"><b>"Add to Home Screen"</b> ট্যাপ করুন।</div></div>
+        <div class="help-step"><div class="help-step-num">৪</div><div class="help-step-txt"><b>Add</b> ট্যাপ করুন। আইকন হোম স্ক্রিনে যোগ হবে।</div></div>
+      </div>
+      <div class="help-sec">
+        <div class="help-sec-title">শেয়ার ও এক্সপোর্ট</div>
+        <div class="help-card"><div class="help-card-title">📋 কপি করুন</div><div class="help-card-body">আজকের সম্পূর্ণ পঞ্চাঙ্গ ক্লিপবোর্ডে কপি করুন।</div></div>
+        <div class="help-card"><div class="help-card-title">💬 WhatsApp</div><div class="help-card-body">WhatsApp-এ পঞ্চাঙ্গ শেয়ার করুন।</div></div>
+        <div class="help-card"><div class="help-card-title">⬇️ ডাউনলোড</div><div class="help-card-body">.txt ফাইল হিসেবে সেভ করুন।</div></div>
+      </div>`
+    ]
+  },
+
+  hi: {
+    title: '📖 सहायिका',
+    tabs: ['शुरुआत','पंचांग','कैलेंडर','स्थान','शब्दावली','इंस्टॉल'],
+    pages: [
+      `<div class="help-sec">
+        <div class="help-sec-title">बांगला पंचांग में आपका स्वागत है</div>
+        <div class="help-tip"><b>बांगला पंचांग</b> एक संपूर्ण हिंदू पंचांग ऐप है — तिथि, नक्षत्र, योग, मुहूर्त, उत्सव और बहुत कुछ — विश्व के किसी भी स्थान के लिए।</div>
+      </div>
+      <div class="help-sec">
+        <div class="help-sec-title">त्वरित परिचय</div>
+        <div class="help-step"><div class="help-step-num">1</div><div class="help-step-txt"><b>हेडर</b> — आज की बंगाली तिथि, तिथि, नक्षत्र और योग एक नजर में।</div></div>
+        <div class="help-step"><div class="help-step-num">2</div><div class="help-step-txt"><b>सिद्धांत टॉगल</b> — सूर्य ☀️, दृक 🔭 या चंद्र 🌙 गणना पद्धति चुनें।</div></div>
+        <div class="help-step"><div class="help-step-num">3</div><div class="help-step-txt"><b>कैलेंडर ग्रिड</b> — किसी भी तारीख पर टैप करें और उस दिन का पूरा पंचांग देखें।</div></div>
+        <div class="help-step"><div class="help-step-num">4</div><div class="help-step-txt"><b>लाइव घड़ी</b> — चयनित शहर का सटीक समय हर सेकंड अपडेट होता है।</div></div>
+        <div class="help-step"><div class="help-step-num">5</div><div class="help-step-txt"><b>भाषा</b> — ऊपर दाईं ओर <b>বাং / EN / हि</b> बटन दबाएं।</div></div>
+        <div class="help-step"><div class="help-step-num">6</div><div class="help-step-txt"><b>थीम</b> — ☀️ 🌙 ⚫ से लाइट, डार्क या OLED मोड बदलें।</div></div>
+      </div>`,
+
+      `<div class="help-sec">
+        <div class="help-sec-title">पंचांग क्या है?</div>
+        <div class="help-tip"><b>पंचांग</b> का अर्थ है "पाँच अंग" — हिंदू पंचांग के पाँच मूल तत्व जो हर पल की गुणवत्ता निर्धारित करते हैं।</div>
+      </div>
+      <div class="help-sec">
+        <div class="help-sec-title">पाँच अंग</div>
+        <div class="help-card"><div class="help-card-title">1. तिथि</div><div class="help-card-body">चंद्र दिन — चंद्र चक्र के 30 चरणों में से एक (15 शुक्ल + 15 कृष्ण)।</div></div>
+        <div class="help-card"><div class="help-card-title">2. नक्षत्र</div><div class="help-card-body">चंद्र नक्षत्र — 27 तारा समूहों में से एक जिनसे चंद्रमा गुजरता है।</div></div>
+        <div class="help-card"><div class="help-card-title">3. योग</div><div class="help-card-body">सूर्य और चंद्र की देशांतर का योग, 27 भागों में विभाजित।</div></div>
+        <div class="help-card"><div class="help-card-title">4. करण</div><div class="help-card-body">अर्ध-तिथि — 11 करण जो चंद्र मास में दोहराते हैं।</div></div>
+        <div class="help-card"><div class="help-card-title">5. वार</div><div class="help-card-body">सप्ताह का दिन — रवि, सोम, मंगल, बुध, गुरु, शुक्र, शनि।</div></div>
+      </div>
+      <div class="help-sec">
+        <div class="help-sec-title">मुहूर्त</div>
+        <div class="help-card"><div class="help-card-title">🕛 अभिजित मुहूर्त</div><div class="help-card-body">दिन का सबसे शक्तिशाली शुभ मुहूर्त — दोपहर 11:48–12:36।</div></div>
+        <div class="help-card"><div class="help-card-title">⚠️ राहुकाल</div><div class="help-card-body">प्रतिदिन 90 मिनट का अशुभ समय। इस दौरान नया कार्य आरंभ न करें।</div></div>
+        <div class="help-card"><div class="help-card-title">🌟 ब्रह्म मुहूर्त</div><div class="help-card-body">सूर्योदय से पहले का पवित्र समय। ध्यान, पूजा और पढ़ाई के लिए सर्वोत्तम।</div></div>
+      </div>`,
+
+      `<div class="help-sec">
+        <div class="help-sec-title">कैलेंडर कैसे पढ़ें</div>
+        <div class="help-tip">प्रत्येक सेल में दो संख्याएं — <b>बड़ी ऊपरी संख्या</b> ग्रेगोरियन तारीख (बंगाली में), <b>छोटी नीचे की संख्या</b> बंगाली कैलेंडर की तारीख।</div>
+      </div>
+      <div class="help-sec">
+        <div class="help-sec-title">रंगों का अर्थ</div>
+        <div class="help-card"><div class="help-card-title" style="color:var(--hi)">बैंगनी रेखा</div><div class="help-card-body">आज की तारीख।</div></div>
+        <div class="help-card"><div class="help-card-title" style="color:var(--rd)">लाल संख्या (रवि)</div><div class="help-card-body">रविवार — सूर्य का दिन।</div></div>
+        <div class="help-card"><div class="help-card-title">🔴 छोटा बिंदु</div><div class="help-card-body">उस दिन कोई त्योहार या विशेष अवसर है।</div></div>
+      </div>`,
+
+      `<div class="help-sec">
+        <div class="help-sec-title">स्थान क्यों महत्वपूर्ण है?</div>
+        <div class="help-tip">सूर्योदय, सूर्यास्त और मुहूर्त के समय आपके भौगोलिक स्थान पर निर्भर करते हैं।</div>
+      </div>
+      <div class="help-sec">
+        <div class="help-sec-title">स्थान कैसे सेट करें</div>
+        <div class="help-step"><div class="help-step-num">1</div><div class="help-step-txt"><b>GPS बटन</b> — हरे 📡 GPS बटन पर टैप करें। अनुमति दें और ऐप स्वतः स्थान निर्धारित करेगा।</div></div>
+        <div class="help-step"><div class="help-step-num">2</div><div class="help-step-txt"><b>शहर खोज</b> — खोज बॉक्स में शहर का नाम टाइप करें।</div></div>
+        <div class="help-step"><div class="help-step-num">3</div><div class="help-step-txt"><b>स्वतः टाइमज़ोन</b> — GPS अनुमति न होने पर ऐप डिवाइस का टाइमज़ोन पढ़कर स्थान निर्धारित करता है।</div></div>
+      </div>`,
+
+      `<div class="help-sec">
+        <div class="help-sec-title">पंचांग शब्दावली</div>
+        <div class="help-glossary">
+          <div class="help-gitem"><div class="help-gterm">तिथि</div><div class="help-gdef">चंद्र दिन (1–30)</div></div>
+          <div class="help-gitem"><div class="help-gterm">नक्षत्र</div><div class="help-gdef">चंद्र नक्षत्र (1–27)</div></div>
+          <div class="help-gitem"><div class="help-gterm">योग</div><div class="help-gdef">सूर्य+चंद्र योग (1–27)</div></div>
+          <div class="help-gitem"><div class="help-gterm">करण</div><div class="help-gdef">अर्ध-तिथि (1–11)</div></div>
+          <div class="help-gitem"><div class="help-gterm">शुक्ल पक्ष</div><div class="help-gdef">चंद्र वृद्धि पक्ष</div></div>
+          <div class="help-gitem"><div class="help-gterm">कृष्ण पक्ष</div><div class="help-gdef">चंद्र क्षय पक्ष</div></div>
+          <div class="help-gitem"><div class="help-gterm">पूर्णिमा</div><div class="help-gdef">पूर्ण चंद्र दिन</div></div>
+          <div class="help-gitem"><div class="help-gterm">अमावस्या</div><div class="help-gdef">नए चंद्रमा का दिन</div></div>
+          <div class="help-gitem"><div class="help-gterm">मुहूर्त</div><div class="help-gdef">शुभ समय</div></div>
+          <div class="help-gitem"><div class="help-gterm">राहुकाल</div><div class="help-gdef">राहु का अशुभ काल</div></div>
+          <div class="help-gitem"><div class="help-gterm">होरा</div><div class="help-gdef">ग्रह का घंटा</div></div>
+          <div class="help-gitem"><div class="help-gterm">राशि</div><div class="help-gdef">राशिचक्र का चिह्न</div></div>
+        </div>
+      </div>`,
+
+      `<div class="help-sec">
+        <div class="help-sec-title">ऐप के रूप में इंस्टॉल करें</div>
+        <div class="help-tip">बांगला पंचांग एक <b>Progressive Web App</b> है — बिना इंटरनेट के भी काम करता है।</div>
+      </div>
+      <div class="help-sec">
+        <div class="help-sec-title">Android (Chrome)</div>
+        <div class="help-step"><div class="help-step-num">1</div><div class="help-step-txt">Chrome में ऐप खोलें।</div></div>
+        <div class="help-step"><div class="help-step-num">2</div><div class="help-step-txt">ऊपर दाईं ओर <b>तीन बिंदु ⋮</b> मेनू टैप करें।</div></div>
+        <div class="help-step"><div class="help-step-num">3</div><div class="help-step-txt"><b>"Add to Home screen"</b> टैप करें।</div></div>
+        <div class="help-step"><div class="help-step-num">4</div><div class="help-step-txt"><b>Install</b> की पुष्टि करें।</div></div>
+      </div>
+      <div class="help-sec">
+        <div class="help-sec-title">iPhone (Safari)</div>
+        <div class="help-step"><div class="help-step-num">1</div><div class="help-step-txt">Safari में ऐप खोलें।</div></div>
+        <div class="help-step"><div class="help-step-num">2</div><div class="help-step-txt">नीचे <b>शेयर बटन ↑</b> टैप करें।</div></div>
+        <div class="help-step"><div class="help-step-num">3</div><div class="help-step-txt"><b>"Add to Home Screen"</b> टैप करें।</div></div>
+      </div>`
+    ]
+  }
+};
+
+let _helpTab = 0;
+
+function openHelp(){
+  document.getElementById('help-overlay').classList.add('open');
+  document.getElementById('help-drawer').classList.add('open');
+  showHelpTab(0);
+}
+function closeHelp(){
+  document.getElementById('help-overlay').classList.remove('open');
+  document.getElementById('help-drawer').classList.remove('open');
+}
+function showHelpTab(idx){
+  _helpTab = idx;
+  const L = HELP_CONTENT[activeLang] || HELP_CONTENT.en;
+  // Update tab active state
+  document.querySelectorAll('.help-tab').forEach((t,i) => {
+    t.classList.toggle('active', i===idx);
+    t.textContent = L.tabs[i] || L.tabs[i];
+  });
+  document.getElementById('hlp-title').textContent = L.title;
+  document.getElementById('help-body').innerHTML = L.pages[idx] || '';
+  document.getElementById('help-body').scrollTop = 0;
+}
+// Re-render help content on language change
+const _origApplyLang = typeof applyLang === 'function' ? applyLang : null;
 
 </script>
 </body>
